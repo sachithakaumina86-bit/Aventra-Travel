@@ -9,7 +9,7 @@ import {
 } from '../types/aventra';
 
 export const STITCH_IMAGES = {
-  logo: '/assets/aventra-logo-128.webp',
+  logo: '/assets/aistudio/Aventra_Travel_Logo_with_Scenic_A_08eb13f5.png',
   homeHero:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuBssEeEWFfbarE-HE9zHRjFtXb_9sceONXz_DpDU79npR5BkUiJqnwNwb_MjGQAsklUO6iKGqopsaTqtnNgsdZssQd8iVYvRTSRVjp00oPKu_ojyXjSkAMDTudQMyLNx1YWCfdQCVkIIEe85exoNqea9C53R2dWDeJvW0edlmaEQ_aKcAbb9TfTEPMXu3kxvzlqbV-6KkLNtSg6Sn7ekU44Zvdx7mr6j0jQwV0_N0k',
   hattonVeranda:

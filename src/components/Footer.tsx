@@ -1,7 +1,6 @@
 import React, { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Loader2 } from 'lucide-react';
-import { STITCH_IMAGES } from '../data/initialSeedData';
 import { useData } from '../context/DataContext';
 
 export const Footer: React.FC = memo(() => {
@@ -60,10 +59,8 @@ export const Footer: React.FC = memo(() => {
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-3">
               <picture className="shrink-0">
-                <source srcSet="/assets/aventra-logo-128.avif" type="image/avif" />
-                <source srcSet={STITCH_IMAGES.logo} type="image/webp" />
                 <img
-                  src="/assets/aventra-logo-128.png"
+                  src="/assets/aistudio/Aventra_Travel_Logo_with_Scenic_A_08eb13f5.png"
                   alt="AVENTRA Logo"
                   width={44}
                   height={44}

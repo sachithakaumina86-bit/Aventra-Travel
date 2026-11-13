@@ -2,7 +2,6 @@ import React, { memo, useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { Menu, ShieldCheck, X } from 'lucide-react';
-import { STITCH_IMAGES } from '../data/initialSeedData';
 import { useData } from '../context/DataContext';
 import { LUXURY_EASE } from './MotionPrimitives';
 
@@ -60,10 +59,8 @@ export const Navbar: React.FC = memo(() => {
         {/* Brand Mark */}
         <Link to="/" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group min-w-0">
           <picture className="shrink-0">
-            <source srcSet="/assets/aventra-logo-128.avif" type="image/avif" />
-            <source srcSet={STITCH_IMAGES.logo} type="image/webp" />
             <img
-              src="/assets/aventra-logo-128.png"
+              src="/assets/aistudio/Aventra_Travel_Logo_with_Scenic_A_08eb13f5.png"
               alt="AVENTRA Logo"
               width={44}
               height={44}
