@@ -875,6 +875,46 @@
           "type": "string",
           "maxLength": 300
         },
+        "seoTitle": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "seoDescription": {
+          "type": "string",
+          "maxLength": 320
+        },
+        "seoKeywords": {
+          "type": "string",
+          "maxLength": 400
+        },
+        "canonicalUrl": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "ogTitle": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "ogDescription": {
+          "type": "string",
+          "maxLength": 320
+        },
+        "ogImage": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "ogSiteName": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "ogType": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "twitterCard": {
+          "type": "string",
+          "maxLength": 40
+        },
         "updatedAt": {
           "type": "string",
           "format": "date-time"

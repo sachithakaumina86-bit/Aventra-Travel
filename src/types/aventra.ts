@@ -273,5 +273,15 @@ export interface WebsiteSettings {
   accreditationsNote: string;
   footerDescription: string;
   newsletterPrompt: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string;
+  canonicalUrl?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogSiteName?: string;
+  ogType?: string;
+  twitterCard?: string;
   updatedAt?: TimestampLike;
 }

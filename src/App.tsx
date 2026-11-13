@@ -6,6 +6,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { FloatingConcierge } from './components/FloatingConcierge';
 import { AdminGuard } from './components/AdminGuard';
+import { SeoHeadSync } from './components/SeoHeadSync';
 
 // Public Pages
 import { HomePage } from './pages/public/HomePage';
@@ -85,6 +86,7 @@ export default function App() {
       <DataProvider>
         <BrowserRouter>
           <ScrollToTop />
+          <SeoHeadSync />
           <Routes>
             {/* Public Website */}
             <Route element={<PublicLayout />}>

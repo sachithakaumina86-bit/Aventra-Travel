@@ -322,7 +322,10 @@ service cloud.firestore {
           'instagramUrl', 'facebookUrl', 'youtubeUrl', 'tiktokUrl',
           'founderName', 'founderRole', 'founderLetterTitle', 'founderLetterBody',
           'founderQuote', 'heritageEstablishedNote', 'accreditationsNote',
-          'footerDescription', 'newsletterPrompt', 'updatedAt'
+          'footerDescription', 'newsletterPrompt',
+          'seoTitle', 'seoDescription', 'seoKeywords', 'canonicalUrl',
+          'ogTitle', 'ogDescription', 'ogImage', 'ogSiteName', 'ogType', 'twitterCard',
+          'updatedAt'
         ]) &&
         isStr(data.brandName, 1, 80) &&
         isStr(data.tagline, 1, 160) &&
@@ -346,6 +349,16 @@ service cloud.firestore {
         (!('accreditationsNote' in data) || isStr(data.accreditationsNote, 0, 400)) &&
         (!('footerDescription' in data) || isStr(data.footerDescription, 0, 500)) &&
         (!('newsletterPrompt' in data) || isStr(data.newsletterPrompt, 0, 300)) &&
+        (!('seoTitle' in data) || isStr(data.seoTitle, 0, 120)) &&
+        (!('seoDescription' in data) || isStr(data.seoDescription, 0, 320)) &&
+        (!('seoKeywords' in data) || isStr(data.seoKeywords, 0, 400)) &&
+        (!('canonicalUrl' in data) || isStr(data.canonicalUrl, 0, 300)) &&
+        (!('ogTitle' in data) || isStr(data.ogTitle, 0, 120)) &&
+        (!('ogDescription' in data) || isStr(data.ogDescription, 0, 320)) &&
+        (!('ogImage' in data) || isStr(data.ogImage, 0, 1000)) &&
+        (!('ogSiteName' in data) || isStr(data.ogSiteName, 0, 80)) &&
+        (!('ogType' in data) || isStr(data.ogType, 0, 40)) &&
+        (!('twitterCard' in data) || isStr(data.twitterCard, 0, 40)) &&
         data.updatedAt is timestamp;
     }
 

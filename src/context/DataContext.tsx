@@ -975,9 +975,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const saveWebsiteSettings = async (updates: Partial<WebsiteSettings>) => {
-    const merged: WebsiteSettings = {
-      ...settings,
-      ...updates,
+    const cleanPayload: WebsiteSettings = {
       brandName: trimStr(updates.brandName ?? settings.brandName, 80),
       tagline: trimStr(updates.tagline ?? settings.tagline, 160),
       heroHeadline: trimStr(updates.heroHeadline ?? settings.heroHeadline, 200),
@@ -1000,13 +998,23 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       accreditationsNote: trimStr(updates.accreditationsNote ?? settings.accreditationsNote, 400),
       footerDescription: trimStr(updates.footerDescription ?? settings.footerDescription, 500),
       newsletterPrompt: trimStr(updates.newsletterPrompt ?? settings.newsletterPrompt, 300),
+      seoTitle: trimStr(updates.seoTitle ?? settings.seoTitle ?? '', 120),
+      seoDescription: trimStr(updates.seoDescription ?? settings.seoDescription ?? '', 320),
+      seoKeywords: trimStr(updates.seoKeywords ?? settings.seoKeywords ?? '', 400),
+      canonicalUrl: trimStr(updates.canonicalUrl ?? settings.canonicalUrl ?? '', 300),
+      ogTitle: trimStr(updates.ogTitle ?? settings.ogTitle ?? '', 120),
+      ogDescription: trimStr(updates.ogDescription ?? settings.ogDescription ?? '', 320),
+      ogImage: trimStr(updates.ogImage ?? settings.ogImage ?? '', 1000),
+      ogSiteName: trimStr(updates.ogSiteName ?? settings.ogSiteName ?? 'AVENTRA', 80),
+      ogType: trimStr(updates.ogType ?? settings.ogType ?? 'website', 40) || 'website',
+      twitterCard: trimStr(updates.twitterCard ?? settings.twitterCard ?? 'summary_large_image', 40) || 'summary_large_image',
     };
     try {
       await setDoc(doc(db, 'websiteSettings', 'public'), {
-        ...merged,
+        ...cleanPayload,
         updatedAt: serverTimestamp(),
       });
-      setSettings(merged);
+      setSettings(cleanPayload);
     } catch (error) {
       handleFirestoreError(error, OperationType.WRITE, 'websiteSettings/public');
     }

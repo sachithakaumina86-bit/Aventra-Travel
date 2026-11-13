@@ -106,6 +106,19 @@ export const INITIAL_SETTINGS: WebsiteSettings = {
     'Bespoke private Ceylon expeditions tailored for discerning travelers. Curating quiet luxury journeys through ancestral tea estates, southern coves, and cultural sanctuaries.',
   newsletterPrompt:
     'Receive curated seasonal monsoon guides, sample itinerary dispatches, and private sanctuary updates.',
+  seoTitle: 'AVENTRA — Discover Beyond Ordinary | Luxury Sri Lanka Travel',
+  seoDescription:
+    'Discover bespoke private expeditions across Sri Lanka with AVENTRA. Curated luxury sanctuaries, cultural citadels, and personalized concierge journeys.',
+  seoKeywords:
+    'Sri Lanka luxury travel, bespoke Sri Lanka tours, Ceylon private expeditions, Sigiriya sanctuaries, Yala leopard safari, AVENTRA',
+  canonicalUrl: '',
+  ogTitle: 'AVENTRA — Discover Beyond Ordinary | Luxury Sri Lanka Travel',
+  ogDescription:
+    'Discover bespoke private expeditions across Sri Lanka with AVENTRA. Curated luxury sanctuaries, cultural citadels, and personalized concierge journeys.',
+  ogImage: STITCH_IMAGES.homeHero,
+  ogSiteName: 'AVENTRA',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
 };
 
 export const INITIAL_DESTINATIONS: Destination[] = [
