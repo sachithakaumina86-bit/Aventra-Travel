@@ -18,6 +18,7 @@ import {
 import { useData } from '../../context/DataContext';
 import { STITCH_IMAGES } from '../../data/initialSeedData';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import hattonEstateVerandaImg from '../../assets/images/hatton_estate_veranda_1794540588504.jpg';
 
 export const HomePage: React.FC = () => {
   const { destinations, experiences, tourPackages, testimonials, blogPosts, settings } = useData();
@@ -189,7 +190,7 @@ export const HomePage: React.FC = () => {
           <div className="lg:col-span-6 relative">
             <div className="aspect-[4/5] overflow-hidden shadow-xl">
               <ImageWithFallback
-                src={STITCH_IMAGES.hattonVeranda}
+                src={hattonEstateVerandaImg}
                 alt="Hatton tea estate colonial veranda overlooking misty valleys"
                 className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
               />
