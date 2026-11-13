@@ -12,7 +12,7 @@ import {
   RefreshCw,
   ShieldCheck,
 } from 'lucide-react';
-import { STITCH_IMAGES } from '../../data/initialSeedData';
+import sriLankaScenicImg from '../../assets/images/sri_lanka_scenic_sanctuary_1794545612724.jpg';
 import { PRIMARY_ADMIN_EMAIL, useAuth } from '../../context/AuthContext';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
 
@@ -75,41 +75,46 @@ export const AdminLoginPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#FAF9F5] grid grid-cols-1 lg:grid-cols-12">
       {/* Left Editorial Photography Column */}
-      <div className="hidden lg:flex lg:col-span-6 relative bg-[#022C22] text-[#FAF9F5] p-12 flex-col justify-between overflow-hidden">
+      <div className="hidden lg:flex lg:col-span-6 relative bg-[#022C22] text-[#FAF9F5] p-10 xl:p-12 flex-col justify-between overflow-hidden">
         <div className="absolute inset-0">
           <ImageWithFallback
-            src={STITCH_IMAGES.hattonVeranda}
-            alt="AVENTRA Ceylon Sanctuary"
+            src={sriLankaScenicImg}
+            alt="Sigiriya Lion Rock rising above misty Sri Lankan emerald forests and serene lotus lagoon at sunrise"
             priority
-            className="w-full h-full object-cover opacity-55"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#022C22] via-[#022C22]/55 to-[#022C22]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#022C22]/90 via-[#022C22]/35 to-[#022C22]/45" />
         </div>
 
-        <div className="relative z-10 flex items-center gap-3">
-          <img
-            src={STITCH_IMAGES.logo}
-            alt="AVENTRA"
-            width={44}
-            height={44}
-            className="h-11 w-11 object-contain bg-[#FAF9F5] p-1 rounded-xs"
-          />
-          <div>
-            <span className="font-serif text-xl font-bold tracking-[0.16em] block">AVENTRA</span>
-            <span className="text-[10px] uppercase tracking-[0.22em] text-[#D6B56D]">
-              Ceylon Atelier • Executive Portal
-            </span>
+        {/* Top Editorial Eyebrow */}
+        <div className="relative z-10 flex items-center justify-between text-[10px] uppercase tracking-[0.26em] text-[#D6B56D] font-semibold">
+          <span>Ceylon Atelier • Executive Portal</span>
+          <span className="text-[#FAF9F5]/80">Sri Lanka</span>
+        </div>
+
+        {/* Centered Prominent Organization Logo */}
+        <div className="relative z-10 my-auto flex flex-col items-center justify-center py-8">
+          <div className="bg-white/95 backdrop-blur-sm border border-[#D6B56D]/65 p-5 sm:p-6 shadow-2xl rounded-xs">
+            <img
+              src="/assets/aistudio/Aventra_Travel_Logo_with_Scenic_A_08eb13f5.png"
+              alt="AVENTRA Travel Agency Logo"
+              width={208}
+              height={208}
+              decoding="sync"
+              className="w-44 h-44 xl:w-52 xl:h-52 object-contain"
+            />
           </div>
         </div>
 
-        <div className="relative z-10 space-y-4 max-w-lg">
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#D6B56D] font-semibold">
+        {/* Bottom Editorial Caption */}
+        <div className="relative z-10 space-y-3 max-w-lg">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-[#D6B56D] font-semibold block">
             Zero-Trust Concierge Administration
           </span>
-          <h2 className="font-serif text-4xl leading-tight">
+          <h2 className="font-serif text-3xl xl:text-4xl leading-tight">
             Stewardship, Bookings & Sanctuary Curation.
           </h2>
-          <p className="text-sm text-[#FAF9F5]/80 leading-relaxed">
+          <p className="text-sm text-[#FAF9F5]/85 leading-relaxed">
             Manage Sri Lankan destination dossiers, tour packages, private expedition dispatches, and inbound traveler inquiries inside one protected workspace.
           </p>
         </div>

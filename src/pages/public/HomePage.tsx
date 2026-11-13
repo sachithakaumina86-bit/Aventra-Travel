@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion, type Variants } from 'motion/react';
 import {
   ArrowRight,
   Calendar,
@@ -35,6 +35,40 @@ import hattonVerandaOptJpg from '../../assets/images/hatton_estate_veranda_opt.j
 export const HomePage: React.FC = () => {
   const { loadingPublic, destinations, experiences, tourPackages, testimonials, blogPosts, settings } = useData();
   const navigate = useNavigate();
+  const shouldReduceMotion = useReducedMotion();
+
+  const heroContainerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.11,
+        delayChildren: shouldReduceMotion ? 0 : 0.06,
+      },
+    },
+  };
+
+  const heroItemVariants: Variants = {
+    hidden: shouldReduceMotion
+      ? { opacity: 1, y: 0 }
+      : { opacity: 0.01, y: 18 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: shouldReduceMotion
+        ? { duration: 0 }
+        : { duration: 0.78, ease: LUXURY_EASE },
+    },
+  };
+
+  const heroRuleVariants: Variants = {
+    hidden: shouldReduceMotion ? { scaleX: 1 } : { scaleX: 0 },
+    visible: {
+      scaleX: 1,
+      transition: shouldReduceMotion
+        ? { duration: 0 }
+        : { duration: 0.65, ease: LUXURY_EASE },
+    },
+  };
 
   const [dockRegion, setDockRegion] = useState('All Regions');
   const [dockStyle, setDockStyle] = useState('Signature Circuit');
@@ -90,9 +124,9 @@ export const HomePage: React.FC = () => {
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[88vh] sm:min-h-[92vh] pt-20 flex items-center overflow-hidden">
         <motion.div
-          initial={{ scale: 1.04 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.05, ease: LUXURY_EASE }}
+          initial={shouldReduceMotion ? false : { scale: 1.045, opacity: 0.92 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 1.35, ease: LUXURY_EASE }}
           className="absolute inset-0 will-change-transform"
         >
           <ImageWithFallback
@@ -107,43 +141,62 @@ export const HomePage: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 w-full">
           <motion.div
-            initial={{ opacity: 0.01, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: LUXURY_EASE }}
+            variants={heroContainerVariants}
+            initial={shouldReduceMotion ? false : 'hidden'}
+            animate="visible"
             className="max-w-3xl space-y-5 sm:space-y-6"
           >
-            <div className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-[#D6B56D] font-semibold">
-              <span className="w-8 h-[1px] bg-[#D6B56D]" />
+            <motion.div
+              variants={heroItemVariants}
+              className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-[#D6B56D] font-semibold"
+            >
+              <motion.span
+                variants={heroRuleVariants}
+                className="w-8 h-[1px] bg-[#D6B56D] origin-left"
+              />
               <span>Private Sri Lanka Expeditions</span>
-            </div>
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-[#FAF9F5] font-normal leading-[1.06] tracking-tight">
+            </motion.div>
+            <motion.h1
+              variants={heroItemVariants}
+              className="font-serif text-4xl sm:text-6xl lg:text-7xl text-[#FAF9F5] font-normal leading-[1.06] tracking-tight"
+            >
               {settings.heroHeadline || 'Discover Beyond Ordinary.'}
-            </h1>
-            <p className="text-base sm:text-lg text-[#FAF9F5]/85 leading-relaxed max-w-2xl font-light">
+            </motion.h1>
+            <motion.p
+              variants={heroItemVariants}
+              className="text-base sm:text-lg text-[#FAF9F5]/85 leading-relaxed max-w-2xl font-light"
+            >
               {settings.heroSubheadline}
-            </p>
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3">
+            </motion.p>
+            <motion.div
+              variants={heroItemVariants}
+              className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3"
+            >
               <Link
                 to="/plan-your-journey"
-                className="bg-[#D6B56D] hover:bg-[#e4c279] active:scale-[0.98] text-[#18231F] px-6 sm:px-7 py-3.5 sm:py-4 min-h-[44px] text-xs uppercase tracking-[0.18em] font-semibold transition-all inline-flex items-center gap-2.5 shadow-lg"
+                className="bg-[#D6B56D] hover:bg-[#e4c279] hover:-translate-y-0.5 active:scale-[0.98] text-[#18231F] px-6 sm:px-7 py-3.5 sm:py-4 min-h-[44px] text-xs uppercase tracking-[0.18em] font-semibold transition-all inline-flex items-center gap-2.5 shadow-lg"
               >
                 <span>Plan Your Bespoke Journey</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/packages/the-ceylon-discovery"
-                className="border border-[#FAF9F5]/45 hover:border-[#D6B56D] active:scale-[0.98] bg-[#022C22]/45 backdrop-blur-xs text-[#FAF9F5] px-6 sm:px-7 py-3.5 sm:py-4 min-h-[44px] text-xs uppercase tracking-[0.18em] font-medium transition-all inline-flex items-center"
+                className="border border-[#FAF9F5]/45 hover:border-[#D6B56D] hover:-translate-y-0.5 active:scale-[0.98] bg-[#022C22]/45 backdrop-blur-xs text-[#FAF9F5] px-6 sm:px-7 py-3.5 sm:py-4 min-h-[44px] text-xs uppercase tracking-[0.18em] font-medium transition-all inline-flex items-center"
               >
                 Explore The Ceylon Discovery
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Concierge Search Dock */}
           <motion.form
-            initial={{ opacity: 0.01, y: 14 }}
+            initial={shouldReduceMotion ? false : { opacity: 0.01, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.14, ease: LUXURY_EASE }}
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : { duration: 0.78, delay: 0.38, ease: LUXURY_EASE }
+            }
             onSubmit={handleConciergeSearch}
             className="mt-10 sm:mt-14 bg-[#FAF9F5]/95 backdrop-blur-md border border-[#D6B56D]/30 p-4 sm:p-5 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end"
           >
