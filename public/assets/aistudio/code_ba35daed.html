@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-lowest": "#ffffff", "surface-variant": "#e3e2df", "on-error-container": "#93000a", "secondary-fixed-dim": "#e4c279", "on-tertiary-fixed": "#00201d", "on-error": "#ffffff", "on-primary-container": "#80bea6", "on-tertiary": "#ffffff", "primary-fixed": "#b0f0d6", "secondary-container": "#ffdb90", "tertiary-fixed": "#9cf2e8", "outline-variant": "#bfc9c3", "outline": "#707974", "on-secondary-fixed": "#251a00", "inverse-primary": "#95d3ba", "on-background": "#1b1c1a", "on-tertiary-fixed-variant": "#00504a", "secondary": "#745b1c", "on-tertiary-container": "#6ac0b6", "surface-tint": "#2b6954", "secondary-fixed": "#ffdf9c", "on-primary-fixed-variant": "#0b513d", "inverse-on-surface": "#f2f1ed", "surface-container-highest": "#e3e2df", "on-secondary-container": "#795f20", "surface-container-high": "#e9e8e4", "on-surface": "#1b1c1a", "surface-container": "#efeeea", "primary-fixed-dim": "#95d3ba", "background": "#faf9f5", "primary-container": "#064e3b", "primary": "#003527", "on-primary-fixed": "#002117", "surface": "#faf9f5", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#5a4304", "tertiary": "#003430", "surface-bright": "#faf9f5", "surface-dim": "#dbdad6", "inverse-surface": "#2f312e", "on-primary": "#ffffff", "tertiary-container": "#004d47", "surface-container-low": "#f4f4f0", "on-surface-variant": "#404944", "on-secondary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed-dim": "#80d5cb" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-xl": "3rem", "margin-desktop": "5rem", "gutter": "1.5rem", "margin": "1.25rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter-desktop": "2.5rem", "space-md": "1rem" }, "fontFamily": { "body-lead": [ "Inter" ], "label-badge": [ "Inter" ], "display-hero-mobile": [ "Playfair Display" ], "display-hero": [ "Playfair Display" ], "title-editorial": [ "Playfair Display" ], "headline-md": [ "Playfair Display" ], "headline-lg-mobile": [ "Playfair Display" ], "nav-link": [ "Inter" ], "label-caption": [ "Inter" ], "headline-lg": [ "Playfair Display" ], "body-md": [ "Inter" ], "headline-sm": [ "Playfair Display" ], "body-sm": [ "Inter" ] }, "fontSize": { "body-lead": [ "18px", { "lineHeight": "30px", "letterSpacing": "0.01em", "fontWeight": "300" } ], "label-badge": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "display-hero-mobile": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "display-hero": [ "64px", { "lineHeight": "76px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "title-editorial": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-md": [ "32px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "nav-link": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.14em", "fontWeight": "500" } ], "label-caption": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "400" } ], "headline-lg": [ "48px", { "lineHeight": "58px", "letterSpacing": "-0.015em", "fontWeight": "400" } ], "body-md": [ "15px", { "lineHeight": "26px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "headline-sm": [ "24px", { "lineHeight": "32px", "letterSpacing": "0em", "fontWeight": "600" } ], "body-sm": [ "13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 left-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(6,78,59,0.06)] transition-all duration-300"><div class="h-20 w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-3 group" data-path="home" href="#"><img alt="Aventra Travel Logo with Scenic A.png" class="w-auto object-contain h-12" src="https://lh3.googleusercontent.com/aida/ALJJyrDwKwfddgov1gAOacuaxzPGO8f-sqoMpS1q-9GsNDGqeX6O9o0xoFEHrzjPSvS0p5x8uKr0o_WX3928RVOLEDejFsaormVs-8HSwG8ffsxb_9Kcmnbhz1Xjzjr7XSzGYz_t9BBPnO-JhmmdC2lpmAr-rbuaZG_bSqnWuQ9LpT9hJwRH-XT_bl20eMfCkeVwldxCWA0vWnpDoxB_00lButq1Hq3qoSM60-d2LEsUZT3deOKhJVSN8rwwOg"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary group-hover:text-primary-container transition-colors">AVENTRA</span><span class="font-label-badge text-[9px] uppercase tracking-[0.25em] text-secondary -mt-1 font-semibold">Ceylon Expeditions</span></div></a></div><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary border-b-2 border-secondary font-semibold"><a class="inline-flex items-center gap-1 font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary" data-path="home" href="#">Home</a><div class="relative group py-2"><a class="inline-flex items-center gap-1 font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary" data-path="destinations" href="#"><span>Destinations</span><span class="material-symbols-outlined text-[14px] text-secondary transition-transform group-hover:rotate-180">expand_more</span></a></div><div class="relative group py-2"><a class="inline-flex items-center gap-1 font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary" data-path="experiences" href="#"><span>Experiences</span><span class="material-symbols-outlined text-[14px] text-secondary transition-transform group-hover:rotate-180">expand_more</span></a></div><a class="font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary py-2" data-path="tour-packages" href="#">Tour Packages</a><a class="font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary py-2" data-path="about-us" href="#">About Us</a><a class="font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary py-2" data-path="contact" href="#">Contact</a><a class="font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary py-2" data-path="travel-journal" href="#">Travel Journal</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-primary-container text-on-primary font-nav-link text-nav-link uppercase shadow-[0_4px_16px_rgba(6,78,59,0.2)] hover:bg-primary transition-all duration-300" data-path="plan-your-journey" href="#">Plan Your Journey</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- Subtle Header Active State Sync Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const destLinks = document.querySelectorAll('header nav a[data-path="destinations"]');
+      destLinks.forEach(link => {
+        link.classList.remove('text-on-surface-variant');
+        link.classList.add('text-primary', 'font-semibold');
+        const parentDiv = link.closest('.group');
+        if (parentDiv) {
+          parentDiv.classList.add('border-b-2', 'border-secondary');
+        }
+      });
+    });
+  </script>
+<!-- ========================================== -->
+<!-- 1. HERO SECTION & FAST SEARCH ARCHIVE BAR -->
+<!-- ========================================== -->
+<section class="relative w-full overflow-hidden bg-surface-container-low pt-12 pb-20 md:pb-28">
+<!-- Atmospheric Ambient Glows -->
+<div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-primary-fixed/20 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 -right-40 w-96 h-96 rounded-full bg-secondary-container/25 blur-3xl pointer-events-none"></div>
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop relative z-10">
+<!-- Editorial Header Content -->
+<div class="max-w-4xl flex flex-col gap-space-sm mb-12">
+<div class="flex items-center gap-3">
+<span class="w-8 h-[1px] bg-secondary"></span>
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary">The Ceylon Expedition Archive</span>
+<span class="text-secondary font-label-badge text-label-badge">•</span>
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-on-surface-variant">Destinations Directory</span>
+</div>
+<h1 class="font-display-hero text-headline-lg md:text-display-hero text-primary tracking-tight">
+          Curated Sanctuaries &amp; Sacred Lands across Sri Lanka.
+        </h1>
+<p class="font-body-lead text-body-lead text-on-surface-variant max-w-3xl mt-2">
+          From mist-draped ancestral tea estates and 5th-century UNESCO citadel monoliths to unmapped southern coastal coves and leopard-dense scrub jungle reserves. Explore the teardrop isle through AVENTRA’s rigorously private sanctuaries.
+        </p>
+</div>
+<!-- Architectural Search & Filter Console -->
+<div class="bg-surface-container-lowest shadow-xl rounded-xl p-space-md md:p-space-lg">
+<form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-6" onsubmit="event.preventDefault();">
+<!-- Query Search -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-badge text-[10px] uppercase tracking-[0.16em] text-secondary font-semibold" for="dest-search">Search Archive</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-[20px] pointer-events-none">search</span>
+<input class="w-full pl-10 pr-3 py-3 bg-surface-container text-on-surface placeholder:text-outline font-body-sm text-body-sm rounded-lg focus:outline-none focus:bg-surface-container-low transition-colors" id="dest-search" placeholder="Sigiriya, Ella, Galle Fort..." type="text"/>
+</div>
+</div>
+<!-- Region Filter -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-badge text-[10px] uppercase tracking-[0.16em] text-secondary font-semibold" for="dest-region">Region / Territory</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-[20px] pointer-events-none">explore</span>
+<select class="w-full pl-10 pr-8 py-3 bg-surface-container text-on-surface font-body-sm text-body-sm rounded-lg focus:outline-none focus:bg-surface-container-low appearance-none cursor-pointer transition-colors" id="dest-region">
+<option value="all">All Island Regions</option>
+<option value="cultural">The Cultural Triangle</option>
+<option value="highlands">The Central Highlands</option>
+<option value="southern">The Southern Coastline</option>
+<option value="wild">Wild Yala &amp; National Parks</option>
+<option value="east">Untamed East &amp; Jaffna North</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 text-outline text-[18px] pointer-events-none">unfold_more</span>
+</div>
+</div>
+<!-- Terrain / Experience Filter -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-badge text-[10px] uppercase tracking-[0.16em] text-secondary font-semibold" for="dest-terrain">Terrain &amp; Curated Style</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-[20px] pointer-events-none">landscape</span>
+<select class="w-full pl-10 pr-8 py-3 bg-surface-container text-on-surface font-body-sm text-body-sm rounded-lg focus:outline-none focus:bg-surface-container-low appearance-none cursor-pointer transition-colors" id="dest-terrain">
+<option value="all">All Terrains</option>
+<option value="mountains">Mountains &amp; Waterfalls</option>
+<option value="heritage">UNESCO Heritage &amp; Monasteries</option>
+<option value="beach">Private Beachfront &amp; Surf Coves</option>
+<option value="wildlife">Wildlife &amp; Big Game Safari</option>
+<option value="tea">Ancestral Tea Plantations</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 text-outline text-[18px] pointer-events-none">unfold_more</span>
+</div>
+</div>
+<!-- Seasonal Window -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-badge text-[10px] uppercase tracking-[0.16em] text-secondary font-semibold" for="dest-season">Monsoon &amp; Travel Season</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-[20px] pointer-events-none">calendar_month</span>
+<select class="w-full pl-10 pr-8 py-3 bg-surface-container text-on-surface font-body-sm text-body-sm rounded-lg focus:outline-none focus:bg-surface-container-low appearance-none cursor-pointer transition-colors" id="dest-season">
+<option value="all">Any Travelling Month</option>
+<option value="sw-monsoon">Nov – Apr (South &amp; West Prime)</option>
+<option value="ne-monsoon">May – Sep (East Coast &amp; North)</option>
+<option value="year-round">Year-Round Microclimates</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 text-outline text-[18px] pointer-events-none">unfold_more</span>
+</div>
+</div>
+</form>
+<!-- Quick Curated Tags Row -->
+<div class="pt-4 flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low/60 rounded-lg px-4 py-3">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-badge text-[10px] uppercase tracking-wider text-outline font-medium mr-1">Expedition Filters:</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest text-primary text-label-badge font-label-badge uppercase shadow-sm hover:bg-secondary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px] text-secondary">stars</span>
+              UNESCO World Heritage
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest text-primary text-label-badge font-label-badge uppercase shadow-sm hover:bg-secondary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px] text-secondary">terrain</span>
+              Highland Tea Estates
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest text-primary text-label-badge font-label-badge uppercase shadow-sm hover:bg-secondary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px] text-secondary">waves</span>
+              Private Beachfront
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest text-primary text-label-badge font-label-badge uppercase shadow-sm hover:bg-secondary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px] text-secondary">pets</span>
+              Big Game Safari
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest text-primary text-label-badge font-label-badge uppercase shadow-sm hover:bg-secondary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px] text-secondary">castle</span>
+              Colonial Architecture
+            </button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-caption text-label-caption">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span>9 Exclusive Destinational Portfolios Active</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ======================================================== -->
+<!-- 2. INTERACTIVE REGIONAL DISCOVERY & MICROCLIMATE SANCTUARY -->
+<!-- ======================================================== -->
+<section class="w-full py-16 md:py-24 bg-surface">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<!-- Section Title Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-12">
+<div class="flex flex-col gap-2 max-w-2xl">
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary">Regional Geographies</span>
+<h2 class="font-headline-lg text-headline-md md:text-headline-lg text-primary">
+            Sri Lanka’s Five Distinct Microclimates
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            A geographic anomaly: in less than four hours, traverse from sea-level maritime ramparts to 2,000-metre cloud forests cloaked in mist and morning frost.
+          </p>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-caption text-label-caption uppercase tracking-wider text-outline">Island Footprint: 65,610 km²</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-caption text-label-caption uppercase tracking-wider text-outline">8 UNESCO Sites</span>
+</div>
+</div>
+<!-- Bento-style Regional Explorer Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-md">
+<!-- Region 1: Cultural Triangle (Span 7) -->
+<div class="lg:col-span-7 bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between shadow-sm relative overflow-hidden group">
+<div class="absolute -right-16 -bottom-16 w-64 h-64 bg-secondary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-sm mb-6">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-secondary font-semibold">Territory 01 • North-Central Plains</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface text-primary font-label-badge text-[10px] tracking-widest uppercase">Ancient Royal Realm</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">The Cultural Triangle</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg">
+              Sigiriya, Anuradhapura, Polonnaruwa &amp; Dambulla. Soaring sandstone citadel monoliths, mirror-glass monastic reservoirs, and 2,000-year-old subterranean gilded cave frescoes.
+            </p>
+</div>
+<div class="relative z-10 grid grid-cols-3 gap-2 pt-4 bg-surface-container/60 rounded-lg p-3">
+<div>
+<p class="font-label-caption text-[11px] uppercase tracking-wider text-outline">Key Elevation</p>
+<p class="font-title-editorial text-title-editorial text-primary">150m - 350m</p>
+</div>
+<div>
+<p class="font-label-caption text-[11px] uppercase tracking-wider text-outline">Optimal Sun</p>
+<p class="font-title-editorial text-title-editorial text-primary">Dec – April</p>
+</div>
+<div>
+<p class="font-label-caption text-[11px] uppercase tracking-wider text-outline">Signature Sanctuary</p>
+<p class="font-title-editorial text-title-editorial text-primary">Water Gardens</p>
+</div>
+</div>
+</div>
+<!-- Region 2: The Central Highlands (Span 5) -->
+<div class="lg:col-span-5 bg-primary-container text-surface rounded-xl p-space-lg flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="relative z-10 flex flex-col gap-space-sm mb-6">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-secondary-fixed font-semibold">Territory 02 • High Country</span>
+<span class="px-2.5 py-0.5 rounded-full bg-primary text-secondary-fixed font-label-badge text-[10px] tracking-widest uppercase">Cool Mountain Mist</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-surface-container-lowest">The Central Highlands</h3>
+<p class="font-body-sm text-body-sm text-surface-variant">
+              Kandy, Nuwara Eliya, Ella &amp; Horton Plains. High tea served in century-old mahogany verandahs, scenic railway viaducts tracing serpentine cliff edges, and single-estate artisan Ceylon black tea valleys.
+            </p>
+</div>
+<div class="relative z-10 grid grid-cols-3 gap-2 pt-4 bg-primary/40 rounded-lg p-3 text-surface-container-lowest">
+<div>
+<p class="font-label-caption text-[11px] uppercase tracking-wider text-surface-variant">Key Elevation</p>
+<p class="font-title-editorial text-title-editorial text-secondary-fixed">1,868m</p>
+</div>
+<div>
+<p class="font-label-caption text-[11px] uppercase tracking-wider text-surface-variant">Optimal Sun</p>
+<p class="font-title-editorial text-title-editorial text-secondary-fixed">Jan – May</p>
+</div>
+<div>
+<p class="font-label-caption text-[11px] uppercase tracking-wider text-surface-variant">Signature</p>
+<p class="font-title-editorial text-title-editorial text-secondary-fixed">Tea Trails</p>
+</div>
+</div>
+</div>
+<!-- Region 3: The Southern Coastline (Span 4) -->
+<div class="lg:col-span-4 bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-sm mb-6">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-secondary font-semibold">Territory 03</span>
+<span class="px-2 py-0.5 rounded-full bg-surface text-primary font-label-badge text-[10px] uppercase">Ramparts &amp; Reefs</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">The Southern Coastline</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Galle Fort, Weligama, Mirissa &amp; Tangalle. 17th-century coral ramparts, private ocean-front cinnamon estates, and blue whale migration channels.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between text-on-surface-variant font-label-caption text-label-caption border-t border-outline-variant/30">
+<span>Peak Sun: Nov – Apr</span>
+<span class="text-secondary font-medium font-nav-link text-nav-link uppercase">Private Catamarans →</span>
+</div>
+</div>
+<!-- Region 4: The Wild South & East (Span 4) -->
+<div class="lg:col-span-4 bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-sm mb-6">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-secondary font-semibold">Territory 04</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-surface-container-lowest font-label-badge text-[10px] uppercase">Big Game Savanna</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">The Wild South &amp; Yala</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Yala, Wilpattu, Udawalawe &amp; Kumana. Earth’s highest concentration of wild leopards, solitary sloth bears, and private tented dunes fronting the roaring ocean.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between text-on-surface-variant font-label-caption text-label-caption border-t border-outline-variant/30">
+<span>Peak Sightings: Feb – Jun</span>
+<span class="text-secondary font-medium font-nav-link text-nav-link uppercase">Naturalist Jeeps →</span>
+</div>
+</div>
+<!-- Region 5: The Untamed East & Jaffna North (Span 4) -->
+<div class="lg:col-span-4 bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-sm mb-6">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-secondary font-semibold">Territory 05</span>
+<span class="px-2 py-0.5 rounded-full bg-surface text-primary font-label-badge text-[10px] uppercase">Sapphire Coves</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Untamed East &amp; North</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Trincomalee, Passikudah &amp; Jaffna Peninsula. Pigeon Island coral drop-offs, Swami Rock temples, and summer sunshine when the southwest sees rain.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between text-on-surface-variant font-label-caption text-label-caption border-t border-outline-variant/30">
+<span>Peak Sun: May – Sep</span>
+<span class="text-secondary font-medium font-nav-link text-nav-link uppercase">Coral Diving →</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ======================================================== -->
+<!-- 3. THE COMPLETE DESTINATIONS DIRECTORY (EDITORIAL MOSAIC) -->
+<!-- ======================================================== -->
+<section class="w-full py-20 bg-surface-container-lowest">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<!-- Section Header with Archive Counter -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm pb-8 mb-12 border-b border-surface-container-high">
+<div class="flex flex-col gap-1">
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary font-semibold">Hand-Selected Portfolios</span>
+<h2 class="font-headline-lg text-headline-md md:text-headline-lg text-primary">
+            The Premier Sanctuary Directory
+          </h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+          Each destination features curated AVENTRA private host partnerships, certified estate naturalists, and exclusive sunrise entry permissions.
+        </p>
+</div>
+<!-- Asymmetrical Editorial Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-desktop">
+<!-- CARD 01: SIGIRIYA -->
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="relative w-full aspect-[16/11] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Golden sunrise illuminating the ancient Sigiriya Lion Rock fortress rising abruptly from lush Sri Lankan emerald jungle canopy, mist swirling around ancient water gardens, cinematic editorial travel photograph, luxury quiet atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL-RrANvmpT3vsPG3YZUQuSjcV5kJin3K1n9z4ucYGrWIvvGoQKHuA3XrPXMcBbxTYLMgCyx84xjPsl7XoZZukvCK_6hMM5pQAazz0rkeBMLmlWshtSz1glHPlUDrme2SSpoyKGiflF_2rdjSeY_P-3BHkZbJUu9YdrYP1Zeqdw32_fmAlx4ZKz79TGgTCYo957qm7sKwCyUZecVffI3wx8cy0oLXFxlJFQEburhg"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-2.5 py-1 bg-primary/80 backdrop-blur-md text-surface font-label-badge text-[10px] tracking-wider uppercase rounded">UNESCO World Heritage</span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="px-2.5 py-1 bg-surface/90 backdrop-blur-md text-secondary font-label-badge text-[11px] tracking-wider uppercase rounded font-semibold">Elev. 349m</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-outline text-label-caption font-label-caption uppercase tracking-widest">
+<span>The Cultural Triangle</span>
+<span class="text-secondary font-medium">Dec – April Best</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+                Sigiriya &amp; Water Gardens
+              </h3>
+<p class="font-title-editorial text-body-md italic text-secondary">
+                "The Lion Rock Citadel &amp; Royal Moats"
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-3">
+                Ascend the 5th-century royal sky citadel via private dawn clearance before gates open to public tours. Wander through ancient boulder gardens and peer into historic mirror-wall poetic inscriptions.
+              </p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Dawn hot air ballooning over jungle canopy</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Subterranean royal bath excavations</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-outline">Portfolio #01</span>
+<a class="inline-flex items-center gap-1.5 font-nav-link text-nav-link uppercase text-primary font-semibold hover:text-secondary transition-colors" href="#">
+<span>Explore Sigiriya Sanctuary</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 02: ELLA & HIGHLANDS -->
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="relative w-full aspect-[16/11] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Iconic Nine Arch Bridge in Ella Sri Lanka with historic blue diesel train crossing over lush tropical green valley, tea estates covered in soft rolling mist, moody soft golden morning daylight, editorial landscape photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOb6F0xRNwLbOCC6wVtf4JfLc2_zycyy9-bR03uvVbIpomR5xUPr17luQtd2mFWbz1mbJUETYqtSZa1oUnEdW-vBSfjVnqTtyVRsSW1nDyVhgXGjt7cNrw-oHZKizvtBISd-hhpTEeVKNCLH68xGwhCM_XsT1I7bbDG_-XRkp4yINVY_qhjRiZjS4_oc14hchoiOUKUqLAER6BSNwf9vXlI1tn2Kvbu_WU7l2KqI0"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-2.5 py-1 bg-primary/80 backdrop-blur-md text-surface font-label-badge text-[10px] tracking-wider uppercase rounded">Highlands &amp; Railways</span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="px-2.5 py-1 bg-surface/90 backdrop-blur-md text-secondary font-label-badge text-[11px] tracking-wider uppercase rounded font-semibold">Elev. 1,041m</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-outline text-label-caption font-label-caption uppercase tracking-widest">
+<span>The Central Highlands</span>
+<span class="text-secondary font-medium">Jan – May Best</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+                Ella &amp; The Cloud Forests
+              </h3>
+<p class="font-title-editorial text-body-md italic text-secondary">
+                "Misty Cloud Ridges &amp; Nine Arch Viaduct"
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-3">
+                Experience the world’s most scenic highland railway in AVENTRA's private observation salon. Hike Little Adam's Peak at daybreak followed by plunge pool swims beneath cascading Ravana falls.
+              </p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Private salon car tea train charter</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Clifftop private tea sommelier tastings</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-outline">Portfolio #02</span>
+<a class="inline-flex items-center gap-1.5 font-nav-link text-nav-link uppercase text-primary font-semibold hover:text-secondary transition-colors" href="#">
+<span>Explore Ella</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 03: GALLE FORT -->
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="relative w-full aspect-[16/11] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Historic cobblestone alley inside Galle Fort Sri Lanka lined with colonial Dutch merchants houses, whitewashed walls, terracotta tiles, frangipani blossoms, warm golden hour seaside sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-iTcGQV430JUScghpJEvoSzwa7TT-xQT9GwxkWUs0UqUWXJSeidpwlA_tsmySzUOgcYObXHue1f7tl28BtWH0UEOTPdXEFwad50NhINB30qx83RJsYlDurTgeBayZWWs4EpMhqpG_5rY74LM7-nXBrzzM8EH7__z2WmsAevJ2pO64z_ipZbyMF5i1l78YWTx-LeDJP3GuOsZ2geq0LagKiRuS6GMe3CcGVJpMSz0"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-2.5 py-1 bg-primary/80 backdrop-blur-md text-surface font-label-badge text-[10px] tracking-wider uppercase rounded">Colonial Bastion</span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="px-2.5 py-1 bg-surface/90 backdrop-blur-md text-secondary font-label-badge text-[11px] tracking-wider uppercase rounded font-semibold">Coastal</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-outline text-label-caption font-label-caption uppercase tracking-widest">
+<span>The Southern Coast</span>
+<span class="text-secondary font-medium">Nov – April Best</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+                Galle Fort &amp; Southern Coves
+              </h3>
+<p class="font-title-editorial text-body-md italic text-secondary">
+                "17th-Century Living Dutch Ramparts"
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-3">
+                Cobblestone heritage lanes, private jewelry archivist salons, and rampart sundowners overlooking the Indian Ocean. Stay within ancestral spice merchants’ restored private villas.
+              </p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Private historian-led evening walking salon</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Lighthouse oceanfront oyster &amp; champagne pairings</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-outline">Portfolio #03</span>
+<a class="inline-flex items-center gap-1.5 font-nav-link text-nav-link uppercase text-primary font-semibold hover:text-secondary transition-colors" href="#">
+<span>Explore Galle Fort</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 04: YALA & PALATUPANA -->
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="relative w-full aspect-[16/11] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Magnificent Ceylon leopard perched gracefully on a giant granite boulder inside Yala National Park, dry golden savanna backdrop with thorny scrub and coastal dunes, dramatic wildlife photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCpOdumgJbeM_qFszx2RPsZrHSZCiIAvJZkPTnt8c5FNRe_niL27PHniJOdlla3W48ZNX4XAkdfH-OfxBvNikxceebqASrCy4TnBbPZ7wTTJOwfwgIJcLwoKT-hX3NuD-XPAaCPwAA7FNM2XaOugUh4t3vfP9ZEaHUSomzSpiW1iHeqtLAkrnS51kykNN8MJGTqq7YCoMA7sjYAjMKfBDZ2M6sEnJAjR7KlAwxY0k"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-2.5 py-1 bg-secondary text-surface-container-lowest font-label-badge text-[10px] tracking-wider uppercase rounded">Leopard Reserve</span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="px-2.5 py-1 bg-surface/90 backdrop-blur-md text-secondary font-label-badge text-[11px] tracking-wider uppercase rounded font-semibold">Tented Bush</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-outline text-label-caption font-label-caption uppercase tracking-widest">
+<span>The Wild South</span>
+<span class="text-secondary font-medium">Feb – June Peak</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+                Yala &amp; Palatupana Coastal Wilderness
+              </h3>
+<p class="font-title-editorial text-body-md italic text-secondary">
+                "Untamed Scrub Jungle &amp; Leopard Coastlines"
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-3">
+                Access exclusive buffer zones away from tourist convoys. Custom open-air Land Cruisers with veteran wildlife zoologists tracking leopards, sloth bears, and wild tuskers across dune shorelines.
+              </p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Private tented camp under coastal starlight</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Quiet electric safari vehicle tracks</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-outline">Portfolio #04</span>
+<a class="inline-flex items-center gap-1.5 font-nav-link text-nav-link uppercase text-primary font-semibold hover:text-secondary transition-colors" href="#">
+<span>Explore Yala Wilderness</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 05: NUWARA ELIYA -->
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="relative w-full aspect-[16/11] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Lush emerald tea estate in Nuwara Eliya with a colonial stone planter bungalow nestled in rolling mountain hills, cool atmospheric morning mist, soft sunlight, refined quiet luxury aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-ufQeC2-cNdv-lMy07tLbSNRfWr_lkf4quOvq_McAtYK4k-qD546apDV-07rdruXFIMTfM493BQgtueyr-nLqo52da1040tFR602u1jpEe86VyOWSsiasUksgJ0M2OCTFUHnmT-7gzr4ljABpe-wDIv4NGXZLG1sjgb9xZbq3lLuGcSrsbvsY5BqKEiVd9ypaWVsa-5YjB7g7CTiF2dKpas8kc21Q-0ht6BAmG7c"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-2.5 py-1 bg-primary/80 backdrop-blur-md text-surface font-label-badge text-[10px] tracking-wider uppercase rounded">Highland Heritage</span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="px-2.5 py-1 bg-surface/90 backdrop-blur-md text-secondary font-label-badge text-[11px] tracking-wider uppercase rounded font-semibold">Elev. 1,868m</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-outline text-label-caption font-label-caption uppercase tracking-widest">
+<span>Central Highlands</span>
+<span class="text-secondary font-medium">Feb – May Best</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+                Nuwara Eliya &amp; Tea Valleys
+              </h3>
+<p class="font-title-editorial text-body-md italic text-secondary">
+                "Ancestral Tea Plantations &amp; Misty Valleys"
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-3">
+                Often titled Little England: roaring cedar fireplaces, manicured rose gardens, and private leaf plucking alongside master tea artisans in historical 1890s factory domains.
+              </p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Master tea blend crafted to your taste profile</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Secluded colonial hill club croquet &amp; gin salon</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-outline">Portfolio #05</span>
+<a class="inline-flex items-center gap-1.5 font-nav-link text-nav-link uppercase text-primary font-semibold hover:text-secondary transition-colors" href="#">
+<span>Explore Nuwara Eliya</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 06: MIRISSA & WELIGAMA -->
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="relative w-full aspect-[16/11] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Turquoise ocean waves lapping against secluded golden sand crescent beach in Southern Sri Lanka, silhouette of stilt fishermen against a vivid pastel sunset sky, palm trees swaying gently" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2h3y1zdFnqBZn32hqlOA67a40O9z0RvxT3yeGFyRZESWvNsbZHkkTNZnQq83-NQ1RNQq_r9rsvr0rYdSZnqjSW-lofqR2nATlON7By_Vc7GCEskWE9hdsdZVgxk5RYaYgDA__vMNmv5gJzoKsJbX6gE12tDzw4w2BgrZR-tCrhhF0oC9LZ3n-KYMiP09eJbiMtiBb1iK9xHi_v6sPnRJrRyAgIzoMvkRnkqtv6-8"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-2.5 py-1 bg-primary/80 backdrop-blur-md text-surface font-label-badge text-[10px] tracking-wider uppercase rounded">Ocean Sanctuary</span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="px-2.5 py-1 bg-surface/90 backdrop-blur-md text-secondary font-label-badge text-[11px] tracking-wider uppercase rounded font-semibold">Coastal</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-outline text-label-caption font-label-caption uppercase tracking-widest">
+<span>The Southern Coast</span>
+<span class="text-secondary font-medium">Nov – April Best</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+                Mirissa, Weligama &amp; Tangalle
+              </h3>
+<p class="font-title-editorial text-body-md italic text-secondary">
+                "Crescent Coves &amp; Blue Whale Waters"
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-3">
+                Board a private 55-foot luxury catamaran with a marine biologist to witness majestic pygmy blue whales and spinner dolphins, returning to secluded clifftop coconut groves.
+              </p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Private chartered whale observation cruise</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Private villa beachfront barbecue with local chefs</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-outline">Portfolio #06</span>
+<a class="inline-flex items-center gap-1.5 font-nav-link text-nav-link uppercase text-primary font-semibold hover:text-secondary transition-colors" href="#">
+<span>Explore Mirissa</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 07: KANDY -->
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="relative w-full aspect-[16/11] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="The Temple of the Sacred Tooth Relic in Kandy Sri Lanka beside a serene misty lake, traditional Kandyan architecture with golden roof glow at twilight, sacred frangipani incense mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvSz5J6y0s9dG30H3mFAme68BzbdV9aOIUa34PdqrPcvOSLpRtllv-Ugl9GEFtNvm3rC1ixt71jEeeLuAtm6dLISSqTwjFZirIQLs1fM7TfYGVOqyGrXtyKO1AIduLFnacSNrXh8eAOUQDzVK8ygp5ENnKqd5tLZ8POuX5go726DIMGl8Vb4mFSNQgo3_7slHXilJWOqw4G6meD_uhn1pUyYkGvIVArMdiQBvY4cQ"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-2.5 py-1 bg-primary/80 backdrop-blur-md text-surface font-label-badge text-[10px] tracking-wider uppercase rounded">Living Buddhist Realm</span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="px-2.5 py-1 bg-surface/90 backdrop-blur-md text-secondary font-label-badge text-[11px] tracking-wider uppercase rounded font-semibold">Elev. 500m</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-outline text-label-caption font-label-caption uppercase tracking-widest">
+<span>The Royal Hill Capital</span>
+<span class="text-secondary font-medium">Dec – April Best</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+                Kandy Sacred Kingdom
+              </h3>
+<p class="font-title-editorial text-body-md italic text-secondary">
+                "Temple of the Tooth &amp; Royal Gardens"
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-3">
+                The spiritual heart of Ceylon. Experience private puja viewings at Sri Dalada Maligawa followed by botanist-guided walks among the orchid pavilions of Peradeniya Royal Botanic Gardens.
+              </p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Private high-priest blessing ceremony</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Curated botanical exploration of royal flora</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-outline">Portfolio #07</span>
+<a class="inline-flex items-center gap-1.5 font-nav-link text-nav-link uppercase text-primary font-semibold hover:text-secondary transition-colors" href="#">
+<span>Explore Kandy</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 08: TRINCOMALEE & PASSIKUDAH -->
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="relative w-full aspect-[16/11] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Breathtaking view from Swami Rock cliff in Trincomalee looking out over azure sapphire blue Indian Ocean waters, sacred Koneswaram temple sculptures perched on the rocky edge, pristine eastern summer sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDV4svsteCQXu6bRIAAWTbYhNNHvpJ1Q1mPrlZQVlTtqx7NcqkUjW1FxkBn7Twlc6s0xa_j3U06X0ozFbnSjG-RpbRKAtROfFTZl96KfCpFGw7aRFxgartCy9ph33S6O5RSyUg5Jy9I7SdJqh3StcDATaghT6V5L4YAaH0KNTE5Idhn3tLITUnOZ0tb4XRydx8JWF3D6-mXgl30gL0fSCkJ5At3BBwi1XNqzwvh9Q"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-2.5 py-1 bg-tertiary-container text-surface-container-lowest font-label-badge text-[10px] tracking-wider uppercase rounded">Summer Sun Haven</span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="px-2.5 py-1 bg-surface/90 backdrop-blur-md text-secondary font-label-badge text-[11px] tracking-wider uppercase rounded font-semibold">East Coast</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-outline text-label-caption font-label-caption uppercase tracking-widest">
+<span>The Untamed East</span>
+<span class="text-secondary font-medium">May – October Best</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+                Trincomalee &amp; Passikudah
+              </h3>
+<p class="font-title-editorial text-body-md italic text-secondary">
+                "Sapphire Coral Coves &amp; Koneswaram"
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-3">
+                When southern beaches encounter monsoonal swells, the east coast basks in calm, crystalline summer waters. Snorkel among blacktip reef sharks at Pigeon Island and visit sacred cliff temples.
+              </p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Pigeon Island marine sanctuary private yacht</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Sunset blessings at ancient cliffside Koneswaram</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-outline">Portfolio #08</span>
+<a class="inline-flex items-center gap-1.5 font-nav-link text-nav-link uppercase text-primary font-semibold hover:text-secondary transition-colors" href="#">
+<span>Explore Trincomalee</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 09: HORTON PLAINS & OHIYA -->
+<article class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="relative w-full aspect-[16/11] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Dramatic view from the World's End precipice at Horton Plains National Park Sri Lanka, looking down over a sheer 4,000 foot drop into a sunlit southern valley below swirling clouds, wild rhododendrons, solitary wilderness mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb9wDW8N8TQKmrOpSfpyQlQ3E5j2DKSVgtMLEpX3Bf4dhgJx1LA8ZKlWivenKClhZQsvkW43PEQCB-r_tPt-yj_oNcgTHCSSG62V8p2LRawP3y8_5G6fzMv91y8PxA4JnpevQ91WjSVpqGfUzL0zem-MsVPrIQOOFk9nJXk3ZI4VQzqWpqPR1qJc99Ph7o__1N3GnPp8MXyosuq5lWN_5COB9L78Y7pWOsOTeR-74"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-2.5 py-1 bg-primary/80 backdrop-blur-md text-surface font-label-badge text-[10px] tracking-wider uppercase rounded">High-Altitude Plateau</span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="px-2.5 py-1 bg-surface/90 backdrop-blur-md text-secondary font-label-badge text-[11px] tracking-wider uppercase rounded font-semibold">Elev. 2,134m</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-outline text-label-caption font-label-caption uppercase tracking-widest">
+<span>The Highland Divide</span>
+<span class="text-secondary font-medium">Jan – March Best</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+                Horton Plains &amp; World's End
+              </h3>
+<p class="font-title-editorial text-body-md italic text-secondary">
+                "Cloud Forest Precipice &amp; Baker's Falls"
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-3">
+                A windswept plateau suspended in the clouds. Stand atop the 4,000-foot sheer vertical drop at World’s End before morning clouds roll in, accompanied by rare endemic montane bird species.
+              </p>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Dawn departure avoiding park queues</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-caption font-label-caption">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Artisan hot tea service at Baker's Falls cascade</span>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-outline">Portfolio #09</span>
+<a class="inline-flex items-center gap-1.5 font-nav-link text-nav-link uppercase text-primary font-semibold hover:text-secondary transition-colors" href="#">
+<span>Explore Horton Plains</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- ======================================================== -->
+<!-- 4. SEASONAL TRAVEL CALENDAR / MICROCLIMATE GUIDE -->
+<!-- ======================================================== -->
+<section class="w-full py-20 bg-surface-container-low relative overflow-hidden">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<!-- Headline & Philosophy -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-16">
+<div class="max-w-2xl flex flex-col gap-2">
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary font-semibold">Seasonal Meteorological Wisdom</span>
+<h2 class="font-headline-lg text-headline-md md:text-headline-lg text-primary">
+            "It is always sunny somewhere on the island."
+          </h2>
+<p class="font-body-lead text-body-lead text-on-surface-variant">
+            Sri Lanka’s dual monsoon system is the traveler’s greatest secret. When monsoonal rains touch the southwest, the eastern beaches and northern temples bask in clear azure skies.
+          </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[24px]">sunny</span>
+</div>
+<div>
+<p class="font-label-badge text-label-badge uppercase tracking-wider text-secondary">Island Microclimate Fact</p>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">365 Days of Guaranteed Sunlight</p>
+</div>
+</div>
+</div>
+<!-- Editorial Season Matrix Chart -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden p-space-lg md:p-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop">
+<!-- Column 1: Southwest Prime (Nov - Apr) -->
+<div class="lg:col-span-6 flex flex-col gap-space-md pb-8 lg:pb-0 border-b lg:border-b-0 lg:border-r border-surface-container-high lg:pr-space-lg">
+<div class="flex items-center justify-between">
+<span class="px-3 py-1 bg-primary text-surface font-label-badge text-label-badge uppercase rounded">Period 01 • Winter Sun</span>
+<span class="font-title-editorial text-title-editorial text-secondary">November – April</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">
+              The Southwest &amp; Central Highlands Zenith
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              The calmest coastal waters across Galle, Mirissa, and Weligama. The Central Highlands enjoy crisp, clear mountain dawns ideal for scenic train expeditions and tea terrace trekking.
+            </p>
+<!-- Region Highlights List -->
+<div class="flex flex-col gap-3 pt-2">
+<div class="flex items-start gap-3 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary mt-0.5">location_on</span>
+<div>
+<h4 class="font-title-editorial text-[16px] text-primary">Southern &amp; Western Coasts</h4>
+<p class="font-body-sm text-body-sm text-outline">Calm seas for blue whale charters, catamaran cruises, and luxury beach villas.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary mt-0.5">location_on</span>
+<div>
+<h4 class="font-title-editorial text-[16px] text-primary">Hill Country &amp; Tea Trails</h4>
+<p class="font-body-sm text-body-sm text-outline">Clear panoramic view from Adam’s Peak and Horton Plains precipices.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary mt-0.5">pets</span>
+<div>
+<h4 class="font-title-editorial text-[16px] text-primary">Wildlife Apex Window</h4>
+<p class="font-body-sm text-body-sm text-outline">Peak dry tracking for leopards &amp; sloth bears in Yala and Wilpattu.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: Northeast Prime (May - Oct) -->
+<div class="lg:col-span-6 flex flex-col gap-space-md lg:pl-space-lg">
+<div class="flex items-center justify-between">
+<span class="px-3 py-1 bg-secondary text-surface-container-lowest font-label-badge text-label-badge uppercase rounded">Period 02 • Summer Sun</span>
+<span class="font-title-editorial text-title-editorial text-secondary">May – October</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">
+              The East Coast &amp; Cultural Triangle Sanctuary
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              While the southwest receives monsoonal showers, the East Coast transforms into a turquoise mirror. The Cultural Triangle remains warm, dry, and bathed in golden twilight.
+            </p>
+<!-- Region Highlights List -->
+<div class="flex flex-col gap-3 pt-2">
+<div class="flex items-start gap-3 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary mt-0.5">location_on</span>
+<div>
+<h4 class="font-title-editorial text-[16px] text-primary">Trincomalee, Passikudah &amp; Arugam</h4>
+<p class="font-body-sm text-body-sm text-outline">Unbroken sunshine, world-class coral diving, and gentle sapphire lagoons.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary mt-0.5">location_on</span>
+<div>
+<h4 class="font-title-editorial text-[16px] text-primary">The Cultural Triangle &amp; Citadel Rock</h4>
+<p class="font-body-sm text-body-sm text-outline">Dry savannah climates ideal for early morning climbs at Sigiriya and Polonnaruwa.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary mt-0.5">nature_people</span>
+<div>
+<h4 class="font-title-editorial text-[16px] text-primary">The Great Gathering (Aug – Sep)</h4>
+<p class="font-body-sm text-body-sm text-outline">Minneriya: up to 300 wild Asian elephants gather around the receding ancient reservoir.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Custom Inline Visualization: Island Seasonality Slider Graphic -->
+<div class="mt-12 pt-8 border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center justify-between text-label-badge font-label-badge uppercase tracking-wider text-outline">
+<span>January</span>
+<span>March</span>
+<span>May</span>
+<span>July</span>
+<span>September</span>
+<span>November</span>
+<span>December</span>
+</div>
+<!-- Dual Band Visualization -->
+<div class="w-full flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<span class="w-24 text-[11px] font-label-badge uppercase tracking-wider text-primary font-semibold">South &amp; West</span>
+<div class="h-3 flex-1 bg-surface-container rounded-full overflow-hidden flex">
+<div class="w-5/12 bg-primary-container rounded-full"></div>
+<div class="w-3/12 bg-surface-container"></div>
+<div class="w-4/12 bg-primary-container rounded-full"></div>
+</div>
+<span class="w-20 text-[11px] font-label-caption text-secondary font-semibold text-right">Optimal</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-24 text-[11px] font-label-badge uppercase tracking-wider text-secondary font-semibold">East &amp; North</span>
+<div class="h-3 flex-1 bg-surface-container rounded-full overflow-hidden flex">
+<div class="w-4/12 bg-surface-container"></div>
+<div class="w-5/12 bg-secondary rounded-full"></div>
+<div class="w-3/12 bg-surface-container"></div>
+</div>
+<span class="w-20 text-[11px] font-label-caption text-secondary font-semibold text-right">Optimal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ======================================================== -->
+<!-- 5. BESPOKE DESTINATION CURATION CTA PANEL -->
+<!-- ======================================================== -->
+<section class="w-full py-20 bg-surface">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<div class="bg-primary text-surface-container-lowest rounded-xl p-space-lg md:p-space-xl relative overflow-hidden shadow-2xl">
+<!-- Subtle Ambient Background Scrim -->
+<div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-secondary/15 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-primary-container/40 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 max-w-3xl flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">hotel_class</span>
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary-fixed">Private Expedition Planning</span>
+</div>
+<h2 class="font-headline-lg text-headline-md md:text-headline-lg text-surface-container-lowest">
+            Can’t Decide Where Your Journey Begins?
+          </h2>
+<p class="font-body-lead text-body-lead text-surface-variant">
+            Our Colombo concierge team crafts bespoke multi-destination itineraries that harmoniously pair heritage citadels, high-altitude tea serenity, and secluded tropical shorelines.
+          </p>
+<div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+<a class="inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed font-nav-link text-nav-link uppercase font-semibold shadow-md hover:bg-secondary-fixed-dim transition-all duration-300" href="#">
+              Consult With an Island Specialist
+            </a>
+<a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-surface-container-lowest/10 text-surface-container-lowest font-nav-link text-nav-link uppercase hover:bg-surface-container-lowest/20 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Download 2026 Gazette (PDF)</span>
+</a>
+</div>
+<div class="pt-6 border-t border-surface-container-lowest/15 flex flex-wrap items-center gap-space-lg text-surface-variant font-label-caption text-label-caption">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">lock</span>
+<span>100% Private Expeditions</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">flight_takeoff</span>
+<span>Helicopter Transfers Arranged</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">support_agent</span>
+<span>24/7 Dedicated Chauffeur-Naturalist</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></main><div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-center"><a aria-label="WhatsApp Concierge" class="w-12 h-12 rounded-full bg-primary-container text-secondary-fixed flex items-center justify-center shadow-[0_8px_24px_rgba(6,78,59,0.25)] hover:scale-105 hover:bg-primary transition-all" href="#"><span class="material-symbols-outlined text-[24px]">chat</span></a><a aria-label="Scroll to top" class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:bg-surface-variant transition-all" href="#"><span class="material-symbols-outlined text-[20px]">north</span></a></div><footer class="w-full bg-primary text-surface-container-lowest"><div class="w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop pt-space-xl pb-space-lg"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter-desktop mb-space-xl"><div class="lg:col-span-4 flex flex-col gap-space-sm"><div class="flex items-center gap-3"><img alt="Aventra Travel Logo with Scenic A.png" class="h-7 w-auto object-contain brightness-0 invert" src="https://lh3.googleusercontent.com/aida/ALJJyrDwKwfddgov1gAOacuaxzPGO8f-sqoMpS1q-9GsNDGqeX6O9o0xoFEHrzjPSvS0p5x8uKr0o_WX3928RVOLEDejFsaormVs-8HSwG8ffsxb_9Kcmnbhz1Xjzjr7XSzGYz_t9BBPnO-JhmmdC2lpmAr-rbuaZG_bSqnWuQ9LpT9hJwRH-XT_bl20eMfCkeVwldxCWA0vWnpDoxB_00lButq1Hq3qoSM60-d2LEsUZT3deOKhJVSN8rwwOg"/><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-surface-container-lowest">AVENTRA</span></div><p class="font-title-editorial text-title-editorial italic text-secondary-fixed-dim mt-2">Discover Beyond Ordinary</p><p class="font-body-sm text-body-sm text-surface-variant max-w-sm mt-1">Bespoke private Ceylon expeditions tailored for discerning travelers. Curating quiet luxury journeys through ancestral tea estates, hidden southern coves, and cultural sanctums.</p><div class="mt-space-sm pt-space-sm flex items-center gap-space-sm"><span class="material-symbols-outlined text-secondary-fixed text-[20px]">verified</span><span class="font-label-caption text-label-caption uppercase text-surface-variant">Licensed Ceylon Heritage Concierge</span></div></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><h4 class="font-label-badge text-label-badge uppercase tracking-[0.14em] text-secondary-fixed-dim mb-space-sm">Explore</h4><ul class="flex flex-col gap-2"><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="home" href="#">Home</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="destinations" href="#">Destinations</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="experiences" href="#">Experiences</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="tour-packages" href="#">Tour Packages</a></li></ul></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><h4 class="font-label-badge text-label-badge uppercase tracking-[0.14em] text-secondary-fixed-dim mb-space-sm">About</h4><ul class="flex flex-col gap-2"><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="about-us" href="#">About AVENTRA</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="about-us" href="#">Our Story</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="travel-journal" href="#">Travel Journal</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="about-us" href="#">Press &amp; Awards</a></li></ul></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><h4 class="font-label-badge text-label-badge uppercase tracking-[0.14em] text-secondary-fixed-dim mb-space-sm">Support &amp; Planning</h4><ul class="flex flex-col gap-2"><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="plan-your-journey" href="#">Plan Your Journey</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="travel-journal" href="#">Sri Lanka Travel Guide</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="contact" href="#">FAQs</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="contact" href="#">Visa Info</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="contact" href="#">Privacy Policy</a></li></ul></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><h4 class="font-label-badge text-label-badge uppercase tracking-[0.14em] text-secondary-fixed-dim mb-space-sm">Contact &amp; Concierge</h4><div class="flex flex-col gap-2 text-surface-variant font-body-sm text-body-sm"><p class="text-surface-container-lowest font-medium">Colombo Headquarters</p><p>42 Galle Face Court, Colombo 03, Sri Lanka</p><p class="text-secondary-fixed pt-1">WhatsApp: +94 77 120 8900</p><p>concierge@aventra-travel.com</p></div></div></div><div class="bg-surface-container-lowest/10 p-space-lg rounded-xl mb-space-xl flex flex-col lg:flex-row lg:items-center justify-between gap-space-md"><div class="flex flex-col gap-1"><h5 class="font-headline-sm text-headline-sm text-surface-container-lowest">Private Travel Dispatches</h5><p class="font-body-sm text-body-sm text-surface-variant max-w-xl">Receive quarterly unlisted Ceylon expedition portfolios, seasonal monsoonal guides, and invitations to private estate openings.</p></div><form class="flex flex-col sm:flex-row gap-space-xs sm:w-auto w-full"><input class="px-4 py-3 rounded-lg bg-surface-container-lowest/10 text-surface-container-lowest placeholder:text-surface-variant focus:outline-none focus:ring-1 focus:ring-secondary-fixed font-body-sm text-body-sm min-w-[280px]" placeholder="Your email address" type="email"/><button class="px-6 py-3 rounded-lg bg-secondary-fixed text-on-secondary-fixed font-nav-link text-nav-link uppercase font-semibold hover:bg-secondary-fixed-dim transition-colors" type="button">Subscribe</button></form></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md text-surface-variant"><p class="font-label-caption text-label-caption">© 2026 AVENTRA. All Rights Reserved.</p><div class="flex items-center gap-space-md font-label-badge text-label-badge uppercase tracking-[0.14em]"><a class="hover:text-secondary-fixed transition-colors" href="#">Instagram</a><a class="hover:text-secondary-fixed transition-colors" href="#">Facebook</a><a class="hover:text-secondary-fixed transition-colors" href="#">YouTube</a><a class="hover:text-secondary-fixed transition-colors" href="#">TikTok</a></div></div></div></footer>
+</body></html>

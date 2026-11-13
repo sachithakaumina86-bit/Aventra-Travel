@@ -1,0 +1,1193 @@
+import {
+  BlogPost,
+  Destination,
+  Experience,
+  GalleryItem,
+  Testimonial,
+  TourPackage,
+  WebsiteSettings,
+} from '../types/aventra';
+
+export const STITCH_IMAGES = {
+  logo: '/assets/aistudio/screen_e36d6da3.png',
+  homeHero:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBssEeEWFfbarE-HE9zHRjFtXb_9sceONXz_DpDU79npR5BkUiJqnwNwb_MjGQAsklUO6iKGqopsaTqtnNgsdZssQd8iVYvRTSRVjp00oPKu_ojyXjSkAMDTudQMyLNx1YWCfdQCVkIIEe85exoNqea9C53R2dWDeJvW0edlmaEQ_aKcAbb9TfTEPMXu3kxvzlqbV-6KkLNtSg6Sn7ekU44Zvdx7mr6j0jQwV0_N0k',
+  hattonVeranda:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAxDA0gU_n0-02oK1v0dEThAch6nfNmvdvkXiF7r5DQZZDkk8iT62kZiUt8xOrApBegTCxXpApu1piAMDSVq0dr5iGa1yGA_91eMcUTpIOvVFcuQ1t6VOiMWa1ZbW-cy5FRlZ7CoUX-JpPA14gKx0MUsryM1HkrAATNoXwpaUCZiKnn-3XMVivc1EylraCpKAjFHoKAv0zVQcmcNvr0lqpPepUIAzjzzTgXs7FLOwQ',
+  sigiriyaHero:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuATtECtxlu9poQmzHsoFYVsKP6nYdXjPa6FJjKf4e_TnT6Avjr5FVRkK_I91xZwn5U454O3-UjSZGJ7afwKjHxS6TyEYFsqgNcWT1kmrrNuxKHdFkSVRFQygr-o3Qaei3tVZGeCrzRZPKBITwYfNM_QrVBgYRZsS23wJ5VtWyiBgNflQ1pEUJFoTvdDi2yXO57bQ3HqWKq4w4gDJq0FAszL-rwWOpS-vhAFTAH6aq8',
+  sigiriyaDirectory:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBL-RrANvmpT3vsPG3YZUQuSjcV5kJin3K1n9z4ucYGrWIvvGoQKHuA3XrPXMcBbxTYLMgCyx84xjPsl7XoZZukvCK_6hMM5pQAazz0rkeBMLmlWshtSz1glHPlUDrme2SSpoyKGiflF_2rdjSeY_P-3BHkZbJUu9YdrYP1Zeqdw32_fmAlx4ZKz79TGgTCYo957qm7sKwCyUZecVffI3wx8cy0oLXFxlJFQEburhg',
+  ceylonDiscoveryHero:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDdTOY13FL_q8iTnbY0FfN7mnGIzDRdC0HdndsHK2BHTenL2Cd9jRlKHTe7CHvIW7A2_tKgVsztRiKTkMhROFFIY0YmUmK828vDrRXqHZAJLSX8qIE34noJmTZIWUCqKd1iPUzKVt1BBzt3b31pXwLgK4bZJ7u5Q9KAxfZvROtful3Bg_8MQC-Xb7TEvH0fDlKrzzLqTtvAbxOulvw-QmQmK7EWm-BR5g1h1otp0Tg',
+  ellaNineArch:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBAj3JY-Ms69OLykx4fRZkuL8D2Lqt3AEyI2sR3bjhzQUEZfpMtnCorii7aQcBYV8BMe1RPyqQ20DOUuXhOuUbZlLTfA1BNhb35A0tS0i2DzzJpvg9H4gO9yF3tOOCIHYJRawDk4kUuCmb13iY2w_3YCx4J1tAW1LOBlZ6p8HCrIbygtCaqr3U87lRJkMdbwacGWBN0HED1HaSPnDp9LmQOu0PUNEwPR3vA2FCtzs4',
+  mirissaCoast:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCG1GCcCWu1NakQYbzUcYXdLsQS3ytg2WmuKsdeVbgzg-gBpAJz30ETccrODWMC1ERJfuqmUYzz7d_qqaT8t0n2WaL8rS3w_42uXe2W-duFj6tM1ry5XWNNs8mWaLo6c4SLuBSXgGvXWEntRISt9ro44Rrv0kajqkGuFCkUeOf4C1uFTDA6mg_OnsWWCc2VLT_3PyWyfAYZ1Ni6OmPxozNJrdbtVPQMYYJqPZUt60E',
+  galleFort:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuB8lKKdesBf7oHtBnNiXofIuPwOxOXHXT7jiLF731UhbHwitsSSibFT2LIvwh-NXFjr2XMNSiU2PKRbpbRWWkSkzGbmCuFb8YQq9HG_ahigGw__LfOZMaYy1FgbHajd6NEYfd1-zXiuPNvf4OM_XsMFlF1L0LoeXXRt_R8qrXMEyxh7eNv4KSOmvk3s8ijptkqYcMx6pc4ng5MggYwU9fnnkbU48S0jS3KA7KKbAM0',
+  yalaLeopard:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuC3Mue7x_mOTp4ja3jAH_Igtp1CvX4-rZpzQ2HTv4U8jpojXDJM2W_UO5V-mzMtM4Ae0wptcMHCo9MXZCFsVutK1HCeCzue249IKzOUO3TRnc8ji4yV3GV_TRDscLZycO-KKoDpMfy7w_SwXL5lyEYgaSmkTYwZC1tR1SK3BDUU9FDwXKiRDOkMUENxwK41c7PqvFUG2uMUoB5umSK6cCN6DPSpKnhjcNEXUMcqc0g',
+  kandyTemple:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAvKvzVsUQDChR9ohH0tf3OASQWInmP9-zP6IQhO7tA9KkcyGejlrrvbv3V7cC3BS4vV9nEIZIy_bnpfDcygX6LMlLYGALGT6_sVDJn9licHyxea2k8FVfJeWY_xfJgBHjJc5sumVjlmjY4GEiOQsR-sWfvskwUK3u8VuWPw2_lS-tzfsHJrewGJS6LJ18phCkdtp2l5F4bpSg0yoaYwaBKHa_pVe2HdbmGpjJtZ7Y',
+  nuwaraEliya:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBU6Mze57BB3j19-mFx3mzpaSO3KrlZeZMQo6fSazxYwbsaEYOa1mcCXMhZ3aykEdy8yFyD-rrZTUSKSf2XMV9G7CEkcTRnz5OX45QOF2ZPx6VVyL4rkH6K6Dhn7zI8a4GLKUHr8YqX2B6mQYqKc0ULEJUn1Q3Q9mF5ZxSYd7bNTU8AABBwYJaPYJlEgsdQ1b87asHBwxzc6c7h4lubtYvXwHZ8I3gGoFQqpih9u0Y',
+  trincomalee:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBtjJ7n_-LK35bNoh66iRCXt6EpdJFIzoqO4PyuLntYokuTz0iiA8RiIQCEXx3aIpM86ArfBRGRgJEe3j5cXukVnf6wWB2ZOFba3jM7xu3I5kv5Aab_1awFnBbZ3tx05PpHhYX7JmzHnQxRNQQNHpCIRKRyK-7IHKqK4fihRpWN9Mu4R2ZsZN-Mj0LultxgmoJPIYj43Pm7AMH_htvbZ7czkqoA6rG7t7nw4yPZjWs',
+  arugamBay:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCXW_GDMYoEtwPQBtSndrc-nzPhrZFmErXh6a7_1vm_er0HVXq7aNTPvdwx8TQJrZOQ0AC-EIE8YX8S0kc4kR1UH0JCIuXNs6z5da8dq8TCh6Ru2BbfxreitSGoFw8NImG5yn72x5OzEiRId4tm6sBMn-rFTmOtuxxXFLEGrPllrhaxr-X7SM1C06DUfBOP6ZCRlJDkEgfkLzqiw5Z2Fxi2-fe1R2doDwT-ZDZGFC8',
+  hortonPlains:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAUf3M3mX21pg2Qk1xiCXuYaIcbLX8xL7G15krT1f3OGc2esMaNgqkDgUSZmdf7tzw4S_AJ0YoclMOLDXQAqbngBpXgYN4NTaQjIO2QwU8oECI2EnHaKUiKzRDVErYHxfAgnYrDaDGAu_0qRRE53j9dJM0zBojtzo8qBxVQ1F90wriP1XjNIO6BNWl_x2M6PJ8aXKsIhDXMAFh6FtUcZrG-XknQAlT3C4kyD_UAAkE',
+  expElephants:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBYNk38fWVbUoZD6VTITyECBSBHADUX0srWQq7KeqNdQoCn-v7utCg-9aYEa9RSUmf5PcbnqVKPdyMW9sHKNNEsUiIy56Ef8uXqbR7mEZrT1WISPy4DrynscioURYRvIqa3c3n7IEvMzxXU6AZCEHElM4lqqPkMR7HbLQzMdJPbjriHbxSgbFuxt91rFZzihYB3STP13yvsF4LuMKJFbg9yxvl9qL252ZCDEUsfdQM',
+  expCoastalVilla:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDBvrJxyIFSDZhBiDALbGPmBlKZb7FzAinG8RBkYkX4h46qOrtlsutvCMT2vZf3sGb5WCsTz74I9iGjPwKJNeJu4sBXIhAfMGVNXTyEh--q4mAWzmu8hTrDR9qn_BKe8RQsH0JO6vh6Q1N9n8NBT0O98bQqyfGBYh1eu51y6LA2dqoHjlBQHatoSR_3kFdZtQmhWQ2Ai_JbNWoKyoQUhdN1ohQB-fYvDtLioTWhJHY',
+  expMountainTrek:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCsnfUsJl9J5caJEmuwup-g8Qt0EhpEIAH5EA8SqJZeGBGYbAlIa06dgp04vBJeBa_lumRiKh3fzPNU4nFjDgOwGtc203iMwjnJCBJloviHhYYZ9R69ilyCvmM-gqNvrsXjU-qq1xbwHfrhhXtCpRWW2czoNy6csDESEQpCjNidPPCm5UzxVeqwdSNS_5WxbZoZujAfE0rLOu2L2CxsV3Ohqx2j2hK2nt7rFcYHE98',
+  expCulturalPolonnaruwa:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCWKO3nU2ui8zDDo0HA4GpkW2CWMGle74GGONNVJ3Hd0MYO5wOaq8Z7TVY7SOzLuFOK3dYgL9tENG6mRCpXLM_9nVoA2lFHrrJhykrZFRglR5ueyCtl_DVX3Ki29SmEBBFaBcmNqVHCwBEf02RDzdeGEvOTHkTIA5lz582WdqudG7PRWP5NR2do240ExLrZ2Ry9hSPkm0BatM0F6M9KpHgJY2urZEt6hv2LDl2PSLU',
+  expAyurveda:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuD_u72N5yYzfr4bSUlnwkT4MmAXDeJsQYXnRYZM3N-wsr65CsXFG4gDuAK6W-ag3VdVxSxtbcC4qYZAneulX1fb5Zu14hOJLN0Deu1oSaD-k4YJ01vBGjKrcrhe0cS3fu_KnW5ZsBeu5Rwt9qmkGXWmSmMmADNDpuSxakGlbrhihGsK1S3punhNuXSos8ZdZrPsdCRPhGE4iCq5_Gi6ulKX7SfQzPOZeOACP-WVVIo',
+  expRomanticDinner:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCKv2cZtILytlAH56yteEnRAADnQKGCugn_5tCjO8MoS-x2Eltpx3PzrGTiDNEZKVQkCofb4D6FLZXlmKPlhA_qslIhpBOVQJZdL8rFgwcCI4M3b5pPq3N8LVRBRp4c3x5Traue4lIQ1EbsJ0Jnpfa86fzyMnEQWy9iUwLKxT6Lm0UpzcQQhUhByOduxmmXLlgrKIo9hQwnK1KStvIeTPfePKbGhvnXU9t_u-DVsEI',
+  expBlueTrain:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCjB-ySOumLAQISFPYDB_OZto6H-FM6zAaL-K4DY6BhInWfQ_NRlyzwrS1XQw3Fy5a_Tl_W0MZQPp03etjLx3Nvp9A3tkYQQz4SY96uzX2EaRKj9sOrUM2WVwXNTtjZIjc-L9kCGe7GMjtdKQuGb8aaiFD_XqBYwGnSVNNhEZI7Vb5GJ8yuBqs_iIB6sOe6lNcESn3un1Pwia-03IJe2VqfjpCfj6tXroZx6slhCrg',
+  expTeaSpice:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDUXBtXHxMGwEf9VykQBr1PXLEpaNqZV0F4UuQuoBCpTpzCuiPh9WJRGKHz7gg28lLWXG1wn_IOWktKvVXeAWO3YLegb1S3t6vs3wwAHYWo2JCUhsRasZiSqoL7SPsrXS8sBCR3ayUlweP8k4gsznZjK3bIb6WDbLodSoTBfA6_53R9pvbA29EnDkBtaJ0j5Ebtg-WoYhHNquwO7BmQvl7_sTpWI7eX2VZKFQ9iYE8',
+  expLeopardSpotlight:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCJGWWSn35lniVTPAO2hUNR8-B00psGvBqBjq2AMA8NxlARDw9h9fyYy_BJjYs-_a2TxmUI82lwrXWZA70Y9h6BNMtGRSFJnKjsCD98ntAM3c15ZRU1eXUpNdzVqbsyhpHYUD18fn0VgtWIr2DSftzVwDvJfAGdaZNs825dRDzDz_j_YwybaTKS7P5hsbEh2tWSYZGS4DYEKM3cCGiFitDQ58UdoS4gVXZMvo_4BEo',
+  expBlueWhale:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCq0RuTNei_EuB71rO12Zui741x8jv55eopxIDehRI2LrTA57RIkGqBqVHxHGkzMYsEmpdyiTzXrm0l89kxoox1-zqzosZP-1OxjjPX-smi9dQMSotWYbnB3eFU7gim3YFz0fW3doPGxYQdTWhpEukGvdnTcLDRjz_3qlcNR3FipGEBh3HzSuQdj8_I7f2Ih1uLBeczNGCGlaT6z5J2OV2IGS2ffgP7GM4MTucpLsY',
+  expSinharaja:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCTTKF9QLaxkKsCLfNMF2kYMw31TCY7aJvRlWeqKHU_ld33MdSPRqgepWFH08z19LnBVeJbA21TFa2bGFb4V-CaPV9ChA57Kx-jMggw0rHSHYLNDILp533c-9bF4gDxFUOIRCVHtmy0jwkKdl-LK2nyGvdJd3m29bqirorJcGZywXC9pwbhr8QkoUnAuf8_S79K0yG8YC9kie1zVlLUKBa2L0W3bXFFDylZi_I6IVQ',
+  sanctuaryWaterGarden:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBl06BMndrcSnlDb_XoR6ip3CspfRPJClP9HtlaEDixJm-TCMYBq1ZKUT_INMuMOZidJY8YMLyZKXL15zjEduK-mQIf1SFtrDBK6RvNWDwQw3xk6tRt5KON1kZ7mZ4MBH20d4XKRjKNma_yw0XdWqFX5bQbnYDETOYPqgWmFwbmyoqD296MWbkrwYz39-soa5r8S6cu8hu1PRZwBvbbQ_TQCLI7aHurtn3Cq_3F83A',
+  sanctuaryTeaTrails:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCBcgZpYBvFysg99XzW-9Tf0rqzKrt6tPP1RveN9cREVNNZzBsuokI8lrcUn4aw9Ejlx7PBcXhUU6SEB3vZlNFTzRxEsVcUCqH2KovOlSqDC4NHLXVHNMTUvy7use9Ighb3NBFE0sMaZY5WYFXaAuYcEf55tGlwvL1dOSRr6k5g7KCYNNxa6yCI8e-mXcst0QV3Z_VcLk7r5baH3YAPCBlJAJgVpF_o--4mLJ8hhj0',
+  sanctuaryWildCoast:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCLDyY7NqnOW2407O3N9qjulM_dBH1tGI57mdGHZaiT7CeDa-jM9zsIA8aGiL6Ut8sBRBIrjgX0Pl5p__s0xlpnHlAy__9G3DD0eRk89AViCo48ukITPN9T14Ykqnqhvzd3XH-GVw7_JT0_rrfoo6VBx95l9dxRR1NKRMi0Aod0P7i1Sky9KhBRGCfUyfDgUw5MZxnL3TOp2MhHWlIw4k8gfCq-EgXFjh6D_bO3RLs',
+  sanctuaryAmangalla:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAWz0UIL1Y4hwoXBvYZ8UStS9wvaSvBmgA7eWDQCZ0ago0GmWLb8OTABJTKllX0MllCTBiaxt6Bvjdudr3sMwj5_AFiDp4MmoPgJSFpcsjT3h1c_lAKkJPc7izzVqNrOhZSNyySErG_OtlaWaTffiskW8i7Nc4xyRbAQtnowZHgAWWZriLHJczmMZw-IlNInx4-FxdKSXHjRG7kjc7bPSVBX1UVz6agVFll0hMe42c',
+  bogawantalawa:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBoTl5f5XNRwc7kZc5dpC5Lw3VDCWkCQLpk6s-gcYw9a8_l1vTpLVB2_k3BHBbDl3W1R1eXjyNaw9kDcjQ28iJEIiIrGSUhwunup9yW3nx8f8IAHCbU9BOAvtTHuTQlup8gXyrr8x1D0FfW253vYuc0nZdv-GXXG_MEhz5B423NX2ScIBZbdbYW1rfP150B5gNIZnew-lFs1ZtIhPP87cwkeFW7d9bKna38OT9Bkos',
+  bawaArchitecture:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBzxn0e4Ug4J5tpeZ7Zt72JHXovHiLeCNilqzeQDJ8vNlEGDWCohgQ3WS_QUmHPbJR9fWrSbkSdOWFVEbvHwEqmKMj0bcvalFJyFdotZEJJJcwKBKKRcoJi5qKAjg3MP0FBTFA4n8nA2_Ii_S5UADQNMx96KjBj1WZaMQWr7vtVn_ZIdBRxQIMvcjN6dgHR-RKKokIgu2KlnaCM8AK2lo8hk2pNKZhPNd6Ec_MFNnM',
+  oneIslandBanner:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDPdDmqi1P2a6TuhFvs25NOStaXLVk313Rbx1jR1c0Og_3xgCopkqMnigJT-56cW5m7FwPrhxb-TxwZGPiXgxEbN_do5QK-etu-sMgcHzlvC_nSF6Z_-DXQgNDCrAkSzEwc6L44ACnHV4AkA5MM5D7VEPwGQt7hDWHjLyaH1Q6Ma9oSrWBEl5WYNtqssrM7aAHmQqUi-Ozzf6mF-h8kx0BOtUdUqXdPYs0nK_fAETY',
+  finalSunsetCta:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBDiQOvlOVDB6kP4ALcX9vrRFJIADdiPAzt4svjPhiG6cxVW-wS4i58XNIAS0lRqc9K6s_FDLVwRpx6-yRtUqT8YY7HTD-NqUKnGuWeZr6ieOHBGmHqcK0NVmhsI00EPvRgQRHmUfuF9a63gJs5rErNbSB_EKLFdrCv4Tu5oZ7FoOvrSAPlNfb2b3vfPWT4ZOZU8pjYqztVrd80iBTIXnnRU3hQE9MN5_QvqD4CNTw',
+};
+
+export const INITIAL_SETTINGS: WebsiteSettings = {
+  brandName: 'AVENTRA',
+  tagline: 'Discover Beyond Ordinary.',
+  heroHeadline: 'Discover Beyond Ordinary.',
+  heroSubheadline:
+    'Bespoke private expeditions across Sri Lanka—curating secluded tea sanctuaries, ancient cultural citadels, leopard-rich coastal wilderness, and unhurried ocean horizons.',
+  heroImageUrl: STITCH_IMAGES.homeHero,
+  contactEmail: 'concierge-placeholder@example.com',
+  contactPhone: '+94 XX XXX XXXX (Editable Placeholder)',
+  whatsappNumber: '+94 XX XXX XXXX (Editable Placeholder)',
+  officeAddress: 'Colombo Concierge Atelier — Sample Address (Edit in Admin Settings)',
+  instagramUrl: '',
+  facebookUrl: '',
+  youtubeUrl: '',
+  tiktokUrl: '',
+  founderName: 'Founder & Chief Curator [Editable Placeholder]',
+  founderRole: 'Editorial Travel Architect — Sample Profile',
+  founderLetterTitle: 'A Letter from Our Atelier',
+  founderLetterBody:
+    'This Founder & Heritage story section uses illustrative editorial copy ready for customization in Admin > Website Settings.\n\nAVENTRA was envisioned to celebrate Sri Lanka’s dramatic contrast of misty highland tea estates, fifth-century rock citadels, tranquil southern coves, and biodiverse wildlife corridors—experienced at an unhurried, deeply personal pace.\n\nEvery route is tailored around seasonal monsoons, intimate architectural sanctuaries, and private field guidance.',
+  founderQuote:
+    'Mass tourism flattens the soul of an island. We craft quiet, deeply considered journeys across Sri Lanka.',
+  heritageEstablishedNote: 'Sample Editorial Profile — Edit Provenance & Credentials in Admin Settings',
+  accreditationsNote: 'Sample Accreditations Placeholder — Add verified memberships in Admin Settings',
+  footerDescription:
+    'Bespoke private Ceylon expeditions tailored for discerning travelers. Curating quiet luxury journeys through ancestral tea estates, southern coves, and cultural sanctuaries.',
+  newsletterPrompt:
+    'Receive curated seasonal monsoon guides, sample itinerary dispatches, and private sanctuary updates.',
+};
+
+export const INITIAL_DESTINATIONS: Destination[] = [
+  {
+    id: 'sigiriya',
+    slug: 'sigiriya',
+    name: 'Sigiriya & Water Gardens',
+    region: 'Cultural Triangle',
+    microclimate: 'North-Central Plains',
+    elevation: '349m',
+    bestSeason: 'Dec – Apr',
+    tagline: 'The Lion Rock Citadel & Royal Moats',
+    summary:
+      'Ascend the 5th-century sky citadel at first light, wander through royal water gardens, and unwind in paddy-framed private villas.',
+    description:
+      'Rising dramatically above central Sri Lanka’s emerald forest canopy, Sigiriya blends monumental ancient engineering with serene rural lakes and bird-filled wetlands. Base yourself in low-impact water villas overlooking lotus ponds for dawn climbs before crowds arrive and golden-hour views from Pidurangala.',
+    heroImage: STITCH_IMAGES.sigiriyaDirectory,
+    galleryImages: [STITCH_IMAGES.sigiriyaHero, STITCH_IMAGES.sanctuaryWaterGarden, STITCH_IMAGES.expCulturalPolonnaruwa],
+    highlights: [
+      'Dawn ascent of Sigiriya Lion Rock & royal water gardens',
+      'Private sunrise hike up Pidurangala boulder ridge',
+      'Cycling through tranquil village tank bunds and lotus lakes',
+      'Day excursion to Dambulla Cave Temple & Polonnaruwa ruins',
+    ],
+    tags: ['UNESCO Heritage', 'Cultural Citadel', 'Water Villas'],
+    startingRateUsd: 1100,
+    journeysRouted: 48,
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 1,
+  },
+  {
+    id: 'ella',
+    slug: 'ella',
+    name: 'Ella & Cloud Forests',
+    region: 'Central Highlands',
+    microclimate: 'Uva Mist & Gorges',
+    elevation: '1,041m',
+    bestSeason: 'Jan – May',
+    tagline: 'Misty Cloud Ridges & Nine Arch Viaduct',
+    summary:
+      'Traverse dramatic highland passes, heritage railway viaducts, and ridge-top tea bungalows suspended in mountain mist.',
+    description:
+      'Nestled along the southern edge of Sri Lanka’s hill country, Ella offers sweeping views across the Ella Gap toward the southern plains. Morning treks wind past tea pluckers, waterfalls, and the iconic Nine Arch Bridge before warm evenings beside wood fires.',
+    heroImage: STITCH_IMAGES.ellaNineArch,
+    galleryImages: [STITCH_IMAGES.expBlueTrain, STITCH_IMAGES.expMountainTrek, STITCH_IMAGES.bogawantalawa],
+    highlights: [
+      'Scenic highland rail passage past Demodara Nine Arch Bridge',
+      'Sunrise ridge walk up Little Adam’s Peak & Ella Rock',
+      'Artisanal Uva high-grown tea estate tastings',
+      'Secluded Ravana gorge waterfall excursions',
+    ],
+    tags: ['Highland Tea', 'Scenic Rail', 'Mountain Ridges'],
+    startingRateUsd: 950,
+    journeysRouted: 62,
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 2,
+  },
+  {
+    id: 'galle',
+    slug: 'galle',
+    name: 'Galle Fort Ramparts',
+    region: 'Southern Coast',
+    microclimate: 'Tropical Maritime',
+    elevation: 'Sea Level',
+    bestSeason: 'Nov – Apr',
+    tagline: '17th-Century Living Bastion Ramparts',
+    summary:
+      'Stroll cobblestone heritage lanes, admire Tropical Modernist architecture, and watch Indian Ocean sunsets along Dutch-era ramparts.',
+    description:
+      'A UNESCO-listed coastal fortress where coral-stone mansions, courtyards, and boutique galleries meet warm sea breezes. From private historical walks inside the fort to sunset dining overlooking Flag Rock, Galle anchors every southern coastal passage.',
+    heroImage: STITCH_IMAGES.galleFort,
+    galleryImages: [STITCH_IMAGES.sanctuaryAmangalla, STITCH_IMAGES.bawaArchitecture, STITCH_IMAGES.expCoastalVilla],
+    highlights: [
+      'Curated architectural & heritage walk across Galle Fort ramparts',
+      'Tropical Modernist villa visits inspired by Geoffrey Bawa',
+      'Private spice market & southern coastal gastronomy experiences',
+      'Twilight promenade past Galle Lighthouse & Flag Rock',
+    ],
+    tags: ['Colonial Architecture', 'UNESCO Heritage', 'Coastal Luxury'],
+    startingRateUsd: 1050,
+    journeysRouted: 91,
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 3,
+  },
+  {
+    id: 'mirissa',
+    slug: 'mirissa',
+    name: 'Mirissa, Weligama & Tangalle',
+    region: 'Southern Coast',
+    microclimate: 'Indian Ocean Littoral',
+    elevation: 'Sea Level',
+    bestSeason: 'Nov – Apr',
+    tagline: 'Crescent Coves & Blue Whale Horizons',
+    summary:
+      'Set sail on early-morning whale watching voyages, relax in palm-fringed beachfront villas, and savor reef-side sunsets.',
+    description:
+      'Along Sri Lanka’s sun-drenched southern curve, the deep continental shelf brings blue whales and spinner dolphins close to shore between November and April. Retreat to secluded beachfront estates in Weligama or Tangalle for quiet barefoot luxury.',
+    heroImage: STITCH_IMAGES.mirissaCoast,
+    galleryImages: [STITCH_IMAGES.expBlueWhale, STITCH_IMAGES.expCoastalVilla, STITCH_IMAGES.expRomanticDinner],
+    highlights: [
+      'Dawn marine expedition searching for Blue Whales & dolphins',
+      'Secluded bay villa stays along Weligama & Tangalle',
+      'Private beachfront seafood dining under starlight',
+      'Coastal lagoon kayaking and reef snorkeling sessions',
+    ],
+    tags: ['Private Beachfront', 'Marine Safari', 'Ocean Suites'],
+    startingRateUsd: 1200,
+    journeysRouted: 52,
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 4,
+  },
+  {
+    id: 'yala',
+    slug: 'yala',
+    name: 'Yala & Ruhuna Coastal Reserve',
+    region: 'Wild South',
+    microclimate: 'Dry Zone Scrub & Dunes',
+    elevation: '30m',
+    bestSeason: 'Feb – Jul',
+    tagline: 'Untamed Scrub Jungle & Leopard Corridors',
+    summary:
+      'Track elusive Sri Lankan leopards along quiet buffer trails and stay in architectural tented pavilions beside wild dunes.',
+    description:
+      'Where dry scrub forest opens directly onto windswept Indian Ocean beaches, Yala and neighboring Kumana host leopards, sloth bears, and wild elephant herds. Stay in organic coastal sanctuaries designed to blend seamlessly into the dunes.',
+    heroImage: STITCH_IMAGES.yalaLeopard,
+    galleryImages: [STITCH_IMAGES.expLeopardSpotlight, STITCH_IMAGES.sanctuaryWildCoast, STITCH_IMAGES.expElephants],
+    highlights: [
+      'Dawn & dusk open-air 4x4 safari drives in Yala & Kumana',
+      'Stay in luxury coastal tented suites facing the Indian Ocean',
+      'Guided birding and wetland conservation trails',
+      'Stargazing dune dinners by lantern light',
+    ],
+    tags: ['Big Game Safari', 'Leopard Tracking', 'Tented Sanctuary'],
+    startingRateUsd: 1650,
+    journeysRouted: 54,
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 5,
+  },
+  {
+    id: 'nuwara-eliya',
+    slug: 'nuwara-eliya',
+    name: 'Nuwara Eliya & Hatton Tea Valleys',
+    region: 'Central Highlands',
+    microclimate: 'High Altitude Mist',
+    elevation: '1,868m',
+    bestSeason: 'Feb – May',
+    tagline: 'Ancestral Tea Bungalows & Emerald Slopes',
+    summary:
+      'Unwind in restored planter residences overlooking glacial lakes, manicured gardens, and century-old tea estates.',
+    description:
+      'High above the humid lowlands, crisp mountain air carries the scent of eucalyptus and freshly withered Ceylon tea leaves. Spend unhurried days hiking tea trails between lakeside bungalows and tasting rare single-estate harvests.',
+    heroImage: STITCH_IMAGES.nuwaraEliya,
+    galleryImages: [STITCH_IMAGES.sanctuaryTeaTrails, STITCH_IMAGES.hattonVeranda, STITCH_IMAGES.expTeaSpice],
+    highlights: [
+      'Restored historic planter bungalow stays in Hatton & Castlereagh',
+      'Private tea factory immersion and single-estate tasting flights',
+      'Scenic boat crossings across Castlereagh Reservoir',
+      'Fireside dining in cool mountain air',
+    ],
+    tags: ['Highland Tea', 'Planter Bungalows', 'Cool Climate'],
+    startingRateUsd: 1450,
+    journeysRouted: 37,
+    isFeatured: false,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 6,
+  },
+  {
+    id: 'kandy',
+    slug: 'kandy',
+    name: 'Kandy Sacred Kingdom',
+    region: 'Cultural Triangle',
+    microclimate: 'Foothill Basin',
+    elevation: '500m',
+    bestSeason: 'Dec – Apr',
+    tagline: 'Temple of the Tooth & Royal Botanical Gardens',
+    summary:
+      'Experience the living spiritual heritage of Sri Lanka’s last royal capital surrounded by misty Knuckles foothills.',
+    description:
+      'Encircling a tranquil lake framed by lush hills, Kandy preserves centuries of royal ritual, Kandyan dance, temple drumming, and craft traditions. Pair visits to Sri Dalada Maligawa with quiet retreats in private hillside estates overlooking the Mahaweli River.',
+    heroImage: STITCH_IMAGES.kandyTemple,
+    galleryImages: [STITCH_IMAGES.expAyurveda, STITCH_IMAGES.expBlueTrain],
+    highlights: [
+      'Evening ceremonial visit to the Temple of the Sacred Tooth Relic',
+      'Guided botanical walk through Peradeniya Royal Gardens',
+      'Private hillside estate stays overlooking Kandy hills',
+      'Traditional Kandyan craft & spice garden immersions',
+    ],
+    tags: ['UNESCO Heritage', 'Spiritual Capital', 'Botanical Hills'],
+    startingRateUsd: 880,
+    journeysRouted: 44,
+    isFeatured: false,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 7,
+  },
+  {
+    id: 'trincomalee',
+    slug: 'trincomalee',
+    name: 'Trincomalee & Passikudah',
+    region: 'Untamed East',
+    microclimate: 'East Coast Summer Sun',
+    elevation: 'Sea Level',
+    bestSeason: 'May – Oct',
+    tagline: 'Sapphire Coral Coves & Deep Natural Harbors',
+    summary:
+      'When southwest shores meet monsoon rain, the east coast sparkles with calm turquoise lagoons and coral reefs.',
+    description:
+      'Offering idyllic summer sunshine from May through September, Trincomalee and Passikudah invite tranquil snorkeling around Pigeon Island, historic cliffside temples overlooking deep indigo water, and unhurried days along sweeping white bays.',
+    heroImage: STITCH_IMAGES.trincomalee,
+    galleryImages: [STITCH_IMAGES.expBlueWhale, STITCH_IMAGES.expCoastalVilla],
+    highlights: [
+      'Peak May–October east coast sunshine window',
+      'Snorkeling coral gardens near Pigeon Island National Park',
+      'Sunset vistas at cliffside Koneswaram Temple',
+      'Quiet boutique beachfront sanctuaries in Passikudah',
+    ],
+    tags: ['East Coast', 'Summer Sun', 'Coral Sanctuaries'],
+    startingRateUsd: 920,
+    journeysRouted: 19,
+    isFeatured: false,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 8,
+  },
+  {
+    id: 'arugam-bay',
+    slug: 'arugam-bay',
+    name: 'Arugam Bay & Lahugala',
+    region: 'Untamed East',
+    microclimate: 'Eastern Surf & Lagoon',
+    elevation: 'Sea Level',
+    bestSeason: 'May – Sep',
+    tagline: 'Point-Break Swells & Elephant Lagoons',
+    summary:
+      'Pair tranquil dawn surf sessions with lagoon canoeing and wild elephant sightings along Sri Lanka’s laid-back east.',
+    description:
+      'Beyond its renowned right-hand point break, Arugam Bay borders quiet mangrove lagoons and Lahugala National Park. Perfect for adventurous travelers seeking barefoot coastal charm paired with wild eastern reserves.',
+    heroImage: STITCH_IMAGES.arugamBay,
+    galleryImages: [STITCH_IMAGES.expElephants, STITCH_IMAGES.expCoastalVilla],
+    highlights: [
+      'Private guided surf sessions during May–September swell',
+      'Sunrise mangrove lagoon kayaking with birdlife',
+      'Afternoon elephant watching in nearby Lahugala',
+      'Slow coastal cabanas away from crowded strips',
+    ],
+    tags: ['Surf & Coast', 'East Coast', 'Lagoon Wildlife'],
+    startingRateUsd: 780,
+    journeysRouted: 14,
+    isFeatured: false,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 9,
+  },
+  {
+    id: 'horton-plains',
+    slug: 'horton-plains',
+    name: 'Horton Plains & World’s End',
+    region: 'Central Highlands',
+    microclimate: 'Montane Cloud Plateau',
+    elevation: '2,100m',
+    bestSeason: 'Jan – Mar',
+    tagline: 'Cloud Forest Precipice & Baker’s Falls',
+    summary:
+      'Walk across windswept montane grasslands to a sheer 4,000-foot drop before morning mists veil the horizon.',
+    description:
+      'A high-altitude plateau of stunted cloud forest, sambar deer, and crystal mountain streams leading to World’s End escarpment. Early-morning departures reward walkers with dramatic southern views stretching toward the distant sea.',
+    heroImage: STITCH_IMAGES.hortonPlains,
+    galleryImages: [STITCH_IMAGES.expMountainTrek, STITCH_IMAGES.bogawantalawa],
+    highlights: [
+      'Early-morning hike to World’s End & Mini World’s End',
+      'Forest trail looping past cascading Baker’s Falls',
+      'Endemic highland bird and sambar deer sightings',
+      'Picnic breakfast arranged by your estate butler',
+    ],
+    tags: ['UNESCO Heritage', 'Cloud Plateau', 'Alpine Trekking'],
+    startingRateUsd: 980,
+    journeysRouted: 41,
+    isFeatured: false,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 10,
+  },
+];
+
+export const INITIAL_EXPERIENCES: Experience[] = [
+  {
+    id: 'leopard-tracking-yala',
+    slug: 'leopard-tracking-yala',
+    title: 'Dawn Wilderness & Leopard Tracking in Yala',
+    realmCategory: 'Wildlife & Big Game Safaris',
+    region: 'Yala & Ruhuna',
+    duration: 'Full or Half Day',
+    badgeText: 'Signature Spotlight',
+    summary:
+      'Traverse serene jungle tracks at first light with an experienced wildlife tracker in a custom private 4x4 safari vehicle.',
+    description:
+      'Set off just as dawn breaks over Yala’s scrub forests and coastal lagoons. Accompanied by a specialist tracker, explore quieter park corridors to observe leopards, sloth bears, mugger crocodiles, and vibrant endemic birdlife at respectful distances.',
+    heroImage: STITCH_IMAGES.expLeopardSpotlight,
+    highlights: [
+      'Custom open-top 4x4 jeep with elevated camera mounts & binoculars',
+      'Chilled Sri Lankan breakfast served in scenic coastal clearings',
+      'Respectful, ethical wildlife viewing protocols',
+    ],
+    equipmentOrSetting: 'Private 4x4 Safari Jeep & Field Optics',
+    fieldNote:
+      'When the park awakens at dawn, quiet observation along dry riverbeds reveals tracks, alarm calls, and unforgettable wilderness moments.',
+    fieldNoteAuthor: 'Sample Naturalist Dispatch',
+    tags: ['Private Guide', 'Dawn Access', 'Wildlife'],
+    isSpotlight: true,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 1,
+  },
+  {
+    id: 'udawalawe-elephant-herds',
+    slug: 'udawalawe-elephant-herds',
+    title: 'Private Dawn Drives & Elephant Sanctuary Encounters',
+    realmCategory: 'Wildlife & Big Game Safaris',
+    region: 'Minneriya & Udawalawe',
+    duration: 'Half Day',
+    badgeText: 'Realm 01 • Wildlife',
+    summary:
+      'Observe wild Asian elephant herds along ancient reservoir banks and open grasslands with ethical observation standards.',
+    description:
+      'Experience Sri Lanka’s gentle giants in open reservoir landscapes—from Udawalawe’s grassy plains to Minneriya and Kaudulla’s seasonal Gathering—guided strictly without elephant riding or captive shows.',
+    heroImage: STITCH_IMAGES.expElephants,
+    highlights: [
+      'Zero captivity interaction guarantee',
+      'Reservoir sunset elephant observation routes',
+      'Dedicated wildlife naturalist companion',
+    ],
+    equipmentOrSetting: 'Private Safari Cruiser',
+    tags: ['Ethical Conservation', 'Family Friendly'],
+    isPublished: true,
+    isSample: true,
+    sortOrder: 2,
+  },
+  {
+    id: 'tea-planter-masterclass',
+    slug: 'tea-planter-masterclass',
+    title: 'Artisan Silver-Tip Plucking & Tea Masterclass',
+    realmCategory: 'Highland Tea & Mountain Estates',
+    region: 'Hatton & Bogawantalawa',
+    duration: 'Morning Immersion',
+    badgeText: 'Realm 02 • Highland Tea',
+    summary:
+      'Walk dew-kissed misty slopes with estate tea specialists and taste rare single-origin white and black Ceylon harvests.',
+    description:
+      'Discover centuries of Ceylon tea heritage from two-leaves-and-a-bud harvesting to rolling, oxidation, and cellar cupping on an antique planter bungalow veranda.',
+    heroImage: STITCH_IMAGES.expTeaSpice,
+    highlights: [
+      'Guided estate trail walk through emerald tea terraces',
+      'Private factory processing & silver-tip tasting flight',
+      'Veranda high tea prepared by estate chefs',
+    ],
+    equipmentOrSetting: 'Historic Tea Estate & Bungalow',
+    tags: ['Culinary', 'Highland Retreat'],
+    isPublished: true,
+    isSample: true,
+    sortOrder: 3,
+  },
+  {
+    id: 'sigiriya-dawn-ascent',
+    slug: 'sigiriya-dawn-ascent',
+    title: 'First-Light Ascent of Sigiriya & Polonnaruwa Chronicles',
+    realmCategory: 'Cultural & Ancient Citadels',
+    region: 'Cultural Triangle',
+    duration: '3–5 Hours',
+    badgeText: 'Realm 03 • Citadels',
+    summary:
+      'Step onto royal water gardens at sunrise before peak midday heat and trace ancient frescoes with an architectural historian.',
+    description:
+      'Explore Sri Lanka’s Cultural Triangle with scholarly storytelling—connecting Sigiriya’s hydraulic ingenuity with Polonnaruwa’s sculpted granite shrines and quiet lotus reservoirs.',
+    heroImage: STITCH_IMAGES.expCulturalPolonnaruwa,
+    highlights: [
+      'Early morning entrance pacing for serene photography',
+      'Private historian storytelling across ancient palaces',
+      'Cool coconut refreshment & shaded pavilion breaks',
+    ],
+    equipmentOrSetting: 'Private Chauffeur & Cultural Guide',
+    tags: ['Dawn Access', 'Heritage', 'UNESCO'],
+    isPublished: true,
+    isSample: true,
+    sortOrder: 4,
+  },
+  {
+    id: 'southern-blue-whale-charter',
+    slug: 'southern-blue-whale-charter',
+    title: 'Southern Ocean Blue Whale & Coastal Catamaran Sail',
+    realmCategory: 'Marine & Ocean',
+    region: 'Mirissa & Weligama',
+    duration: 'Morning Cruise',
+    badgeText: 'Realm 04 • Ocean Charter',
+    summary:
+      'Sail out over the deep southern trench on a private yacht or catamaran for respectful pelagic whale and dolphin watching.',
+    description:
+      'Board at sunrise with freshly brewed Ceylon tea and tropical fruit. Keep a respectful vessel distance while scanning calm swells for Blue Whales, Bryde’s whales, and playful spinner dolphins.',
+    heroImage: STITCH_IMAGES.expBlueWhale,
+    highlights: [
+      'Private chartered catamaran or coastal cruiser',
+      'Marine-sensitive distance and speed protocols',
+      'Onboard freshly prepared brunch & snorkeling stop',
+    ],
+    equipmentOrSetting: 'Private 45ft Coastal Catamaran',
+    tags: ['Ocean Charter', 'Family Friendly'],
+    isPublished: true,
+    isSample: true,
+    sortOrder: 5,
+  },
+  {
+    id: 'ayurveda-wellness-retreat',
+    slug: 'ayurveda-wellness-retreat',
+    title: 'Restorative Ayurveda & Herbal Sanctuary Rituals',
+    realmCategory: 'Ayurvedic Wellness & Culinary',
+    region: 'Tangalle & Kandy',
+    duration: '3 to 7 Days',
+    badgeText: 'Realm 05 • Restorative',
+    summary:
+      'Slow your rhythm with personalized herbal oil therapies, open-air yoga pavilions, and dosha-balanced island cuisine.',
+    description:
+      'Set amidst tranquil jungle canopies or ocean cliffs, immerse in authentic Sri Lankan Ayurvedic wellness guided by resident practitioners and tranquil botanical spaces.',
+    heroImage: STITCH_IMAGES.expAyurveda,
+    highlights: [
+      'Personalized wellness consultation & herbal rituals',
+      'Warm sesame and wild botanical oil massages',
+      'Calm open-air meditation and garden dining',
+    ],
+    equipmentOrSetting: 'Boutique Wellness Sanctuary',
+    tags: ['Wellness', 'Slow Travel'],
+    isPublished: true,
+    isSample: true,
+    sortOrder: 6,
+  },
+  {
+    id: 'highland-scenic-rail',
+    slug: 'highland-scenic-rail',
+    title: 'Highland Observation Rail & Nine Arch Viaduct Journey',
+    realmCategory: 'Highland Tea & Mountain Estates',
+    region: 'Kandy to Ella',
+    duration: 'Half Day Scenic Ride',
+    badgeText: 'Realm 06 • Heritage Rail',
+    summary:
+      'Glide past cascading waterfalls, cloud forests, and stone railway arches aboard Sri Lanka’s celebrated hill-country route.',
+    description:
+      'Your private chauffeur handles luggage effortlessly ahead of you while you relax along one of Asia’s most picturesque mountain railway corridors between Hatton, Nanu Oya, and Ella.',
+    heroImage: STITCH_IMAGES.expBlueTrain,
+    highlights: [
+      'Reserved first-class or observation car seating',
+      'Seamless door-to-station private luggage transfers',
+      'Scenic walk along Demodara Nine Arch Bridge',
+    ],
+    equipmentOrSetting: 'Highland Railway Observation Car',
+    tags: ['Scenic Rail', 'Highlands'],
+    isPublished: true,
+    isSample: true,
+    sortOrder: 7,
+  },
+  {
+    id: 'coastal-spice-dining',
+    slug: 'coastal-spice-dining',
+    title: 'Candlelit Dune & Courtyard Spice Gastronomy',
+    realmCategory: 'Ayurvedic Wellness & Culinary',
+    region: 'Galle & Mirissa Coast',
+    duration: 'Twilight Feast',
+    badgeText: 'Realm 07 • Gastronomy',
+    summary:
+      'Savor heirloom curries, cinnamon-infused coastal seafood, and lantern-lit private dinners beside waves or heritage courtyards.',
+    description:
+      'From interactive Ceylon spice garden tastings to intimate private chef dinners beneath coconut palms, taste the island’s rich culinary crossroads.',
+    heroImage: STITCH_IMAGES.expRomanticDinner,
+    highlights: [
+      'Private chef seafood & spice tasting menu',
+      'Cinnamon peeling & heirloom spice storytelling',
+      'Lantern-lit coastal terrace or courtyard setting',
+    ],
+    equipmentOrSetting: 'Private Beach Pavilion or Courtyard',
+    tags: ['Culinary', 'Honeymoon'],
+    isPublished: true,
+    isSample: true,
+    sortOrder: 8,
+  },
+  {
+    id: 'sinharaja-rainforest-trek',
+    slug: 'sinharaja-rainforest-trek',
+    title: 'Sinharaja UNESCO Rainforest & Waterfall Trek',
+    realmCategory: 'Wildlife & Big Game Safaris',
+    region: 'Sabaragamuwa & Southern Border',
+    duration: 'Full Day Trek',
+    badgeText: 'Realm 08 • Rainforest',
+    summary:
+      'Step beneath ancient dipterocarp canopies with an expert naturalist to spot endemic birds, orchids, and cascading jungle pools.',
+    description:
+      'Explore Sri Lanka’s last viable swath of primary tropical lowland rainforest—a UNESCO biosphere brimming with colorful bird flocks and cool forest streams.',
+    heroImage: STITCH_IMAGES.expSinharaja,
+    highlights: [
+      'Guided canopy trail with naturalist bird-spotting',
+      'Refreshing swim beneath secluded forest waterfalls',
+      'Low-impact conservation trail access',
+    ],
+    equipmentOrSetting: 'Protected Biosphere Trail',
+    tags: ['UNESCO Heritage', 'Rainforest', 'Ethical Conservation'],
+    isPublished: true,
+    isSample: true,
+    sortOrder: 9,
+  },
+];
+
+export const INITIAL_TOUR_PACKAGES: TourPackage[] = [
+  {
+    id: 'the-ceylon-discovery',
+    slug: 'the-ceylon-discovery',
+    title: 'The Ceylon Discovery',
+    subtitle: 'An 8-Day Curated Passage Through Citadels, Tea Valleys, Wild Coast & Heritage Ramparts',
+    category: 'Signature Circuit',
+    durationDays: 8,
+    durationNights: 7,
+    durationLabel: '8 Days / 7 Nights',
+    indicativePriceUsd: 4850,
+    priceDisclaimer: 'Indicative sample tariff per person (double occupancy) — customizable by season & suite tier.',
+    seasonWindow: 'Best Nov – Apr (Year-Round Adaptable)',
+    heroImage: STITCH_IMAGES.ceylonDiscoveryHero,
+    mosaicImages: [
+      STITCH_IMAGES.ceylonDiscoveryHero,
+      STITCH_IMAGES.sigiriyaHero,
+      STITCH_IMAGES.ellaNineArch,
+      STITCH_IMAGES.yalaLeopard,
+    ],
+    summary:
+      'Sri Lanka’s quintessential private luxury circuit—linking ancient royal rock citadels, misty central tea estates, leopard-inhabited coastal wilderness, and timeless Galle Fort.',
+    overviewQuote:
+      'Four contrasting worlds in eight days—each transition paced for stillness, architectural beauty, and authentic island connection.',
+    overviewNarrative:
+      'Designed as AVENTRA’s flagship introduction to Sri Lanka, The Ceylon Discovery weaves together the island’s iconic cultural, highland, wildlife, and coastal chapters without rushing. Enjoy private chauffeur-guided transitions, thoughtfully timed dawn arrivals, and intimate sanctuary stays carefully chosen for character and setting.',
+    highlights: [
+      'Sunrise ascent of Sigiriya Rock Fortress & royal water gardens',
+      'Two nights in misty Hatton tea country with private factory tasting',
+      'Scenic highland rail glide across tea-carpeted ridges',
+      'Dawn & dusk private 4x4 safari drives in Yala coastal wilderness',
+      'Sunset architectural promenade & courtyard dining inside Galle Fort',
+    ],
+    itineraryDays: [
+      {
+        dayNumber: 1,
+        title: 'Arrival & Cultural Triangle Sanctuary',
+        location: 'Colombo Airport → Sigiriya',
+        sanctuary: 'Water Garden Sigiriya (Sample Sanctuary)',
+        description:
+          'Upon arrival in Colombo, meet your private AVENTRA chauffeur-guide for a smooth scenic transfer northeast to the Cultural Triangle. Settle into a serene water villa overlooking paddy fields and lotus ponds.',
+        highlights: ['Private VIP airport welcome', 'Evening relaxation by lotus ponds', 'Welcome Sri Lankan tasting dinner'],
+      },
+      {
+        dayNumber: 2,
+        title: 'Lion Rock Citadel & Ancient Royal Waters',
+        location: 'Sigiriya & Polonnaruwa',
+        sanctuary: 'Water Garden Sigiriya',
+        description:
+          'Ascend Sigiriya Rock Fortress at first light to take in royal frescoes, mirror walls, and sweeping 360-degree forest panoramas before midday warmth. Spend the afternoon exploring Polonnaruwa’s serene lakeside ruins or enjoying villa wellness.',
+        highlights: ['Early morning Sigiriya climb', 'Guided heritage walk', 'Sunset views from villa deck'],
+      },
+      {
+        dayNumber: 3,
+        title: 'Ascent to Kandy & Emerald Tea Highlands',
+        location: 'Sigiriya → Kandy → Hatton Highlands',
+        sanctuary: 'Ceylon Tea Trails (Sample Bungalow)',
+        description:
+          'Journey into the lush central highlands via Matale’s spice gardens and Kandy’s sacred lake basin before ascending toward Hatton’s emerald tea slopes and Castlereagh Reservoir.',
+        highlights: ['Matale spice garden introduction', 'Temple of the Tooth cultural visit', 'Evening fireside dinner in the hills'],
+      },
+      {
+        dayNumber: 4,
+        title: 'Planter Heritage & Highland Tea Trails',
+        location: 'Hatton & Bogawantalawa Valley',
+        sanctuary: 'Ceylon Tea Trails',
+        description:
+          'Awaken to valley mist over calm lake waters. Enjoy a guided morning walk along tea-picker trails with a resident tea specialist, culminating in a private tasting flight and leisurely veranda afternoon.',
+        highlights: ['Guided single-estate tea walk', 'Factory craftsmanship tour', 'Highland cream tea & bungalow croquet'],
+      },
+      {
+        dayNumber: 5,
+        title: 'Scenic Mountain Rail to the Wild South',
+        location: 'Highlands → Ella Viewpoints → Yala Coast',
+        sanctuary: 'Wild Coast Tented Lodge (Sample)',
+        description:
+          'Board a morning mountain train sector through cloud-draped passes before descending along scenic gorges toward Yala’s sun-warmed coastal scrub and oceanfront safari pavilions.',
+        highlights: ['Highland observation train sector', 'Dramatic climate shift to southern coast', 'Lantern-lit dune dining'],
+      },
+      {
+        dayNumber: 6,
+        title: 'Leopard Corridors & Indian Ocean Wilderness',
+        location: 'Yala National Park',
+        sanctuary: 'Wild Coast Tented Lodge',
+        description:
+          'Venture into Yala’s quiet morning tracks aboard your private open-air 4x4 cruiser with an expert wildlife tracker, pausing at secluded coastal clearings for breakfast before an afternoon rest and sunset drive.',
+        highlights: ['Dawn & dusk private 4x4 safari drives', 'Bush breakfast in park clearings', 'Wildlife ecology briefing'],
+      },
+      {
+        dayNumber: 7,
+        title: 'Coastal Highway to Galle Fort Ramparts',
+        location: 'Yala → Tangalle → Galle Fort',
+        sanctuary: 'Amangalla or Galle Heritage Manor (Sample)',
+        description:
+          'Follow the palm-lined southern coastline west to 17th-century Galle Fort. Stroll sun-warmed cobblestone lanes, independent design ateliers, and historic ramparts at sunset.',
+        highlights: ['Southern coastal drive past Weligama', 'Curated Galle Fort architectural walk', 'Farewell courtyard dinner'],
+      },
+      {
+        dayNumber: 8,
+        title: 'Galle Morning Calm & Smooth Departure',
+        location: 'Galle → Colombo / Departure',
+        sanctuary: 'Day-Use Lounge Available',
+        description:
+          'Enjoy a slow tropical breakfast overlooking courtyard frangipani trees before your expressway transfer north to Colombo or Bandaranaike International Airport.',
+        highlights: ['Leisurely fort morning', 'Private expressway airport transfer'],
+      },
+    ],
+    sanctuaries: [
+      {
+        name: 'Water Garden Sigiriya',
+        region: 'Cultural Triangle',
+        nightsLabel: 'Nights 1–2',
+        suiteType: 'Deluxe Villa with Plunge Pool',
+        description: 'Architectural water pavilions framed by wild lakes and clear views toward Lion Rock.',
+        imageUrl: STITCH_IMAGES.sanctuaryWaterGarden,
+      },
+      {
+        name: 'Ceylon Tea Trails',
+        region: 'Hatton Highlands',
+        nightsLabel: 'Nights 3–4',
+        suiteType: 'Garden Suite or Master Bungalow',
+        description: 'Restored historic tea planters’ bungalows set beside Castlereagh Reservoir.',
+        imageUrl: STITCH_IMAGES.sanctuaryTeaTrails,
+      },
+      {
+        name: 'Wild Coast Tented Lodge',
+        region: 'Yala Buffer Coast',
+        nightsLabel: 'Nights 5–6',
+        suiteType: 'Cocoon Sanctuary Suite',
+        description: 'Organic vaulted safari suites bordering untouched dunes and leopard habitat.',
+        imageUrl: STITCH_IMAGES.sanctuaryWildCoast,
+      },
+      {
+        name: 'Amangalla Galle Fort',
+        region: 'Southern Coast',
+        nightsLabel: 'Night 7',
+        suiteType: 'Heritage Chamber',
+        description: 'Timeless colonial heritage sanctuary perched beside historic fort ramparts.',
+        imageUrl: STITCH_IMAGES.sanctuaryAmangalla,
+      },
+    ],
+    inclusions: [
+      '7 nights accommodation in curated boutique luxury sanctuaries (sample tier)',
+      'Dedicated private air-conditioned luxury vehicle & English-speaking chauffeur-guide',
+      'Private 4x4 safari drives in Yala with experienced tracker & park permits',
+      'Daily gourmet breakfasts and selected signature bungalow dinners',
+      'VIP airport meet-and-greet & seamless luggage coordination',
+    ],
+    exclusions: [
+      'International airfare and Sri Lankan electronic travel authorization (ETA)',
+      'Optional private helicopter or seaplane charter upgrades',
+      'Personal travel insurance and discretionary gratuities',
+    ],
+    faqs: [
+      {
+        question: 'Can this 8-day itinerary be tailored to our travel dates and pace?',
+        answer:
+          'Yes. Every AVENTRA route is a customizable blueprint—we regularly extend beach nights in Mirissa or Tangalle, swap sanctuaries, or adapt pacing for families and honeymooners.',
+      },
+      {
+        question: 'When is the ideal season for The Ceylon Discovery?',
+        answer:
+          'November through April offers the calmest seas along Galle and sunny skies across the highlands and Yala. From May to October, we can seamlessly shift the beach finale to Trincomalee or Passikudah.',
+      },
+      {
+        question: 'Are helicopter transfers possible between Sigiriya and the hills?',
+        answer:
+          'Optional private domestic air or helicopter transfers can be arranged upon request during bespoke itinerary design.',
+      },
+    ],
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 1,
+  },
+  {
+    id: 'highland-serenity-south-coast',
+    slug: 'highland-serenity-south-coast',
+    title: 'Highland Serenity & South Coast',
+    subtitle: '10 Days of Tea Country Calm, Scenic Rail & Southern Beach Villas',
+    category: 'Honeymoon & Slow Luxury',
+    durationDays: 10,
+    durationNights: 9,
+    durationLabel: '10 Days / 9 Nights',
+    indicativePriceUsd: 5200,
+    priceDisclaimer: 'Indicative sample tariff — editable in Admin > Tour Packages.',
+    seasonWindow: 'Nov – Apr',
+    heroImage: STITCH_IMAGES.ellaNineArch,
+    mosaicImages: [STITCH_IMAGES.ellaNineArch, STITCH_IMAGES.mirissaCoast, STITCH_IMAGES.nuwaraEliya],
+    summary:
+      'Unhurried days drifting from misty Nuwara Eliya and Ella tea estates down to Mirissa whale-watching waters and Galle Fort sunsets.',
+    overviewQuote: 'Crafted for couples and slow-luxury seekers yearning for cool mountain mornings followed by warm ocean tides.',
+    overviewNarrative:
+      'Balancing highland mountain air with southern coastal stillness, this 10-day itinerary avoids long zig-zagging drives and maximizes time on sanctuary verandas and sandy coves.',
+    highlights: [
+      'Tea estate bungalow retreat in Hatton & Nuwara Eliya',
+      'Scenic highland train passage to Ella',
+      '4 nights along Weligama, Mirissa & Galle Fort',
+    ],
+    itineraryDays: [
+      {
+        dayNumber: 1,
+        title: 'Colombo Sanctuary Arrival',
+        location: 'Colombo / Negombo',
+        description: 'Rest after your flight in a serene garden boutique hotel.',
+        highlights: ['Airport meet & greet', 'Garden evening rest'],
+      },
+      {
+        dayNumber: 3,
+        title: 'Highland Tea Bungalow Immersion',
+        location: 'Hatton & Nuwara Eliya',
+        description: 'Scenic drive into emerald tea hills for lake walks and fireside dining.',
+        highlights: ['Private tea tasting', 'Misty reservoir views'],
+      },
+      {
+        dayNumber: 6,
+        title: 'Southern Ocean Villa & Marine Safari',
+        location: 'Mirissa & Weligama',
+        description: 'Descend to warm Indian Ocean beaches for whale watching and coastal leisure.',
+        highlights: ['Dawn whale cruise', 'Beachfront sunset dinner'],
+      },
+    ],
+    sanctuaries: [
+      {
+        name: 'Ceylon Tea Trails',
+        region: 'Hatton Highlands',
+        nightsLabel: 'Nights 2–4',
+        suiteType: 'Luxury Estate Suite',
+        description: 'Historic lakeside bungalows with butler service.',
+        imageUrl: STITCH_IMAGES.sanctuaryTeaTrails,
+      },
+      {
+        name: 'Southern Coast Villa',
+        region: 'Weligama / Mirissa',
+        nightsLabel: 'Nights 6–9',
+        suiteType: 'Oceanfront Pool Suite',
+        description: 'Sunlit tropical modernism overlooking southern surf swells.',
+        imageUrl: STITCH_IMAGES.expCoastalVilla,
+      },
+    ],
+    inclusions: ['9 nights boutique sanctuaries', 'Private chauffeur & mountain train passes', 'Morning coastal whale excursion'],
+    exclusions: ['International flights', 'Visas & personal expenses'],
+    faqs: [
+      {
+        question: 'Is this route ideal for honeymoons?',
+        answer: 'Yes—minimal packing/unpacking transitions and private dining opportunities make it a favorite for couples.',
+      },
+    ],
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 2,
+  },
+  {
+    id: 'wild-leopard-coastal-trail',
+    slug: 'wild-leopard-coastal-trail',
+    title: 'Wild Leopard & Coastal Trail',
+    subtitle: '7 Days of Big Game Safaris, Rainforest Canopies & Untamed Shores',
+    category: 'Wildlife & Adventure',
+    durationDays: 7,
+    durationNights: 6,
+    durationLabel: '7 Days / 6 Nights',
+    indicativePriceUsd: 4400,
+    priceDisclaimer: 'Indicative sample tariff — customizable by park season.',
+    seasonWindow: 'Feb – Jul',
+    heroImage: STITCH_IMAGES.yalaLeopard,
+    mosaicImages: [STITCH_IMAGES.yalaLeopard, STITCH_IMAGES.expElephants, STITCH_IMAGES.expSinharaja],
+    summary:
+      'Track leopards in Yala, walk Sinharaja’s primary rainforest trails, and witness elephant herds along southern reservoirs.',
+    overviewQuote: 'For wildlife enthusiasts and photographers seeking Sri Lanka’s rich ecological diversity.',
+    overviewNarrative:
+      'Focused on ethical wildlife viewing across three distinct biomes—primary lowland rainforest, open elephant grasslands, and Yala’s coastal scrub.',
+    highlights: [
+      'Multiple dawn & dusk Yala safari drives',
+      'Guided Sinharaja UNESCO rainforest bird & flora walk',
+      'Udawalawe elephant reservoir observation',
+    ],
+    itineraryDays: [
+      {
+        dayNumber: 1,
+        title: 'Sinharaja Rainforest Edge',
+        location: 'Sinharaja Biosphere',
+        description: 'Settle into a tranquil rainforest eco-lodge ahead of morning canopy trails.',
+        highlights: ['Forest stream walk', 'Endemic birding'],
+      },
+      {
+        dayNumber: 4,
+        title: 'Yala Coastal Tented Drives',
+        location: 'Yala National Park',
+        description: 'Dedicated sunrise and afternoon wildlife drives tracking leopards and sloth bears.',
+        highlights: ['Private 4x4 safari cruiser', 'Oceanfront tented lodge'],
+      },
+    ],
+    sanctuaries: [
+      {
+        name: 'Wild Coast Tented Lodge',
+        region: 'Yala Coast',
+        nightsLabel: 'Nights 4–6',
+        suiteType: 'Cocoon Pool Suite',
+        description: 'Direct access to Yala buffer wilderness and dramatic shoreline dunes.',
+        imageUrl: STITCH_IMAGES.sanctuaryWildCoast,
+      },
+    ],
+    inclusions: ['6 nights wildlife lodges', '5 private 4x4 game drives', 'Park conservation fees'],
+    exclusions: ['International flights', 'Travel insurance'],
+    faqs: [],
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 3,
+  },
+  {
+    id: 'geoffrey-bawa-architectural-trail',
+    slug: 'geoffrey-bawa-architectural-trail',
+    title: 'Tropical Modernist Architectural Trail',
+    subtitle: '7 Days Exploring Iconic Courtyard Estates, Monoliths & Garden Sanctuaries',
+    category: 'Architecture & Heritage',
+    durationDays: 7,
+    durationNights: 6,
+    durationLabel: '7 Days / 6 Nights',
+    indicativePriceUsd: 4950,
+    priceDisclaimer: 'Indicative sample tariff — editable in Admin.',
+    seasonWindow: 'Year-Round',
+    heroImage: STITCH_IMAGES.bawaArchitecture,
+    mosaicImages: [STITCH_IMAGES.bawaArchitecture, STITCH_IMAGES.galleFort, STITCH_IMAGES.sigiriyaHero],
+    summary:
+      'Trace Sri Lanka’s celebrated Tropical Modernist heritage across Bentota garden estates, Kandalama’s cliffside hotel, and Galle Fort manors.',
+    overviewQuote: 'Where indoor courtyards dissolve effortlessly into lotus ponds, granite boulders, and ocean light.',
+    overviewNarrative:
+      'Curated for lovers of architecture, design, and serene garden spaces—experiencing iconic estates designed by Geoffrey Bawa and contemporary island architects.',
+    highlights: [
+      'Private garden visit to Lunuganga Country Estate',
+      'Stay overlooking Sigiriya & Dambulla’s forested rock ledges',
+      'Galle Fort heritage courtyard stays',
+    ],
+    itineraryDays: [
+      {
+        dayNumber: 1,
+        title: 'Colombo Modernist Residences',
+        location: 'Colombo',
+        description: 'Begin with Colombo’s leafy modernist courtyards and gallery spaces.',
+        highlights: ['Curated design walk', 'Private courtyard dining'],
+      },
+      {
+        dayNumber: 4,
+        title: 'Lunuganga & Bentota Coast',
+        location: 'Bentota',
+        description: 'Wander through sculptural garden vistas along Dedduwa Lake.',
+        highlights: ['Guided estate walk', 'Coastal veranda sunset'],
+      },
+    ],
+    sanctuaries: [
+      {
+        name: 'Amangalla',
+        region: 'Galle Fort',
+        nightsLabel: 'Nights 5–6',
+        suiteType: 'Garden Suite',
+        description: 'Timeless colonial heritage sanctuary in the heart of the fort.',
+        imageUrl: STITCH_IMAGES.sanctuaryAmangalla,
+      },
+    ],
+    inclusions: ['6 nights architectural sanctuaries', 'Curated estate access fees', 'Private chauffeur'],
+    exclusions: ['Airfare', 'Personal shopping & dining extras'],
+    faqs: [],
+    isFeatured: false,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 4,
+  },
+  {
+    id: 'eastern-shores-ancient-kingdoms',
+    slug: 'eastern-shores-ancient-kingdoms',
+    title: 'Eastern Shores & Ancient Kingdoms',
+    subtitle: '9 Days of Summer Sunshine Across Cultural Citadels & Trincomalee Coves',
+    category: 'Summer Season Circuit',
+    durationDays: 9,
+    durationNights: 8,
+    durationLabel: '9 Days / 8 Nights',
+    indicativePriceUsd: 4600,
+    priceDisclaimer: 'Indicative sample tariff — optimized for May–October sunshine.',
+    seasonWindow: 'May – Oct',
+    heroImage: STITCH_IMAGES.trincomalee,
+    mosaicImages: [STITCH_IMAGES.trincomalee, STITCH_IMAGES.sigiriyaDirectory, STITCH_IMAGES.expElephants],
+    summary:
+      'Follow Sri Lanka’s summer sun to Sigiriya, Minneriya elephant gatherings, and calm eastern turquoise bays in Trincomalee and Passikudah.',
+    overviewQuote: 'Bright golden skies and mirror-calm coral seas while the southwest monsoon blooms.',
+    overviewNarrative:
+      'Tailored specifically for May through October, pairing Sri Lanka’s dry Cultural Triangle and seasonal Minneriya wildlife with serene east-coast snorkeling and beachfront villas.',
+    highlights: [
+      'Minneriya seasonal wild elephant Gathering',
+      'Pigeon Island coral snorkeling & Trincomalee harbor views',
+      'Sigiriya & Polonnaruwa heritage circuits',
+    ],
+    itineraryDays: [
+      {
+        dayNumber: 1,
+        title: 'Cultural Triangle Citadel Arrival',
+        location: 'Sigiriya',
+        description: 'Arrive into serene Cultural Triangle villas ahead of sunrise citadel exploration.',
+        highlights: ['Lotus lake views', 'Relaxed evening dinner'],
+      },
+      {
+        dayNumber: 5,
+        title: 'Trincomalee Sapphire Lagoon Sanctuary',
+        location: 'Trincomalee / Passikudah',
+        description: 'Four sunlit coastal days snorkeling coral reefs and relaxing along calm eastern bays.',
+        highlights: ['Private boat snorkeling', 'Cliffside Koneswaram sunset'],
+      },
+    ],
+    sanctuaries: [
+      {
+        name: 'Water Garden Sigiriya',
+        region: 'Cultural Triangle',
+        nightsLabel: 'Nights 1–3',
+        suiteType: 'Deluxe Villa',
+        description: 'Private lakeside retreats amid green rice fields.',
+        imageUrl: STITCH_IMAGES.sanctuaryWaterGarden,
+      },
+    ],
+    inclusions: ['8 nights curated hotels', 'Private vehicle & driver-guide', 'East coast snorkeling excursion'],
+    exclusions: ['International airfare', 'Travel insurance'],
+    faqs: [],
+    isFeatured: false,
+    isPublished: true,
+    isSample: true,
+    sortOrder: 5,
+  },
+];
+
+export const INITIAL_TESTIMONIALS: Testimonial[] = [
+  {
+    id: 'test-sample-1',
+    guestName: 'Claire & Henrik Lindqvist',
+    guestOrigin: 'Sample Guest Review • Stockholm',
+    journeyTitle: '10-Day Highlands & Southern Coast',
+    quote:
+      'Waking up above the mist in Hatton and watching blue whales off Mirissa just days later felt effortlessly orchestrated. Every transition was calm, thoughtful, and deeply memorable.',
+    rating: 5,
+    stayDateLabel: 'Sample Testimonial (Editable in Admin)',
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+  },
+  {
+    id: 'test-sample-2',
+    guestName: 'Dr. Arjun & Meera Patel',
+    guestOrigin: 'Sample Guest Review • London',
+    journeyTitle: 'The Ceylon Discovery Family Circuit',
+    quote:
+      'Climbing Sigiriya at dawn before the crowds and spotting a leopard along a quiet Yala trail were unforgettable moments for our whole family.',
+    rating: 5,
+    stayDateLabel: 'Sample Testimonial (Editable in Admin)',
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+  },
+  {
+    id: 'test-sample-3',
+    guestName: 'Sophie Laurent',
+    guestOrigin: 'Sample Guest Review • Geneva',
+    journeyTitle: 'Architecture & Sanctuary Retreat',
+    quote:
+      'From restored colonial verandahs in Galle Fort to quiet cinnamon-scented mornings in the Cultural Triangle, the pacing felt like staying with discerning local friends.',
+    rating: 5,
+    stayDateLabel: 'Sample Testimonial (Editable in Admin)',
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+  },
+];
+
+export const INITIAL_BLOG_POSTS: BlogPost[] = [
+  {
+    id: 'dual-monsoon-guide',
+    slug: 'dual-monsoon-guide',
+    title: 'Mastering Sri Lanka’s Dual Monsoons: When & Where to Travel',
+    category: 'Seasonal Wisdom',
+    excerpt:
+      'An editorial calendar explaining how Sri Lanka’s two contrasting monsoon systems keep bright sunshine glowing somewhere on the island year-round.',
+    content:
+      'Because of its teardrop topography and central mountain massif, Sri Lanka enjoys two distinct monsoon cycles that rarely affect the entire island at once.\n\nFrom November through April, the southwest coast (Galle, Mirissa, Weligama, Tangalle) and the Central Highlands bask in calm seas and crisp mornings—making it prime season for blue whale watching and highland tea trails.\n\nFrom May through September, while refreshing afternoon rains nourish the south, the East Coast (Trincomalee, Passikudah, Arugam Bay) and the Cultural Triangle come alive with golden sunshine and glassy coral waters.\n\nThis article is a sample editorial guide ready to edit or expand inside Admin > Travel Journal.',
+    coverImage: STITCH_IMAGES.oneIslandBanner,
+    authorName: 'AVENTRA Editorial Desk (Sample)',
+    readTimeMinutes: 5,
+    publishedDateLabel: 'Sample Dispatch',
+    isFeatured: true,
+    isPublished: true,
+    isSample: true,
+  },
+  {
+    id: 'packing-for-ceylon-microclimates',
+    slug: 'packing-for-ceylon-microclimates',
+    title: 'From Sea Level to 2,000 Meters: Dressing for Five Microclimates',
+    category: 'Field Notes',
+    excerpt:
+      'How to transition comfortably from breezy linen afternoons in Galle Fort to cool fireside evenings in Bogawantalawa tea valleys.',
+    content:
+      'Few islands compress so many microclimates into a three-hour drive. Light natural linen and cotton keep coastal walks effortless, while temple visits invite modest shoulder and knee coverage.\n\nOnce ascending above 1,500 meters into Hatton, Nuwara Eliya, and Horton Plains, evening temperatures drop pleasantly—calling for a lightweight cashmere layer or windproof jacket on dawn hikes.\n\nThis sample journal dispatch can be updated or replaced from the Admin Travel Journal manager.',
+    coverImage: STITCH_IMAGES.bogawantalawa,
+    authorName: 'AVENTRA Editorial Desk (Sample)',
+    readTimeMinutes: 4,
+    publishedDateLabel: 'Sample Dispatch',
+    isFeatured: false,
+    isPublished: true,
+    isSample: true,
+  },
+  {
+    id: 'tropical-modernism-story',
+    slug: 'tropical-modernism-story',
+    title: 'Courtyards, Monsoon Rain & Light: Inside Sri Lanka’s Tropical Modernism',
+    category: 'Architecture',
+    excerpt:
+      'Why Sri Lanka’s finest boutique hotels and villas blur the boundary between veranda, lily pond, and surrounding rainforest.',
+    content:
+      'Sri Lankan architectural pioneers showed the world that luxury in the tropics needs neither heavy marble nor sealed glass towers. Instead, pitched clay-tiled roofs, deep shaded colonnades, internal rain courtyards, and local teak frame the monsoon and sunlight themselves as the main artwork.\n\nThis sample article can be freely edited or deleted in Admin > Travel Journal.',
+    coverImage: STITCH_IMAGES.bawaArchitecture,
+    authorName: 'AVENTRA Editorial Desk (Sample)',
+    readTimeMinutes: 6,
+    publishedDateLabel: 'Sample Dispatch',
+    isFeatured: false,
+    isPublished: true,
+    isSample: true,
+  },
+];
+
+export const INITIAL_GALLERY: GalleryItem[] = [
+  {
+    id: 'gal-sigiriya',
+    title: 'Sigiriya Dawn Mist',
+    region: 'Cultural Triangle',
+    category: 'Landscapes',
+    imageUrl: STITCH_IMAGES.sigiriyaHero,
+    caption: 'Ancient citadel rising through early morning forest mist.',
+    isPublished: true,
+    isSample: true,
+  },
+  {
+    id: 'gal-hatton',
+    title: 'Castlereagh Tea Veranda',
+    region: 'Central Highlands',
+    category: 'Sanctuaries',
+    imageUrl: STITCH_IMAGES.hattonVeranda,
+    caption: 'Quiet morning tea overlooking highland slopes.',
+    isPublished: true,
+    isSample: true,
+  },
+  {
+    id: 'gal-yala',
+    title: 'Ruhuna Leopard Watch',
+    region: 'Wild South',
+    category: 'Wildlife',
+    imageUrl: STITCH_IMAGES.yalaLeopard,
+    caption: 'Quiet twilight leopard sighting on coastal scrub trails.',
+    isPublished: true,
+    isSample: true,
+  },
+  {
+    id: 'gal-galle',
+    title: 'Galle Fort Ramparts',
+    region: 'Southern Coast',
+    category: 'Heritage',
+    imageUrl: STITCH_IMAGES.galleFort,
+    caption: 'Golden hour stroll past colonial bastions and lighthouse.',
+    isPublished: true,
+    isSample: true,
+  },
+];

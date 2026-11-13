@@ -1,0 +1,6 @@
+{
+  "name": "AVENTRA",
+  "description": "AVENTRA — Discover Beyond Ordinary. Curated Sri Lankan luxury travel agency, private sanctuaries, bespoke journeys, and expedition concierge.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

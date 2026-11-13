@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-primary-container":"#80bea6","surface-container-high":"#e9e8e4","on-primary-fixed-variant":"#0b513d","surface":"#faf9f5","on-tertiary":"#ffffff","inverse-surface":"#2f312e","surface-bright":"#faf9f5","tertiary-fixed-dim":"#80d5cb","on-tertiary-container":"#6ac0b6","on-error-container":"#93000a","primary-container":"#064e3b","secondary-container":"#ffdb90","on-secondary":"#ffffff","on-secondary-fixed-variant":"#5a4304","surface-dim":"#dbdad6","primary-fixed":"#b0f0d6","outline-variant":"#bfc9c3","primary-fixed-dim":"#95d3ba","on-background":"#1b1c1a","inverse-on-surface":"#f2f1ed","on-primary":"#ffffff","tertiary":"#003430","surface-container-lowest":"#ffffff","error-container":"#ffdad6","background":"#faf9f5","surface-variant":"#e3e2df","secondary-fixed-dim":"#e4c279","surface-tint":"#2b6954","surface-container-low":"#f4f4f0","on-error":"#ffffff","tertiary-container":"#004d47","on-tertiary-fixed-variant":"#00504a","on-surface-variant":"#404944","on-secondary-fixed":"#251a00","secondary-fixed":"#ffdf9c","secondary":"#745b1c","on-secondary-container":"#795f20","tertiary-fixed":"#9cf2e8","inverse-primary":"#95d3ba","on-tertiary-fixed":"#00201d","on-primary-fixed":"#002117","primary":"#003527","outline":"#707974","error":"#ba1a1a","on-surface":"#1b1c1a","surface-container-highest":"#e3e2df","surface-container":"#efeeea"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"margin-desktop":"5rem","space-lg":"1.5rem","space-xs":"0.25rem","gutter":"1.5rem","margin":"1.25rem","gutter-desktop":"2.5rem","space-xl":"3rem","space-md":"1rem","space-sm":"0.5rem"},"fontFamily":{"display-hero":["Playfair Display"],"nav-link":["Inter"],"body-lead":["Inter"],"headline-md":["Playfair Display"],"body-md":["Inter"],"headline-lg":["Playfair Display"],"title-editorial":["Playfair Display"],"body-sm":["Inter"],"label-badge":["Inter"],"display-hero-mobile":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"label-caption":["Inter"],"headline-sm":["Playfair Display"]},"fontSize":{"display-hero":["64px",{"lineHeight":"76px","letterSpacing":"-0.02em","fontWeight":"400"}],"nav-link":["12px",{"lineHeight":"16px","letterSpacing":"0.14em","fontWeight":"500"}],"body-lead":["18px",{"lineHeight":"30px","letterSpacing":"0.01em","fontWeight":"300"}],"headline-md":["32px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"500"}],"body-md":["15px",{"lineHeight":"26px","letterSpacing":"0.005em","fontWeight":"400"}],"headline-lg":["48px",{"lineHeight":"58px","letterSpacing":"-0.015em","fontWeight":"400"}],"title-editorial":["20px",{"lineHeight":"28px","letterSpacing":"0.01em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"400"}],"label-badge":["11px",{"lineHeight":"14px","letterSpacing":"0.12em","fontWeight":"600"}],"display-hero-mobile":["40px",{"lineHeight":"48px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-lg-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"400"}],"label-caption":["12px",{"lineHeight":"18px","letterSpacing":"0.04em","fontWeight":"400"}],"headline-sm":["24px",{"lineHeight":"32px","letterSpacing":"0em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_20px_48px_-12px_rgba(6,78,59,0.08)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-20 px-space-lg flex items-center gap-3 bg-surface-container"><img alt="Aventra Travel Logo with Scenic A.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDwKwfddgov1gAOacuaxzPGO8f-sqoMpS1q-9GsNDGqeX6O9o0xoFEHrzjPSvS0p5x8uKr0o_WX3928RVOLEDejFsaormVs-8HSwG8ffsxb_9Kcmnbhz1Xjzjr7XSzGYz_t9BBPnO-JhmmdC2lpmAr-rbuaZG_bSqnWuQ9LpT9hJwRH-XT_bl20eMfCkeVwldxCWA0vWnpDoxB_00lButq1Hq3qoSM60-d2LEsUZT3deOKhJVSN8rwwOg"/><div class="flex flex-col"><span class="font-title-editorial text-title-editorial text-primary leading-tight tracking-wider">AVENTRA</span><span class="font-label-badge text-label-badge text-secondary uppercase">Ceylon Atelier</span></div></div><div class="px-space-md py-space-sm"><span class="px-space-sm font-label-caption text-label-caption uppercase text-on-surface-variant font-medium">Management</span></div><nav class="px-space-sm space-y-1" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg"><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="overview" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-sm text-body-sm">Overview</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="destinations" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">location_on</span><span class="font-body-sm text-body-sm">Destinations</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="tour-packages" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">explore</span><span class="font-body-sm text-body-sm">Tour Packages</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="bookings-and-inquiries" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">event_available</span><span class="font-body-sm text-body-sm">Bookings &amp; Inquiries</span></div><span class="bg-secondary-container text-on-secondary-container font-label-badge text-label-badge px-2 py-0.5 rounded-full font-semibold">14</span></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="customers" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-sm text-body-sm">Customers</span></div></a></nav><div class="px-space-md pt-space-md pb-space-sm"><span class="px-space-sm font-label-caption text-label-caption uppercase text-on-surface-variant font-medium">Curation &amp; Journal</span></div><nav class="px-space-sm space-y-1" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg"><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="testimonials" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">grade</span><span class="font-body-sm text-body-sm">Testimonials</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="travel-journal" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">menu_book</span><span class="font-body-sm text-body-sm">Travel Journal</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="media-gallery" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">photo_library</span><span class="font-body-sm text-body-sm">Media Gallery</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="contact-messages" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">mail</span><span class="font-body-sm text-body-sm">Contact Messages</span></div><span class="bg-error text-on-error font-label-badge text-label-badge px-2 py-0.5 rounded-full font-semibold">6</span></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200" data-path="website-settings" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-body-sm text-body-sm">Website Settings</span></div></a></nav></div><div class="p-space-md bg-surface-container-lowest"><div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-body-sm text-body-sm font-semibold text-on-surface leading-tight">Ranil S.</span><span class="font-label-badge text-label-badge text-secondary font-medium">Super Admin</span></div></div><a class="text-on-surface-variant hover:text-error transition-colors p-1.5 rounded-lg hover:bg-surface-container-high" data-path="login" href="#" title="Sign out"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></aside><div class="pl-72 flex flex-col min-h-screen"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/90 backdrop-blur-xl z-40 px-space-gutter-desktop flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-lg flex-1 max-w-xl"><div class="relative w-full max-w-md"><span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span><input class="w-full pl-11 pr-4 py-2 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search bookings, destinations, guests..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="flex items-center bg-surface-container-low p-1 rounded-lg"><button class="px-3 py-1 font-label-badge text-label-badge uppercase tracking-wider font-semibold rounded bg-primary text-on-primary shadow-sm" type="button">USD</button><button class="px-3 py-1 font-label-badge text-label-badge uppercase tracking-wider font-semibold rounded text-on-surface-variant hover:text-on-surface" type="button">LKR</button></div><button class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary-container text-on-primary font-nav-link text-nav-link tracking-widest uppercase rounded-lg hover:bg-primary transition-all duration-200 shadow-[0_10px_24px_-8px_rgba(6,78,59,0.3)]" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>New</span></button><button class="relative p-2.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span></button><div class="flex items-center gap-3 pl-space-sm"><div class="relative"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-primary-fixed-dim ring-2 ring-surface"></span></div></div></div></header><main class="flex-1 pt-20 w-full px-space-gutter-desktop py-space-lg bg-surface"><div class="flex flex-col w-full">
+<!-- Top Context & Editorial Sub-header -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md mb-space-lg">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-secondary font-semibold">Concierge Logistics Atelier</span>
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">Live Dispatch Operations</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Bookings &amp; Expeditions Dispatch</h1>
+</div>
+<!-- Action CTAs -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-high text-on-surface font-nav-link text-nav-link tracking-wider uppercase hover:bg-surface-container-highest transition-all duration-200" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">sim_card_download</span>
+<span>Export Manifest</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant bg-surface-container px-1.5 py-0.5 rounded">PDF/XLS</span>
+</button>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container text-on-primary font-nav-link text-nav-link tracking-widest uppercase hover:bg-primary transition-all duration-200 shadow-md" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Create Bespoke Booking</span>
+</button>
+</div>
+</div>
+<!-- KPI Pulse Ribbons (Editorial Stat Pods) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md mb-space-lg">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">Gross Manifest Yield</span>
+<span class="p-1.5 rounded-lg bg-surface-container text-primary material-symbols-outlined text-[18px]">monetization_on</span>
+</div>
+<div class="mt-3">
+<span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">$342,850</span>
+<div class="flex items-center gap-1.5 mt-1 text-primary-fixed-dim">
+<span class="font-label-caption text-label-caption text-primary font-semibold">+18.4%</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">vs. previous lunar cycle</span>
+</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">Active In-Country</span>
+<span class="p-1.5 rounded-lg bg-surface-container text-secondary material-symbols-outlined text-[18px]">travel_explore</span>
+</div>
+<div class="mt-3">
+<span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">31 Expeditions</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">All 31 Naturalists radio-synced</span>
+</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">VIP Reviews Pending</span>
+<span class="p-1.5 rounded-lg bg-surface-container text-secondary-container material-symbols-outlined text-[18px]">hourglass_top</span>
+</div>
+<div class="mt-3">
+<span class="font-headline-sm text-headline-sm text-secondary font-bold tracking-tight">23 Enquiries</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="font-label-caption text-label-caption text-error font-medium">4 require air transfer clearance</span>
+</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">Chauffeur Allocation</span>
+<span class="p-1.5 rounded-lg bg-surface-container text-primary-container material-symbols-outlined text-[18px]">badge</span>
+</div>
+<div class="mt-3">
+<span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">94.2%</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="font-label-caption text-label-caption text-on-surface-variant">2 naturalists standby in Colombo</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Segmented State Navigation Tabs -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 mb-space-md no-scrollbar">
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-container text-on-primary font-nav-link text-nav-link uppercase tracking-wider whitespace-nowrap shadow-sm" type="button">
+<span>All Bookings</span>
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary-container font-label-badge text-label-badge font-bold">148</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-nav-link text-nav-link uppercase tracking-wider hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">
+<span>Pending Review</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-badge text-label-badge font-bold">23</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-nav-link text-nav-link uppercase tracking-wider hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">
+<span>Confirmed</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-badge text-label-badge font-bold">78</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-nav-link text-nav-link uppercase tracking-wider hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">
+<span>In Progress</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-tertiary font-label-badge text-label-badge font-bold">31</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-nav-link text-nav-link uppercase tracking-wider hover:bg-surface-container-high transition-colors whitespace-nowrap" type="button">
+<span>Completed</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-badge text-label-badge font-bold">12</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-secondary font-nav-link text-nav-link uppercase tracking-wider hover:bg-secondary-fixed transition-colors whitespace-nowrap" type="button">
+<span>Bespoke Inquiries</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-badge text-label-badge font-bold">16</span>
+</button>
+</div>
+<!-- Filtration Bar & Universal Search -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm mb-space-lg flex flex-col xl:flex-row gap-4 items-stretch xl:items-center justify-between">
+<!-- Search Query Input -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">manage_search</span>
+<input class="w-full pl-11 pr-4 py-2.5 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search guest name, booking ref (#AV-...), voucher ID, passport..." type="text"/>
+</div>
+<!-- Filter Selectors -->
+<div class="flex items-center gap-3 flex-wrap">
+<!-- Date Range Filter -->
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-secondary">date_range</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Next 30 Days</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<!-- Season Selector -->
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-primary">wb_sunny</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">South-West Monsoon Peak</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<!-- Chauffeur Allocation Status -->
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">assignment_ind</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Chauffeur: All</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<!-- Price Tier -->
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-secondary">payments</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Tier: Sovereign &amp; Prestige</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<button class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" title="Reset Filters" type="button">
+<span class="material-symbols-outlined text-[20px]">filter_alt_off</span>
+</button>
+</div>
+</div>
+<!-- Main Split Master-Detail Layout -->
+<div class="grid grid-cols-1 2xl:grid-cols-12 gap-space-lg items-start">
+<!-- Left Master Table View (7 cols on 2xl) -->
+<div class="2xl:col-span-7 flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-space-md py-4 bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="font-title-editorial text-title-editorial text-primary font-semibold">Active Expedition Ledger</span>
+<span class="font-label-badge text-label-badge text-secondary font-semibold bg-surface px-2 py-0.5 rounded">Real-time Telemetry</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-caption text-label-caption text-on-surface-variant">Showing 5 of 148 entries</span>
+<button class="p-1 rounded bg-surface text-on-surface-variant hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[18px]">refresh</span></button>
+</div>
+</div>
+<!-- Table Wrapper -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant">
+<th class="py-3.5 px-4 font-label-badge text-label-badge uppercase tracking-wider">Ref ID</th>
+<th class="py-3.5 px-4 font-label-badge text-label-badge uppercase tracking-wider">Lead Guest</th>
+<th class="py-3.5 px-4 font-label-badge text-label-badge uppercase tracking-wider">Curated Route</th>
+<th class="py-3.5 px-4 font-label-badge text-label-badge uppercase tracking-wider">Dates &amp; Party</th>
+<th class="py-3.5 px-4 font-label-badge text-label-badge uppercase tracking-wider">Chauffeur</th>
+<th class="py-3.5 px-4 font-label-badge text-label-badge uppercase tracking-wider">Yield</th>
+<th class="py-3.5 px-4 font-label-badge text-label-badge uppercase tracking-wider">Status</th>
+<th class="py-3.5 px-3 text-right font-label-badge text-label-badge uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0">
+<!-- Row 1: Selected / Highlighted Record -->
+<tr class="bg-surface-container-low transition-colors cursor-pointer group">
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded bg-primary-container text-on-primary flex items-center justify-center font-display-hero text-[12px] font-bold">A</div>
+<div>
+<span class="font-body-sm text-body-sm font-bold text-primary group-hover:underline">#AV-8921</span>
+<span class="block font-label-caption text-[10px] text-secondary">AIR CHARTER</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed font-title-editorial text-[13px] font-semibold flex-shrink-0">AP</div>
+<div>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface block leading-tight">Sir Arthur Pendelton</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span>United Kingdom</span>
+</span>
+<span class="inline-block mt-1 px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-container font-label-badge text-[10px] font-bold">PLATINUM VIP</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-medium text-primary block leading-tight">Bespoke Tea &amp; Safari Charter</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant block mt-0.5">Helicopter + Bungalows</span>
+</td>
+<td class="py-4 px-4 align-top whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">14 Feb – 22 Feb 2026</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">2 Adults [Private Villa]</span>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Gamini R.</span>
+</div>
+<span class="font-label-caption text-[10px] text-secondary font-semibold">Grade-A Naturalist</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-semibold text-primary block">$9,700</span>
+<span class="inline-block px-1.5 py-0.5 rounded bg-surface-container font-label-badge text-[10px] text-primary font-bold">PAID 100%</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-badge text-label-badge font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary animate-pulse"></span>
+<span>Confirmed</span>
+</span>
+</td>
+<td class="py-4 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container text-primary" title="View Dossier" type="button"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" title="WhatsApp Guest" type="button"><span class="material-symbols-outlined text-[18px]">chat</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" title="Options" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded bg-surface-container text-primary flex items-center justify-center font-display-hero text-[12px] font-bold">A</div>
+<div>
+<span class="font-body-sm text-body-sm font-bold text-primary group-hover:underline">#AV-8922</span>
+<span class="block font-label-caption text-[10px] text-on-surface-variant">COASTAL TRAIL</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-title-editorial text-[13px] font-semibold flex-shrink-0">EM</div>
+<div>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface block leading-tight">Elena &amp; Marc Rostova</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span>Switzerland</span>
+</span>
+<span class="inline-block mt-1 px-1.5 py-0.2 rounded bg-surface-container text-primary font-label-badge text-[10px] font-bold">HONEYMOON</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-medium text-primary block leading-tight">The Ceylon Discovery</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant block mt-0.5">8 Days / 7 Nights Classic</span>
+</td>
+<td class="py-4 px-4 align-top whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">28 Feb – 07 Mar 2026</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">2 Adults</span>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Sunil Jayasuriya</span>
+</div>
+<span class="font-label-caption text-[10px] text-on-surface-variant">Senior Chauffeur</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-semibold text-primary block">$5,400</span>
+<span class="inline-block px-1.5 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-badge text-[10px] font-bold">50% DEPOSIT</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-badge text-label-badge font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Pending Review</span>
+</span>
+</td>
+<td class="py-4 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">chat</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded bg-surface-container text-primary flex items-center justify-center font-display-hero text-[12px] font-bold">A</div>
+<div>
+<span class="font-body-sm text-body-sm font-bold text-primary group-hover:underline">#AV-8923</span>
+<span class="block font-label-caption text-[10px] text-on-surface-variant">HIGHLANDS EXP.</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center font-title-editorial text-[13px] font-semibold flex-shrink-0">HC</div>
+<div>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface block leading-tight">Lord Henry Cavendish</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span>United States</span>
+</span>
+<span class="inline-block mt-1 px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant font-label-badge text-[10px] font-bold">TEA CURATOR</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-medium text-primary block leading-tight">Highlands &amp; Horizons</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant block mt-0.5">5 Days / 4 Nights Estate</span>
+</td>
+<td class="py-4 px-4 align-top whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">10 Mar – 15 Mar 2026</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">4 Adults [Bungalow]</span>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-body-sm text-body-sm text-error font-medium">Unassigned</span>
+</div>
+<span class="font-label-caption text-[10px] text-on-surface-variant">Pending admin triage</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-semibold text-primary block">$7,200</span>
+<span class="inline-block px-1.5 py-0.5 rounded bg-surface-container font-label-badge text-[10px] text-primary font-bold">PAID 100%</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-container text-on-tertiary font-label-badge text-label-badge font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed"></span>
+<span>In Progress</span>
+</span>
+</td>
+<td class="py-4 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">chat</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded bg-surface-container text-primary flex items-center justify-center font-display-hero text-[12px] font-bold">A</div>
+<div>
+<span class="font-body-sm text-body-sm font-bold text-primary group-hover:underline">#AV-8924</span>
+<span class="block font-label-caption text-[10px] text-on-surface-variant">MONOLITH EXP.</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-title-editorial text-[13px] font-semibold flex-shrink-0">AT</div>
+<div>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface block leading-tight">Akira &amp; Yoko Takahashi</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span>Japan</span>
+</span>
+<span class="inline-block mt-1 px-1.5 py-0.2 rounded bg-surface-container text-secondary font-label-badge text-[10px] font-bold">ARCHITECTURAL</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-medium text-primary block leading-tight">Geoffrey Bawa Masterworks</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant block mt-0.5">Private Architectural Retrospective</span>
+</td>
+<td class="py-4 px-4 align-top whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">22 Mar – 29 Mar 2026</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">2 Adults</span>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Nalaka D.</span>
+</div>
+<span class="font-label-caption text-[10px] text-on-surface-variant">Arch. Historian</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-semibold text-primary block">$6,850</span>
+<span class="inline-block px-1.5 py-0.5 rounded bg-surface-container font-label-badge text-[10px] text-primary font-bold">PAID 100%</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-badge text-label-badge font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+<span>Confirmed</span>
+</span>
+</td>
+<td class="py-4 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">chat</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded bg-surface-container text-primary flex items-center justify-center font-display-hero text-[12px] font-bold">A</div>
+<div>
+<span class="font-body-sm text-body-sm font-bold text-primary group-hover:underline">#AV-8925</span>
+<span class="block font-label-caption text-[10px] text-error">WITHDRAWAL</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-error-container text-on-error-container flex items-center justify-center font-title-editorial text-[13px] font-semibold flex-shrink-0">CR</div>
+<div>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface block leading-tight">Claire Rousseau</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span>France</span>
+</span>
+<span class="inline-block mt-1 px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant font-label-badge text-[10px] font-bold">SOLO VOYAGER</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-medium text-primary block leading-tight">Southern Sanctuary Wellness</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant block mt-0.5">7 Days Ayurveda Retreat</span>
+</td>
+<td class="py-4 px-4 align-top whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface font-medium block">04 Apr – 11 Apr 2026</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">1 Adult</span>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-on-surface-variant"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Released</span>
+</div>
+<span class="font-label-caption text-[10px] text-on-surface-variant">Booking cancelled</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface-variant line-through block">$4,100</span>
+<span class="inline-block px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-badge text-[10px] font-bold">REFUNDED</span>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-badge text-label-badge font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span>Cancelled</span>
+</span>
+</td>
+<td class="py-4 px-3 align-top text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">chat</span></button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Status Bar -->
+<div class="px-space-md py-3.5 bg-surface-container-low flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span>Per page:</span>
+<select class="bg-surface-container-lowest text-on-surface px-2 py-1 rounded text-body-sm font-medium focus:outline-none">
+<option>10</option>
+<option>25</option>
+<option>50</option>
+</select>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container-high disabled:opacity-40" disabled="" type="button"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<span class="px-3 py-1 rounded bg-primary text-on-primary font-label-badge text-label-badge">1</span>
+<button class="px-3 py-1 rounded hover:bg-surface-container-high font-label-badge text-label-badge" type="button">2</button>
+<button class="px-3 py-1 rounded hover:bg-surface-container-high font-label-badge text-label-badge" type="button">3</button>
+<span class="px-1 text-on-surface-variant">...</span>
+<button class="px-3 py-1 rounded hover:bg-surface-container-high font-label-badge text-label-badge" type="button">15</button>
+<button class="p-1.5 rounded hover:bg-surface-container-high" type="button"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Right Side Dossier Slide-Over / Inspect Panel (5 cols on 2xl) -->
+<div class="2xl:col-span-5 flex flex-col bg-surface-container-lowest rounded-xl shadow-md overflow-hidden sticky top-24">
+<!-- Dossier Header -->
+<div class="p-space-md bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-display-hero text-headline-sm font-bold shadow-sm">
+            #
+          </div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary">Dossier #AV-8921</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-label-badge text-label-badge font-bold">CONFIRMED</span>
+</div>
+<span class="font-label-caption text-label-caption text-secondary font-medium">Bespoke Tea &amp; Safari Charter (Private Jet / Heli Link)</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Print Dossier Manifest" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Share with Team" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+<!-- Quick Action Dispatch Command Bar -->
+<div class="px-space-md py-3 bg-surface-container-low flex items-center gap-2 overflow-x-auto no-scrollbar">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-on-primary font-nav-link text-[11px] uppercase tracking-wider font-semibold shadow-sm hover:bg-primary-container transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Approve &amp; Confirm</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-primary font-nav-link text-[11px] uppercase tracking-wider font-semibold hover:bg-secondary-fixed transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">request_quote</span>
+<span>Request Deposit</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-nav-link text-[11px] uppercase tracking-wider font-semibold hover:bg-surface-container-highest transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">assignment_ind</span>
+<span>Assign Chauffeur</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-error-container text-on-error-container font-nav-link text-[11px] uppercase tracking-wider font-semibold hover:bg-error hover:text-on-error transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+<span>Cancel</span>
+</button>
+</div>
+<!-- Dossier Body Content -->
+<div class="p-space-md space-y-space-md max-h-[750px] overflow-y-auto">
+<!-- Lead Guest Profile Spotlight -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-title-editorial text-title-editorial font-bold">
+                AP
+              </div>
+<div>
+<h2 class="font-title-editorial text-title-editorial text-primary">Sir Arthur Pendelton, Bt.</h2>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-label-caption text-label-caption text-on-surface-variant">Mayfair, London, UK</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-badge text-label-badge text-secondary font-bold">VIP CODE #901-C</span>
+</div>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-nav-link text-[11px] tracking-wider uppercase" href="https://wa.me/" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span>
+<span>WhatsApp</span>
+</a>
+</div>
+<!-- Guest Preferences / Curated Concierge Notes -->
+<div class="bg-surface-container-lowest p-3.5 rounded-lg space-y-2">
+<div class="flex items-center gap-2 text-secondary font-label-badge text-label-badge uppercase tracking-wider font-bold">
+<span class="material-symbols-outlined text-[16px]">room_service</span>
+<span>High-Touch VIP Dietary &amp; Transfer Mandates</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+              Strictly Gluten-Free dining provisions requested across all 3 sanctuaries. Organic single-estate Silver Tips white tea degustation reserved at Dunkeld Bungalow.
+            </p>
+<div class="flex items-center gap-2 pt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-label-caption text-label-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">flight_takeoff</span>
+<span>Charter Heli: Bandaranaike (CMB) → Sigiriya</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-secondary font-label-caption text-label-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">luggage</span>
+<span>4x Rimowa Aluminum Holds</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Curated Sanctuaries & Route Map Overview -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant font-semibold">Selected Luxury Sanctuaries (3 Properties)</span>
+<span class="font-label-caption text-label-caption text-secondary font-semibold">Relais &amp; Châteaux Circuit</span>
+</div>
+<div class="space-y-2">
+<!-- Sanctuary 1 -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center flex-shrink-0" data-alt="Expansive architectural water garden villa with mirror reflections facing ancient Sigiriya fortress in misty morning light. Soft warm sand tones and lush tropical greenery in serene Ceylon luxury aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtPNLC1-ow3xBF1lbH-yAxFOJ9xron3246IP5_ca1Mtj7OZTPW0BT6VOlbNzNRa7Ob5rUPX35BnqJJ2dDK56jNcxPwIjhrp3IYAbl4tfwcoqJMz-ozS0vEHEgBQr69vvGglZ2ZRhTcwFQ1uHiB13fsgXy1dtccJ5wL873EJKg3izk19VBJs96cpJr7o88qJPeXoyMtj0SGvK5YxoHjtt71R278GeFnijTr2aenAH8')"></div>
+<div>
+<h3 class="font-title-editorial text-[15px] text-primary font-semibold">Water Garden Sigiriya</h3>
+<span class="font-label-caption text-label-caption text-on-surface-variant block">Nights 1–3 • Deluxe Water Villa with Private Plunge Pool</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-primary font-bold px-2 py-1 rounded bg-surface-container-lowest">CONFIRMED</span>
+</div>
+<!-- Sanctuary 2 -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center flex-shrink-0" data-alt="Historic colonial tea planter heritage bungalow surrounded by emerald rolling Ceylon tea hills and misty mountain lake. Luxurious teak wood interiors, vintage brass fittings and manicured lawn." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsTjtA05pu3-0cXyV3vkML-Yrmr4dAnZ03LRUn4IoNS0kvO-LMzAbiHKy2XCPE6CeGw5sYngZu4OYY5fA_ktvYRJQtFB64S75mYjcq-59d_au2mwjLo6Spgg7S0WUxL7sNHYTInWLoG1ki6PUTG7nOCJIyTDcCm7cbUBy476Sh0aI5bc5souGXLZKcqMMXdZs8gdLdh1dXBp13RdLuXYW-TWNS9zNIWMAxq8xV1Vc')"></div>
+<div>
+<h3 class="font-title-editorial text-[15px] text-primary font-semibold">Ceylon Tea Trails (Castlereagh)</h3>
+<span class="font-label-caption text-label-caption text-on-surface-variant block">Nights 4–5 • Baker Master Suite • Private Butler</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-primary font-bold px-2 py-1 rounded bg-surface-container-lowest">CONFIRMED</span>
+</div>
+<!-- Sanctuary 3 -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center flex-shrink-0" data-alt="Organic cocoon-shaped safari tented pavilion overlooking rugged southern Indian Ocean coastline with wild boulder formations and golden sunset light at Yala National Park." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWKyjs32QIOtftPMA3Ng1dJY41f1bir7rA3qVX0LRDuLRuSGB7rTxiXsaryBIpbIlBLjWwoxr8YhqU4twHqd9MSeVJM8Y5kUIUmHXJcR7lK9NPWPxRaYj_p6Mo7p-p69yds9BqRHCKbFIQgd-lRkfW3YiLpm9oJ4m2WME2uZMNgi5jzfSUUEVtZNYAv5uvbdkNNPCRQ4OZZ140en1T_43ScmHVL4yhw9iYiBXsh7Y')"></div>
+<div>
+<h3 class="font-title-editorial text-[15px] text-primary font-semibold">Wild Coast Tented Lodge</h3>
+<span class="font-label-caption text-label-caption text-on-surface-variant block">Nights 6–8 • Cocoon Pool Suite • Yala Leopard Safari</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-primary font-bold px-2 py-1 rounded bg-surface-container-lowest">CONFIRMED</span>
+</div>
+</div>
+</div>
+<!-- Assigned Specialist Profile -->
+<div class="p-space-md rounded-xl bg-surface-container-low">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant font-semibold block mb-2">Assigned Chauffeur-Naturalist</span>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center" data-alt="Professional Sri Lankan senior naturalist guide in bespoke olive safari linen uniform smiling in front of an expedition Land Cruiser." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARGvFQrlQMX0OugxG--A1tJDvOIhrrQe8VHquyXse02uUEYPrDU7Xv_FRhikezxCU77UWUiy7kOnL8j8Cqe_zTcXz6WmRSRf2PGYlLkLPo_otA5koY_kmW08IcxC7ad80yZbcsuhl_EmqQ9kq-NcBG2RuMkOAB0Eg2jiYqJ9XDD5le8lgtXcDZuFypjZffKqnOcQNrr7tZhQrEAggKbYhIVDh1quFchSFSK7FLGHc')"></div>
+<div>
+<span class="font-body-sm text-body-sm font-bold text-primary block leading-tight">Gamini Ratnayake</span>
+<span class="font-label-caption text-label-caption text-secondary">Grade-A Field Biologist • 14 Yrs Experience</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary p-1.5 rounded hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+</button>
+</div>
+<div class="mt-3 pt-3 flex items-center justify-between font-label-caption text-label-caption text-on-surface-variant">
+<span>Vehicle: Mercedes Benz V-Class 4MATIC</span>
+<span class="font-semibold text-primary">Plate: WP CAD-4488</span>
+</div>
+</div>
+<!-- Financial Summary Ledger Box -->
+<div class="p-space-md rounded-xl bg-primary text-on-primary">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-primary-fixed-dim">Manifest Valuation &amp; Billing</span>
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary font-label-badge text-label-badge font-semibold">100% SETTLED</span>
+</div>
+<div class="flex items-baseline justify-between mb-2">
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-primary">$9,700 USD</span>
+<span class="font-body-sm text-body-sm text-primary-fixed-dim">LKR 2,960,000 Equiv.</span>
+</div>
+<div class="space-y-1 pt-2 font-label-caption text-label-caption text-on-primary-container">
+<div class="flex justify-between">
+<span>Bespoke Sanctuary Suites (7 Nights)</span>
+<span>$6,400</span>
+</div>
+<div class="flex justify-between">
+<span>Cinnamon Air Chartered Helicopter Transfer</span>
+<span>$2,100</span>
+</div>
+<div class="flex justify-between">
+<span>Private Yala Leopard Naturalist Tracker</span>
+<span>$1,200</span>
+</div>
+</div>
+</div>
+<!-- Activity Timeline / Concierge Log -->
+<div>
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant font-semibold block mb-3">Internal Activity &amp; Dispatch Log</span>
+<div class="relative pl-6 space-y-4">
+<!-- Timeline track line -->
+<div class="absolute left-2.5 top-2 bottom-2 w-0.5 bg-surface-container-high"></div>
+<!-- Milestone 1 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-primary ring-4 ring-surface-container-lowest"></div>
+<div class="flex items-baseline justify-between">
+<span class="font-body-sm text-body-sm font-semibold text-primary">Full Settlement Verified</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">Today, 10:14 AM</span>
+</div>
+<p class="font-label-caption text-label-caption text-on-surface-variant mt-0.5">Wire transfer from HSBC Private Bank confirmed by Accounts Atelier.</p>
+</div>
+<!-- Milestone 2 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-secondary ring-4 ring-surface-container-lowest"></div>
+<div class="flex items-baseline justify-between">
+<span class="font-body-sm text-body-sm font-semibold text-primary">Helicopter Landing Slot Secured</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">Yesterday, 4:30 PM</span>
+</div>
+<p class="font-label-caption text-label-caption text-on-surface-variant mt-0.5">Sigiriya Civil Aviation cleared Cinnamon Air chartered Bell 206.</p>
+</div>
+<!-- Milestone 3 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-on-surface-variant ring-4 ring-surface-container-lowest"></div>
+<div class="flex items-baseline justify-between">
+<span class="font-body-sm text-body-sm font-semibold text-primary">Dietary Menu Signed by Head Chef</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">02 Feb 2026, 11:20 AM</span>
+</div>
+<p class="font-label-caption text-label-caption text-on-surface-variant mt-0.5">Chef Nihal at Ceylon Tea Trails confirmed 100% gluten-free bakery regimen.</p>
+</div>
+</div>
+</div>
+<!-- Append Note Form -->
+<div class="pt-2">
+<div class="flex gap-2">
+<input class="flex-1 px-3 py-2 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-high transition-all" placeholder="Add confidential concierge note..." type="text"/>
+<button class="px-3 py-2 bg-primary-container text-on-primary rounded-lg font-nav-link text-[11px] uppercase tracking-wider hover:bg-primary transition-colors" type="button">
+              Post
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

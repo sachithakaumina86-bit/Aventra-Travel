@@ -1,0 +1,936 @@
+{
+  "entities": {
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized AVENTRA administrator record for role-based access control.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 200,
+          "description": "Verified administrator email address"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "Administrator display name"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["super_admin", "concierge_admin"],
+          "description": "Administrative role"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["email", "name", "role", "createdAt"]
+    },
+    "Destination": {
+      "title": "Destination",
+      "description": "Sri Lankan luxury travel destination sanctuary.",
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80,
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "region": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "microclimate": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "elevation": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "bestSeason": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "tagline": {
+          "type": "string",
+          "maxLength": 180
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 500
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 5000
+        },
+        "heroImage": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "galleryImages": {
+          "type": "array",
+          "description": "Up to 8 gallery image URLs"
+        },
+        "highlights": {
+          "type": "array",
+          "description": "Up to 10 key destination highlights"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Up to 8 filter tags"
+        },
+        "startingRateUsd": {
+          "type": "number"
+        },
+        "journeysRouted": {
+          "type": "number"
+        },
+        "isFeatured": {
+          "type": "boolean"
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
+        "isSample": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "type": "number"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["slug", "name", "region", "microclimate", "summary", "description", "heroImage", "isPublished", "createdAt", "updatedAt"]
+    },
+    "Experience": {
+      "title": "Experience",
+      "description": "Curated private Sri Lankan travel experience.",
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80,
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 140
+        },
+        "realmCategory": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "region": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "duration": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "badgeText": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 500
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 4000
+        },
+        "heroImage": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "highlights": {
+          "type": "array"
+        },
+        "equipmentOrSetting": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "fieldNote": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "fieldNoteAuthor": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "tags": {
+          "type": "array"
+        },
+        "isSpotlight": {
+          "type": "boolean"
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
+        "isSample": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "type": "number"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["slug", "title", "realmCategory", "summary", "description", "heroImage", "isPublished", "createdAt", "updatedAt"]
+    },
+    "TourPackage": {
+      "title": "TourPackage",
+      "description": "Curated multi-day luxury tour itinerary package.",
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80,
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 140
+        },
+        "subtitle": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "category": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "durationDays": {
+          "type": "number"
+        },
+        "durationNights": {
+          "type": "number"
+        },
+        "durationLabel": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "indicativePriceUsd": {
+          "type": "number"
+        },
+        "priceDisclaimer": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "seasonWindow": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "heroImage": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "mosaicImages": {
+          "type": "array"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 600
+        },
+        "overviewQuote": {
+          "type": "string",
+          "maxLength": 400
+        },
+        "overviewNarrative": {
+          "type": "string",
+          "maxLength": 5000
+        },
+        "highlights": {
+          "type": "array"
+        },
+        "itineraryDays": {
+          "type": "array"
+        },
+        "sanctuaries": {
+          "type": "array"
+        },
+        "inclusions": {
+          "type": "array"
+        },
+        "exclusions": {
+          "type": "array"
+        },
+        "faqs": {
+          "type": "array"
+        },
+        "isFeatured": {
+          "type": "boolean"
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
+        "isSample": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "type": "number"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["slug", "title", "category", "durationDays", "durationNights", "indicativePriceUsd", "heroImage", "summary", "isPublished", "createdAt", "updatedAt"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "Bespoke journey inquiry submitted by a prospective traveler.",
+      "type": "object",
+      "properties": {
+        "referenceCode": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "fullName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 5,
+          "maxLength": 200
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "country": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "partyType": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "durationPreference": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "climatePreference": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "preferredArrivalDate": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "adults": {
+          "type": "number"
+        },
+        "children": {
+          "type": "number"
+        },
+        "selectedDestinations": {
+          "type": "array"
+        },
+        "sanctuaryTier": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "travelCadence": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "selectedExperienceTypes": {
+          "type": "array"
+        },
+        "estimatedBudgetUsd": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 2500
+        },
+        "preferredContactMethod": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "reviewing", "quoted", "converted", "archived"]
+        },
+        "adminNotes": {
+          "type": "string",
+          "maxLength": 2500
+        },
+        "convertedBookingId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["referenceCode", "fullName", "email", "phone", "country", "adults", "status", "createdAt", "updatedAt"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Managed expedition booking created or converted by AVENTRA admin.",
+      "type": "object",
+      "properties": {
+        "referenceCode": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 30
+        },
+        "inquiryId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "customerId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "guestName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "guestEmail": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 200
+        },
+        "guestPhone": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "guestCountry": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "guestTier": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "packageId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "packageTitle": {
+          "type": "string",
+          "maxLength": 140
+        },
+        "customRouteTitle": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "startDate": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "endDate": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "adults": {
+          "type": "number"
+        },
+        "children": {
+          "type": "number"
+        },
+        "assignedChauffeur": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "vehicleInfo": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "sanctuariesSummary": {
+          "type": "array"
+        },
+        "dietaryAndNotes": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "totalAmountUsd": {
+          "type": "number"
+        },
+        "depositAmountUsd": {
+          "type": "number"
+        },
+        "paymentStatus": {
+          "type": "string",
+          "enum": ["unpaid", "deposit_paid", "paid_full", "refunded"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "confirmed", "in_progress", "completed", "cancelled"]
+        },
+        "adminNotes": {
+          "type": "string",
+          "maxLength": 2500
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["referenceCode", "guestName", "guestEmail", "startDate", "endDate", "adults", "totalAmountUsd", "paymentStatus", "status", "createdAt", "updatedAt"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "CRM record for an AVENTRA client.",
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 200
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "country": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "tier": {
+          "type": "string",
+          "enum": ["Standard", "Collector", "VIP Patron"]
+        },
+        "preferredStyle": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["fullName", "email", "tier", "createdAt", "updatedAt"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "Guest review or travel story testimonial.",
+      "type": "object",
+      "properties": {
+        "guestName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "guestOrigin": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "journeyTitle": {
+          "type": "string",
+          "maxLength": 140
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 1200
+        },
+        "rating": {
+          "type": "number"
+        },
+        "stayDateLabel": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "isFeatured": {
+          "type": "boolean"
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
+        "isSample": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["guestName", "quote", "rating", "isPublished", "createdAt", "updatedAt"]
+    },
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "Editorial travel journal article.",
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 160
+        },
+        "category": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 500
+        },
+        "content": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 15000
+        },
+        "coverImage": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "authorName": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "readTimeMinutes": {
+          "type": "number"
+        },
+        "publishedDateLabel": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "isFeatured": {
+          "type": "boolean"
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
+        "isSample": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["slug", "title", "category", "excerpt", "content", "coverImage", "isPublished", "createdAt", "updatedAt"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Curated photograph in the AVENTRA visual archive.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "region": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "category": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "imageUrl": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "caption": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "isPublished": {
+          "type": "boolean"
+        },
+        "isSample": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["title", "category", "imageUrl", "isPublished", "createdAt", "updatedAt"]
+    },
+    "ContactMessage": {
+      "title": "ContactMessage",
+      "description": "Inbound contact message or dispatch newsletter subscription.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["contact", "newsletter"]
+        },
+        "fullName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 200
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "subject": {
+          "type": "string",
+          "maxLength": 180
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 3000
+        },
+        "status": {
+          "type": "string",
+          "enum": ["unread", "read", "replied", "archived"]
+        },
+        "adminNotes": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["type", "fullName", "email", "status", "createdAt", "updatedAt"]
+    },
+    "WebsiteSettings": {
+      "title": "WebsiteSettings",
+      "description": "Public brand, contact, founder story, and placeholder settings editable from Admin.",
+      "type": "object",
+      "properties": {
+        "brandName": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "tagline": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "heroHeadline": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "heroSubheadline": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "heroImageUrl": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "contactEmail": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "contactPhone": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "whatsappNumber": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "officeAddress": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "instagramUrl": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "facebookUrl": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "youtubeUrl": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "tiktokUrl": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "founderName": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "founderRole": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "founderLetterTitle": {
+          "type": "string",
+          "maxLength": 180
+        },
+        "founderLetterBody": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "founderQuote": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "heritageEstablishedNote": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "accreditationsNote": {
+          "type": "string",
+          "maxLength": 400
+        },
+        "footerDescription": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "newsletterPrompt": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["brandName", "tagline", "contactEmail", "officeAddress", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/admins/{uid}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Verified AVENTRA administrator profiles."
+    },
+    "/destinations/{destId}": {
+      "schema": { "$ref": "#/entities/Destination" },
+      "description": "Curated Sri Lankan destination sanctuaries."
+    },
+    "/experiences/{expId}": {
+      "schema": { "$ref": "#/entities/Experience" },
+      "description": "Curated signature experiences."
+    },
+    "/tourPackages/{pkgId}": {
+      "schema": { "$ref": "#/entities/TourPackage" },
+      "description": "Curated multi-day luxury tour packages."
+    },
+    "/inquiries/{inqId}": {
+      "schema": { "$ref": "#/entities/Inquiry" },
+      "description": "Prospective traveler bespoke journey inquiries."
+    },
+    "/bookings/{bookingId}": {
+      "schema": { "$ref": "#/entities/Booking" },
+      "description": "Confirmed and managed bookings overseen by admins."
+    },
+    "/customers/{custId}": {
+      "schema": { "$ref": "#/entities/Customer" },
+      "description": "Customer relationship directory."
+    },
+    "/testimonials/{testId}": {
+      "schema": { "$ref": "#/entities/Testimonial" },
+      "description": "Published guest testimonials and stories."
+    },
+    "/blogPosts/{postId}": {
+      "schema": { "$ref": "#/entities/BlogPost" },
+      "description": "AVENTRA Travel Journal editorial dispatches."
+    },
+    "/gallery/{galId}": {
+      "schema": { "$ref": "#/entities/GalleryItem" },
+      "description": "Curated media gallery photographs."
+    },
+    "/contactMessages/{msgId}": {
+      "schema": { "$ref": "#/entities/ContactMessage" },
+      "description": "Contact desk messages and newsletter signups."
+    },
+    "/websiteSettings/{settingId}": {
+      "schema": { "$ref": "#/entities/WebsiteSettings" },
+      "description": "Editable website branding, founder story, and contact desk settings."
+    }
+  }
+}

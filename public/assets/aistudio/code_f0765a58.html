@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-lowest": "#ffffff", "surface-variant": "#e3e2df", "on-error-container": "#93000a", "secondary-fixed-dim": "#e4c279", "on-tertiary-fixed": "#00201d", "on-error": "#ffffff", "on-primary-container": "#80bea6", "on-tertiary": "#ffffff", "primary-fixed": "#b0f0d6", "secondary-container": "#ffdb90", "tertiary-fixed": "#9cf2e8", "outline-variant": "#bfc9c3", "outline": "#707974", "on-secondary-fixed": "#251a00", "inverse-primary": "#95d3ba", "on-background": "#1b1c1a", "on-tertiary-fixed-variant": "#00504a", "secondary": "#745b1c", "on-tertiary-container": "#6ac0b6", "surface-tint": "#2b6954", "secondary-fixed": "#ffdf9c", "on-primary-fixed-variant": "#0b513d", "inverse-on-surface": "#f2f1ed", "surface-container-highest": "#e3e2df", "on-secondary-container": "#795f20", "surface-container-high": "#e9e8e4", "on-surface": "#1b1c1a", "surface-container": "#efeeea", "primary-fixed-dim": "#95d3ba", "background": "#faf9f5", "primary-container": "#064e3b", "primary": "#003527", "on-primary-fixed": "#002117", "surface": "#faf9f5", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#5a4304", "tertiary": "#003430", "surface-bright": "#faf9f5", "surface-dim": "#dbdad6", "inverse-surface": "#2f312e", "on-primary": "#ffffff", "tertiary-container": "#004d47", "surface-container-low": "#f4f4f0", "on-surface-variant": "#404944", "on-secondary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed-dim": "#80d5cb" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-xl": "3rem", "margin-desktop": "5rem", "gutter": "1.5rem", "margin": "1.25rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter-desktop": "2.5rem", "space-md": "1rem" }, "fontFamily": { "body-lead": [ "Inter" ], "label-badge": [ "Inter" ], "display-hero-mobile": [ "Playfair Display" ], "display-hero": [ "Playfair Display" ], "title-editorial": [ "Playfair Display" ], "headline-md": [ "Playfair Display" ], "headline-lg-mobile": [ "Playfair Display" ], "nav-link": [ "Inter" ], "label-caption": [ "Inter" ], "headline-lg": [ "Playfair Display" ], "body-md": [ "Inter" ], "headline-sm": [ "Playfair Display" ], "body-sm": [ "Inter" ] }, "fontSize": { "body-lead": [ "18px", { "lineHeight": "30px", "letterSpacing": "0.01em", "fontWeight": "300" } ], "label-badge": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "display-hero-mobile": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "display-hero": [ "64px", { "lineHeight": "76px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "title-editorial": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-md": [ "32px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "nav-link": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.14em", "fontWeight": "500" } ], "label-caption": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "400" } ], "headline-lg": [ "48px", { "lineHeight": "58px", "letterSpacing": "-0.015em", "fontWeight": "400" } ], "body-md": [ "15px", { "lineHeight": "26px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "headline-sm": [ "24px", { "lineHeight": "32px", "letterSpacing": "0em", "fontWeight": "600" } ], "body-sm": [ "13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 left-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(6,78,59,0.06)] transition-all duration-300"><div class="h-20 w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-3 group" data-path="home" href="#"><img alt="Aventra Travel Logo with Scenic A.png" class="w-auto object-contain h-12" src="https://lh3.googleusercontent.com/aida/ALJJyrDwKwfddgov1gAOacuaxzPGO8f-sqoMpS1q-9GsNDGqeX6O9o0xoFEHrzjPSvS0p5x8uKr0o_WX3928RVOLEDejFsaormVs-8HSwG8ffsxb_9Kcmnbhz1Xjzjr7XSzGYz_t9BBPnO-JhmmdC2lpmAr-rbuaZG_bSqnWuQ9LpT9hJwRH-XT_bl20eMfCkeVwldxCWA0vWnpDoxB_00lButq1Hq3qoSM60-d2LEsUZT3deOKhJVSN8rwwOg"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary group-hover:text-primary-container transition-colors">AVENTRA</span><span class="font-label-badge text-[9px] uppercase tracking-[0.25em] text-secondary -mt-1 font-semibold">Ceylon Expeditions</span></div></a></div><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary border-b-2 border-secondary font-semibold"><a class="font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary py-2" data-path="home" href="#">Home</a><a class="font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary py-2" data-path="destinations" href="#">Destinations</a><a class="font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary py-2" data-path="experiences" href="#">Experiences</a><a class="font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary py-2" data-path="tour-packages" href="#">Tour Packages</a><a aria-current="page" class="uppercase transition-colors py-2 text-primary border-b-2 border-secondary font-semibold" data-path="about-us" href="#">About Us</a><a class="font-nav-link text-nav-link uppercase transition-colors text-on-surface-variant hover:text-primary py-2" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-primary-container text-on-primary font-nav-link text-nav-link uppercase shadow-[0_4px_16px_rgba(6,78,59,0.2)] hover:bg-primary transition-all duration-300" data-path="plan-your-journey" href="#">Plan Your Journey</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- SECTION 1: HERO & GENESIS -->
+<section class="relative w-full overflow-hidden pb-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop pt-8 md:pt-14">
+<!-- Overline & Breadcrumb -->
+<div class="flex items-center gap-3 mb-6">
+<span class="inline-block w-8 h-[1px] bg-secondary"></span>
+<p class="font-label-badge text-label-badge uppercase tracking-[0.22em] text-secondary">
+          Our Genesis &amp; Ethos  •  About AVENTRA
+        </p>
+</div>
+<!-- Grand Editorial Title -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+<div class="lg:col-span-8">
+<h1 class="font-display-hero text-display-hero text-primary tracking-tight">
+            Born of Ceylon. <br/>
+<span class="italic font-normal font-headline-lg text-secondary">Sculpted for the Connoisseur.</span>
+</h1>
+</div>
+<div class="lg:col-span-4 lg:pl-6 pb-2">
+<p class="font-body-lead text-body-lead text-on-surface-variant font-light">
+            AVENTRA was founded on a singular conviction: that Sri Lanka’s sacred citadels, misty tea empires, and wild leopard shores deserve to be experienced not as a spectator, but through intimate, deeply considered reverence.
+          </p>
+</div>
+</div>
+<!-- Subtle Metric Anchors (No Borders, elevated tonal pills) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+<div class="bg-surface-container-low p-5 rounded-lg flex flex-col gap-1 shadow-sm transition-all duration-300 hover:bg-surface-container">
+<span class="font-label-badge text-label-badge text-secondary uppercase tracking-widest">Provenance</span>
+<span class="font-headline-sm text-headline-sm text-primary">Est. 2012</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">Founded in Colombo 03</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-lg flex flex-col gap-1 shadow-sm transition-all duration-300 hover:bg-surface-container">
+<span class="font-label-badge text-label-badge text-secondary uppercase tracking-widest">Authority</span>
+<span class="font-headline-sm text-headline-sm text-primary">Grade-A</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">SLTDA Certified Concierge</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-lg flex flex-col gap-1 shadow-sm transition-all duration-300 hover:bg-surface-container">
+<span class="font-label-badge text-label-badge text-secondary uppercase tracking-widest">Ecology</span>
+<span class="font-headline-sm text-headline-sm text-primary">100% Net Zero</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">Offset Private Safaris</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-lg flex flex-col gap-1 shadow-sm transition-all duration-300 hover:bg-surface-container">
+<span class="font-label-badge text-label-badge text-secondary uppercase tracking-widest">Guild</span>
+<span class="font-headline-sm text-headline-sm text-primary">14 Naturalists</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant">Resident Island Scholars</span>
+</div>
+</div>
+<!-- Asymmetrical Editorial Image Triptych -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+<div class="md:col-span-7 relative group overflow-hidden rounded-xl h-[420px] md:h-[540px] shadow-lg">
+<img alt="Misty tea valleys of Bogawantalawa Ceylon" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Sweeping high-altitude aerial view of Bogawantalawa tea estate in Sri Lanka at dawn with dramatic rolling emerald hills, soft sun rays penetrating mist, and a colonial stone bungalow terrace nestled into the hillside in quiet luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoTl5f5XNRwc7kZc5dpC5Lw3VDCWkCQLpk6s-gcYw9a8_l1vTpLVB2_k3BHBbDl3W1R1eXjyNaw9kDcjQ28iJEIiIrGSUhwunup9yW3nx8f8IAHCbU9BOAvtTHuTQlup8gXyrr8x1D0FfW253vYuc0nZdv-GXXG_MEhz5B423NX2ScIBZbdbYW1rfP150B5gNIZnew-lFs1ZtIhPP87cwkeFW7d9bKna38OT9Bkos"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+<div>
+<span class="font-label-badge text-label-badge text-secondary-fixed uppercase tracking-widest">Golden Valley</span>
+<p class="font-title-editorial text-title-editorial text-surface-container-lowest font-medium">Bogawantalawa High Altitude Highlands</p>
+</div>
+<span class="hidden sm:inline-block font-label-caption text-label-caption text-surface-container-lowest/80 bg-surface/20 backdrop-blur-md px-3 py-1 rounded">Alt. 1,600m</span>
+</div>
+</div>
+<div class="md:col-span-5 flex flex-col gap-6">
+<div class="relative group overflow-hidden rounded-xl h-[245px] shadow-md">
+<img alt="Bawa architectural residence in Bentota" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Exquisite tropical modernism architecture inspired by Geoffrey Bawa featuring deep shaded teak verandas, reflective lily ponds, polished granite stone, and warm atmospheric ambient lantern lighting in Lunuganga Sri Lanka." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzxn0e4Ug4J5tpeZ7Zt72JHXovHiLeCNilqzeQDJ8vNlEGDWCohgQ3WS_QUmHPbJR9fWrSbkSdOWFVEbvHwEqmKMj0bcvalFJyFdotZEJJJcwKBKKRcoJi5qKAjg3MP0FBTFA4n8nA2_Ii_S5UADQNMx96KjBj1WZaMQWr7vtVn_ZIdBRxQIMvcjN6dgHR-RKKokIgu2KlnaCM8AK2lo8hk2pNKZhPNd6Ec_MFNnM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-5">
+<span class="font-label-badge text-label-badge text-secondary-fixed uppercase tracking-wider">Design Heritage</span>
+<p class="font-headline-sm text-headline-sm text-surface-container-lowest">Bawa Architectural Sanctuaries</p>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-xl h-[265px] shadow-md">
+<img alt="Wild Ceylon leopard resting on rocks at Yala" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A wild solitary Sri Lankan leopard perched gracefully on a sun-warmed massive granite rock outcrop overlooking Yala National Park's sand dunes and dry coastal scrub during warm golden hour light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrIptVY55NlPQ8DG4q1AXIpfOfLyLTXndleoqcpmVwFJVLR951vekRMjPZc4oRkIdTH1QBNZBMR2zGhRX7qP5jPcC3gWZcSDPONKp2YxmSqpFCcM4tFoA1BzBwrYN0jNuipzQYaZwRuhvtjuOJQ3tSiHUEkgXoBCuSRxsGTTSQOD-L7JIKIDAtZRaWp8zDqy0xTz7lDDNhECTTuXV8Tc-Jhwx9hBVUo7l8DnR6dLY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-5">
+<span class="font-label-badge text-label-badge text-secondary-fixed uppercase tracking-wider">Private Safaris</span>
+<p class="font-headline-sm text-headline-sm text-surface-container-lowest">Yala Sanctuary Buffer Corridors</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: FOUNDER'S LETTER & NARRATIVE -->
+<section class="w-full bg-surface-container-low py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
+<!-- Left: Founder Portrait, Quote, Signature -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="relative rounded-xl overflow-hidden shadow-xl bg-surface-container">
+<img alt="Ranil Senanayake, Founder and Expedition Architect" class="w-full h-[520px] object-cover" data-alt="Distinguished Sri Lankan gentleman in his late forties wearing an unbuttoned linen field jacket, seated on an antique teak veranda chair with brass vintage field binoculars and an open leatherbound travel journal, surrounded by tropical foliage." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ7tV6eQABkigSU9DPflmVRM0ZmeB9M6mvoDUOy6N9_7uzO6EmeiEUQXgZRjPNDDrl30XUr_qQT8m-WB5y45mnGij15ZUriF61Yvkbslahr9AmSD7Q2eoT73CeqxYNNxn93CavjMJwYUSIXwG6HPYrNjtA33K1tIhOLvKAxMqD1kqGlwVDDjlgQbvE9GSCe6XBwyTFo9U9cXbQUa9a603UHcA5SrbzFT0LGs2abKE"/>
+<div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent">
+<h3 class="font-headline-sm text-headline-sm text-surface-container-lowest">Ranil Senanayake</h3>
+<p class="font-label-badge text-label-badge uppercase tracking-[0.16em] text-secondary-fixed">
+                Founder &amp; Chief Expedition Architect
+              </p>
+<p class="font-body-sm text-body-sm text-surface-variant mt-1">4th-Generation Planter Descendant • Wildlife Biologist</p>
+</div>
+</div>
+<!-- Editorial Pull Quote Box -->
+<div class="bg-surface-container p-6 rounded-lg shadow-sm relative">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-4xl leading-none select-none opacity-40">format_quote</span>
+<blockquote class="font-title-editorial text-title-editorial italic text-primary -mt-2 mb-4 leading-relaxed">
+              “Mass tourism flattens the soul of an island. We created AVENTRA to restore intimacy, quiet luxury, and profound local knowledge to every crossing.”
+            </blockquote>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caption text-label-caption text-on-surface-variant uppercase tracking-widest">Colombo Archive • 2012</span>
+</div>
+<span class="font-title-editorial italic text-secondary text-lg">R. Senanayake</span>
+</div>
+</div>
+</div>
+<!-- Right: "A Letter from our Founder" -->
+<div class="lg:col-span-7 flex flex-col gap-6 lg:pl-6">
+<div class="flex items-center gap-2">
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary">The Genesis</span>
+<span class="text-secondary opacity-40">•</span>
+<span class="font-label-badge text-label-badge uppercase tracking-[0.14em] text-on-surface-variant">Archival Dispatch</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-none">
+            A Letter from our Founder
+          </h2>
+<div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p class="font-body-lead text-body-lead text-on-surface font-light">
+              I spent my boyhood split between two completely different Sri Lankas. At dawn in Bogawantalawa, tea pluckers’ voices drifted through mist while brass water boilers whistled over cinnamon wood in our great-grandfather’s 19th-century granite bungalow. 
+            </p>
+<p>
+              By school holidays, my uncle—a sanctuary ranger—would bundle us into an open Land Cruiser across the salt-crusted lagoons of Yala. We learned that the wilderness does not perform on command; it reveals itself only to those who possess the patience to wait beneath the shade of an ancient Palu tree.
+            </p>
+<p>
+              When I returned to Colombo after studying wildlife biology in the UK, I observed a tragic commodification taking root: luxury travel had been reduced to ticking generic boxes. Guests were rushed from crowded temple gates to loud souvenir stalls, enclosed in sanitized bubbles that insulated them from the true heart of our heritage.
+            </p>
+<p>
+              AVENTRA was conceived as the quiet antidote. We do not offer package tours; we choreograph rare, private expeditions. We ensure that our travelers walk into the boulder fortress of Sigiriya in silence an hour before the turnstiles turn; that you sip silver-tip tea poured by the master planter whose family bred the cultivar; that your chauffeur is not merely a driver, but a trained scholar who can parse bird calls and decipher ancient Brahmi inscriptions.
+            </p>
+<p class="pt-2 text-on-surface font-medium italic">
+              When you travel Ceylon through our lens, you are not simply visiting an island. You are stepping into our ancestral living room.
+            </p>
+</div>
+<div class="pt-4 flex flex-wrap items-center gap-6">
+<div class="flex flex-col">
+<span class="font-label-caption text-label-caption text-secondary uppercase tracking-wider font-semibold">Direct Desk</span>
+<span class="font-body-md text-body-md text-primary font-medium">ranil@aventra-travel.com</span>
+</div>
+<div class="w-[1px] h-8 bg-surface-variant hidden sm:block"></div>
+<div class="flex flex-col">
+<span class="font-label-caption text-label-caption text-secondary uppercase tracking-wider font-semibold">Field Station</span>
+<span class="font-body-md text-body-md text-primary font-medium">Galle Face Court, Colombo 03</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: THE FOUR PILLARS OF CURATED CEYLON -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary">The AVENTRA Standard</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+            The Four Pillars of Curated Ceylon
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          How we re-engineer the art of discovery through uncompromising exclusivity, scholarship, and temporal mastery.
+        </p>
+</div>
+<!-- Bento-style Pillars Grid (No outlines, tonal card surfaces) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Pillar 01 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:bg-surface-container group">
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="font-title-editorial text-title-editorial text-secondary italic font-normal">01</span>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">schedule</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3">
+              Temporal Mastery
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              We never run against clocks or check-lists. We reverse ordinary tourist flows: private dawn permits to Sigiriya before general gates unlock, twilight estate tea tastings, and midday siestas during peak heat.
+            </p>
+</div>
+<div class="pt-8 mt-6">
+<span class="font-label-caption text-label-caption text-secondary uppercase tracking-widest font-semibold flex items-center gap-1">
+              Dawn Access Privileges <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Pillar 02 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:bg-surface-container group">
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="font-title-editorial text-title-editorial text-secondary italic font-normal">02</span>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">villa</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3">
+              Architectural Intimacy
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              We decline mass luxury resorts. Our portfolio is restricted to four-bedroom colonial bungalows, restored Bawa villas, and hand-stitched eco-safari pavilions enveloped in absolute private silence.
+            </p>
+</div>
+<div class="pt-8 mt-6">
+<span class="font-label-caption text-label-caption text-secondary uppercase tracking-widest font-semibold flex items-center gap-1">
+              Exclusive Estate Buyouts <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Pillar 03 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:bg-surface-container group">
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="font-title-editorial text-title-editorial text-secondary italic font-normal">03</span>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">school</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3">
+              The Naturalist Guild
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Every AVENTRA chauffeur is an SLTDA Grade-A accredited biologist, archeologist, or conservationist. They speak fluent English, possess acute wildlife instincts, and carry field optics in every vehicle.
+            </p>
+</div>
+<div class="pt-8 mt-6">
+<span class="font-label-caption text-label-caption text-secondary uppercase tracking-widest font-semibold flex items-center gap-1">
+              100% In-House Trained <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Pillar 04 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:bg-surface-container group">
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="font-title-editorial text-title-editorial text-secondary italic font-normal">04</span>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">key</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3">
+              Unseen Access
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Private observation train carriages hooked behind heritage steam engines, private veranda luncheons with Ceylon estate owners, and closed-sanctum monastic blessings beyond public reach.
+            </p>
+</div>
+<div class="pt-8 mt-6">
+<span class="font-label-caption text-label-caption text-secondary uppercase tracking-widest font-semibold flex items-center gap-1">
+              By Invitation Only <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: MEET THE CURATORS & EXPEDITION ARCHITECTS -->
+<section class="w-full py-space-xl bg-surface-container-low">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary">The Human Vanguard</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight mt-1">
+            Meet the Expedition Architects
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          A collective of published scholars, wildlife ecologists, and logistics strategists committed to flawless island stewardship.
+        </p>
+</div>
+<!-- Team Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Member 1 -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm flex flex-col group transition-all duration-300 hover:shadow-xl">
+<div class="relative h-80 overflow-hidden bg-surface-container">
+<img alt="Ranil Senanayake" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Portrait of Ranil Senanayake, middle-aged distinguished Sri Lankan male explorer in muted field attire smiling thoughtfully outdoors in a high altitude tea estate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxEqIGOSv_FQstyQJTIralDs5RDQA3BN38F7dNLRMF_XIMzHfEwW-XVcG_dovv4N9O_6if5KPYtSycJcyKJ3Q90DpeWmWoroLi-NZtAlM6QjCzz0Y6H8mhoIJ0KgeS3hgUOen8laLPLgeeOk8egZmCLqTJjB4v0TDbUYJkXKAg6YmZ67ksHpu7JEE_RGRsqvoZy474ASrSBqfj1TR7StMNiyQqIP7Mi2H40a1Y_t0"/>
+<div class="absolute top-4 left-4 bg-primary/80 backdrop-blur-md px-3 py-1 rounded text-surface-container-lowest font-label-badge text-[10px] tracking-widest uppercase">
+              Founder
+            </div>
+</div>
+<div class="p-6 flex flex-col flex-1 justify-between gap-4">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary">Ranil Senanayake</h4>
+<p class="font-label-badge text-label-badge uppercase tracking-wider text-secondary mt-1">
+                Chief Expedition Architect
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3">
+                Over two decades mapping private tracks through the Central Highlands and curating high-net-worth sovereign itineraries.
+              </p>
+</div>
+<div class="pt-4 bg-surface-container-low -mx-6 -mb-6 p-4 px-6 flex items-center justify-between">
+<span class="font-label-caption text-label-caption text-secondary uppercase font-semibold">Specialty Zone</span>
+<span class="font-label-caption text-label-caption text-primary font-medium">Bogawantalawa &amp; South Coves</span>
+</div>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm flex flex-col group transition-all duration-300 hover:shadow-xl">
+<div class="relative h-80 overflow-hidden bg-surface-container">
+<img alt="Dr. Malini Jayawardene" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Professional portrait of Dr. Malini Jayawardene, Sri Lankan female wildlife biologist in her forties with field binoculars and notebook in the dry forest of Wilpattu." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP2cfJGukV-3X_eqYVy2GRpyHPNIoWp1iPkjHWH6dufw6E5oolPyv6pcagZQMSyIGfmUk65OjfeXugTfmtLk197_fKUoRAFFvxiZQ-lIXAfrU0p7fiHMZHzZsXZu7l8gUQtWmKL7A5KyhRLSda_R9l_d4nYd9C-Au2Gh8WE_HnK1Uj-mYdaxYPL0UuDI8ihCcnJp5ESdiijxmC5hUO4JapLCZeKbExHxibzcftSp8"/>
+<div class="absolute top-4 left-4 bg-primary/80 backdrop-blur-md px-3 py-1 rounded text-surface-container-lowest font-label-badge text-[10px] tracking-widest uppercase">
+              Wildlife Lead
+            </div>
+</div>
+<div class="p-6 flex flex-col flex-1 justify-between gap-4">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary">Dr. Malini Jayawardene</h4>
+<p class="font-label-badge text-label-badge uppercase tracking-wider text-secondary mt-1">
+                Head of Wildlife Ecology
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3">
+                Ph.D. in Asian Leopard Ecology from Cambridge. Directs our non-invasive tracking protocols and ranger field clinics.
+              </p>
+</div>
+<div class="pt-4 bg-surface-container-low -mx-6 -mb-6 p-4 px-6 flex items-center justify-between">
+<span class="font-label-caption text-label-caption text-secondary uppercase font-semibold">Specialty Zone</span>
+<span class="font-label-caption text-label-caption text-primary font-medium">Yala, Bundala &amp; Wilpattu</span>
+</div>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm flex flex-col group transition-all duration-300 hover:shadow-xl">
+<div class="relative h-80 overflow-hidden bg-surface-container">
+<img alt="Rohan Wickremasinghe" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Portrait of Rohan Wickremasinghe, sharp elegant Sri Lankan logistics executive holding an aviation headset next to a private helicopter at a scenic highland helipad." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7l2z0_e7I89aqPDa9Os0CC1u2pdRFdUX4uUBLkbehDMqDI4FFx9563iNkCtv8cuqQpWcRF-mjtyTn1qUUxMN4I3FzbjGbCElXIrvEu-ZOeAoFmkEKVzxxNyRGKlAf0FIiPCDVji-4qe2RnJjEuVel1njD42h9CJmh3cIDAX0fzILBQbTaBNTh-6cmW1eiUIKuNLauRr_arpD9HLOSnT-SL1ZD8fGohGJZUvqxmyE"/>
+<div class="absolute top-4 left-4 bg-primary/80 backdrop-blur-md px-3 py-1 rounded text-surface-container-lowest font-label-badge text-[10px] tracking-widest uppercase">
+              Operations
+            </div>
+</div>
+<div class="p-6 flex flex-col flex-1 justify-between gap-4">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary">Rohan Wickremasinghe</h4>
+<p class="font-label-badge text-label-badge uppercase tracking-wider text-secondary mt-1">
+                Director of Private Aviation
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3">
+                Former commercial flight commander orchestrating seamless heli-transfers, vintage train carriages, and VIP tarmac handling.
+              </p>
+</div>
+<div class="pt-4 bg-surface-container-low -mx-6 -mb-6 p-4 px-6 flex items-center justify-between">
+<span class="font-label-caption text-label-caption text-secondary uppercase font-semibold">Specialty Zone</span>
+<span class="font-label-caption text-label-caption text-primary font-medium">Aviation &amp; Rail Choreography</span>
+</div>
+</div>
+</div>
+<!-- Member 4 -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm flex flex-col group transition-all duration-300 hover:shadow-xl">
+<div class="relative h-80 overflow-hidden bg-surface-container">
+<img alt="Anouk De Silva" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Portrait of Anouk De Silva, an elegant Sri Lankan woman art historian and curator walking along an ancient stone pillared courtyard in Anuradhapura with soft sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX9lqy8gIUWLQIL32-9vKaRPPf5MiHohT91Twt4pvvL4LU3ITgAtbIlSvl1gPfMc4wSrROcBnVmPmtcWcH_i1dqtgwi3guaK3uFglzoZxteVCABJ9_z-VvkEzZjsoPzvQ0gD1mX0XN5BJX0RZ7Nh-4TJ2P7W6XmKok7qmwyYVA4H46v5sIEYWSZSCgj_ekBCVxDDwocJRYVwMR7xSshr9NozHbEzOf-vj1QMbKdT8"/>
+<div class="absolute top-4 left-4 bg-primary/80 backdrop-blur-md px-3 py-1 rounded text-surface-container-lowest font-label-badge text-[10px] tracking-widest uppercase">
+              Antiquities
+            </div>
+</div>
+<div class="p-6 flex flex-col flex-1 justify-between gap-4">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary">Anouk De Silva</h4>
+<p class="font-label-badge text-label-badge uppercase tracking-wider text-secondary mt-1">
+                Cultural Heritage Curator
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3">
+                Former national museum conservator granting access to sacred Buddhist archive vaults, royal scripts, and private estates.
+              </p>
+</div>
+<div class="pt-4 bg-surface-container-low -mx-6 -mb-6 p-4 px-6 flex items-center justify-between">
+<span class="font-label-caption text-label-caption text-secondary uppercase font-semibold">Specialty Zone</span>
+<span class="font-label-caption text-label-caption text-primary font-medium">Cultural Triangle &amp; Kandy</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: CONSERVATION STEWARDSHIP & "THE CEYLON CANOPY FOUNDATION" -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<!-- Deep Emerald Statement Container -->
+<div class="bg-primary text-surface-container-lowest rounded-2xl p-8 md:p-14 relative overflow-hidden shadow-2xl">
+<!-- Subtle Ambient Background Accents -->
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-primary-container rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+<div class="absolute top-0 right-1/4 w-64 h-64 bg-secondary-fixed/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-2xl">eco</span>
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary-fixed">
+                The Ceylon Canopy Foundation
+              </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-surface-container-lowest tracking-tight">
+              Luxury Without Consequence. <br/>
+<span class="italic font-normal text-secondary-fixed-dim">Our Perpetual Giving Pledge.</span>
+</h2>
+<p class="font-body-md text-body-md text-surface-variant leading-relaxed">
+              We operate under a simple decree: the lands that afford our travelers sublime transcendent beauty must be left stronger than we found them. Exactly <strong class="text-surface-container-lowest font-semibold">5% of all journey revenues</strong> are channeled into direct field conservation and artisan community stabilization.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
+<div class="flex flex-col gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-xl">fence</span>
+<h5 class="font-body-md text-surface-container-lowest font-medium">Corridor Protection</h5>
+<p class="font-body-sm text-surface-variant">Safeguarding elephant &amp; leopard migration paths across southern buffer zones.</p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-xl">medical_services</span>
+<h5 class="font-body-md text-surface-container-lowest font-medium">Estate Artisan Trust</h5>
+<p class="font-body-sm text-surface-variant">Full healthcare access and university bursaries for tea worker lineages.</p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-xl">scuba_diving</span>
+<h5 class="font-body-md text-surface-container-lowest font-medium">Reef Nursery Projects</h5>
+<p class="font-body-sm text-surface-variant">Restoring 4.5 hectares of damaged coral at Pigeon Island National Park.</p>
+</div>
+</div>
+</div>
+<!-- Quantitative Impact Metrics & Visual Data Representation -->
+<div class="lg:col-span-5 bg-surface-container-lowest/10 backdrop-blur-md p-8 rounded-xl flex flex-col gap-6">
+<h4 class="font-label-badge text-label-badge uppercase tracking-[0.16em] text-secondary-fixed pb-2">
+              Audited Impact Ledger (2012–2025)
+            </h4>
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary-fixed text-3xl">forest</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-surface-container-lowest leading-none">42,800+</p>
+<p class="font-body-sm text-body-sm text-surface-variant mt-1">Endemic Wet-Zone Canopy Trees Planted</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary-fixed text-3xl">photo_camera</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-surface-container-lowest leading-none">184 Traps</p>
+<p class="font-body-sm text-body-sm text-surface-variant mt-1">Anti-Poaching AI Camera Traps Sponsored</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary-fixed text-3xl">water_drop</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-surface-container-lowest leading-none">100% Zero</p>
+<p class="font-body-sm text-body-sm text-surface-variant mt-1">Single-Use Plastics Across Entire Safari Fleet</p>
+</div>
+</div>
+<div class="pt-2">
+<a class="inline-flex items-center gap-2 font-nav-link text-nav-link uppercase tracking-wider text-secondary-fixed hover:text-surface-container-lowest transition-colors" href="#">
+                Read Foundation Audit Report <span class="material-symbols-outlined text-sm">north_east</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: HERITAGE ACCREDITATIONS & GLOBAL RECOGNITION -->
+<section class="w-full py-space-lg bg-surface-container-low">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<div class="text-center mb-8">
+<span class="font-label-badge text-label-badge uppercase tracking-[0.2em] text-secondary">Global Affiliations &amp; Honors</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center">
+<div class="bg-surface p-6 rounded-lg text-center flex flex-col items-center gap-2 shadow-sm transition-transform hover:-translate-y-1">
+<span class="material-symbols-outlined text-secondary text-3xl">award_star</span>
+<span class="font-title-editorial text-title-editorial text-primary font-bold">Condé Nast</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant uppercase tracking-wider">Top Travel Specialist 2023-2025</span>
+</div>
+<div class="bg-surface p-6 rounded-lg text-center flex flex-col items-center gap-2 shadow-sm transition-transform hover:-translate-y-1">
+<span class="material-symbols-outlined text-secondary text-3xl">diamond</span>
+<span class="font-title-editorial text-title-editorial text-primary font-bold">Virtuoso</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant uppercase tracking-wider">Preferred On-Site Partner</span>
+</div>
+<div class="bg-surface p-6 rounded-lg text-center flex flex-col items-center gap-2 shadow-sm transition-transform hover:-translate-y-1">
+<span class="material-symbols-outlined text-secondary text-3xl">verified</span>
+<span class="font-title-editorial text-title-editorial text-primary font-bold">SLTDA Grade-A</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant uppercase tracking-wider">National Tourism Board Certified</span>
+</div>
+<div class="bg-surface p-6 rounded-lg text-center flex flex-col items-center gap-2 shadow-sm transition-transform hover:-translate-y-1">
+<span class="material-symbols-outlined text-secondary text-3xl">hotel</span>
+<span class="font-title-editorial text-title-editorial text-primary font-bold">Relais &amp; Châteaux</span>
+<span class="font-label-caption text-label-caption text-on-surface-variant uppercase tracking-wider">Preferred Private DMC Ally</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 7: EDITORIAL CALL TO ACTION -->
+<section class="w-full py-space-xl bg-surface relative overflow-hidden">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop">
+<div class="bg-surface-container p-8 md:p-16 rounded-2xl flex flex-col items-center text-center shadow-lg relative">
+<span class="w-12 h-1 bg-secondary mb-6 rounded-full"></span>
+<span class="font-label-badge text-label-badge uppercase tracking-[0.22em] text-secondary mb-3">
+          Your Private Ceylon Passage
+        </span>
+<h2 class="font-headline-lg text-headline-lg text-primary max-w-2xl mb-6">
+          Begin Your Conversation with Our Curators
+        </h2>
+<p class="font-body-lead text-body-lead text-on-surface-variant max-w-xl mb-10 font-light">
+          Whether you seek a sequestered tea planter bungalow retreat or an escorted wildlife migration track, our chief expedition architects stand ready.
+        </p>
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+<a class="w-full sm:w-auto px-8 py-4 rounded-lg bg-primary-container text-on-primary font-nav-link text-nav-link uppercase tracking-wider shadow-md hover:bg-primary transition-all duration-300 flex items-center justify-center gap-3" data-path="plan-your-journey" href="#">
+<span>Plan Your Bespoke Journey</span>
+<span class="material-symbols-outlined text-secondary-fixed text-lg">arrow_forward</span>
+</a>
+<a class="w-full sm:w-auto px-8 py-4 rounded-lg bg-surface text-primary font-nav-link text-nav-link uppercase tracking-wider shadow-sm hover:bg-surface-container-highest transition-all duration-300 flex items-center justify-center gap-3" href="https://wa.me/94771208900" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-secondary text-lg">chat</span>
+<span>WhatsApp Concierge (+94 77 120 8900)</span>
+</a>
+</div>
+<div class="mt-8 flex items-center gap-4 text-on-surface-variant font-label-caption text-label-caption">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Strict Confidentiality</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> 24hr Response Protocol</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Bespoke Proposals Only</span>
+</div>
+</div>
+</div>
+</section>
+</div></main><div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-center"><a aria-label="WhatsApp Concierge" class="w-12 h-12 rounded-full bg-primary-container text-secondary-fixed flex items-center justify-center shadow-[0_8px_24px_rgba(6,78,59,0.25)] hover:scale-105 hover:bg-primary transition-all" href="#"><span class="material-symbols-outlined text-[24px]">chat</span></a><a aria-label="Scroll to top" class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:bg-surface-variant transition-all" href="#"><span class="material-symbols-outlined text-[20px]">north</span></a></div><footer class="w-full bg-primary text-surface-container-lowest"><div class="w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop pt-space-xl pb-space-lg"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter-desktop mb-space-xl"><div class="lg:col-span-4 flex flex-col gap-space-sm"><div class="flex items-center gap-3"><img alt="Aventra Travel Logo with Scenic A.png" class="h-7 w-auto object-contain brightness-0 invert" src="https://lh3.googleusercontent.com/aida/ALJJyrDwKwfddgov1gAOacuaxzPGO8f-sqoMpS1q-9GsNDGqeX6O9o0xoFEHrzjPSvS0p5x8uKr0o_WX3928RVOLEDejFsaormVs-8HSwG8ffsxb_9Kcmnbhz1Xjzjr7XSzGYz_t9BBPnO-JhmmdC2lpmAr-rbuaZG_bSqnWuQ9LpT9hJwRH-XT_bl20eMfCkeVwldxCWA0vWnpDoxB_00lButq1Hq3qoSM60-d2LEsUZT3deOKhJVSN8rwwOg"/><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-surface-container-lowest">AVENTRA</span></div><p class="font-title-editorial text-title-editorial italic text-secondary-fixed-dim mt-2">Discover Beyond Ordinary</p><p class="font-body-sm text-body-sm text-surface-variant max-w-sm mt-1">Bespoke private Ceylon expeditions tailored for discerning travelers. Curating quiet luxury journeys through ancestral tea estates, hidden southern coves, and cultural sanctums.</p><div class="mt-space-sm pt-space-sm flex items-center gap-space-sm"><span class="material-symbols-outlined text-secondary-fixed text-[20px]">verified</span><span class="font-label-caption text-label-caption uppercase text-surface-variant">Licensed Ceylon Heritage Concierge</span></div></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><h4 class="font-label-badge text-label-badge uppercase tracking-[0.14em] text-secondary-fixed-dim mb-space-sm">Explore</h4><ul class="flex flex-col gap-2"><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="home" href="#">Home</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="destinations" href="#">Destinations</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="experiences" href="#">Experiences</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="tour-packages" href="#">Tour Packages</a></li></ul></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><h4 class="font-label-badge text-label-badge uppercase tracking-[0.14em] text-secondary-fixed-dim mb-space-sm">About</h4><ul class="flex flex-col gap-2"><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="about-us" href="#">About AVENTRA</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="about-us" href="#">Our Story</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="travel-journal" href="#">Travel Journal</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="about-us" href="#">Press &amp; Awards</a></li></ul></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><h4 class="font-label-badge text-label-badge uppercase tracking-[0.14em] text-secondary-fixed-dim mb-space-sm">Support &amp; Planning</h4><ul class="flex flex-col gap-2"><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="plan-your-journey" href="#">Plan Your Journey</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="travel-journal" href="#">Sri Lanka Travel Guide</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="contact" href="#">FAQs</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="contact" href="#">Visa Info</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-surface-variant hover:text-surface-container-lowest transition-colors" data-path="contact" href="#">Privacy Policy</a></li></ul></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><h4 class="font-label-badge text-label-badge uppercase tracking-[0.14em] text-secondary-fixed-dim mb-space-sm">Contact &amp; Concierge</h4><div class="flex flex-col gap-2 text-surface-variant font-body-sm text-body-sm"><p class="text-surface-container-lowest font-medium">Colombo Headquarters</p><p>42 Galle Face Court, Colombo 03, Sri Lanka</p><p class="text-secondary-fixed pt-1">WhatsApp: +94 77 120 8900</p><p>concierge@aventra-travel.com</p></div></div></div><div class="bg-surface-container-lowest/10 p-space-lg rounded-xl mb-space-xl flex flex-col lg:flex-row lg:items-center justify-between gap-space-md"><div class="flex flex-col gap-1"><h5 class="font-headline-sm text-headline-sm text-surface-container-lowest">Private Travel Dispatches</h5><p class="font-body-sm text-body-sm text-surface-variant max-w-xl">Receive quarterly unlisted Ceylon expedition portfolios, seasonal monsoonal guides, and invitations to private estate openings.</p></div><form class="flex flex-col sm:flex-row gap-space-xs sm:w-auto w-full"><input class="px-4 py-3 rounded-lg bg-surface-container-lowest/10 text-surface-container-lowest placeholder:text-surface-variant focus:outline-none focus:ring-1 focus:ring-secondary-fixed font-body-sm text-body-sm min-w-[280px]" placeholder="Your email address" type="email"/><button class="px-6 py-3 rounded-lg bg-secondary-fixed text-on-secondary-fixed font-nav-link text-nav-link uppercase font-semibold hover:bg-secondary-fixed-dim transition-colors" type="button">Subscribe</button></form></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md text-surface-variant"><p class="font-label-caption text-label-caption">© 2026 AVENTRA. All Rights Reserved.</p><div class="flex items-center gap-space-md font-label-badge text-label-badge uppercase tracking-[0.14em]"><a class="hover:text-secondary-fixed transition-colors" href="#">Instagram</a><a class="hover:text-secondary-fixed transition-colors" href="#">Facebook</a><a class="hover:text-secondary-fixed transition-colors" href="#">YouTube</a><a class="hover:text-secondary-fixed transition-colors" href="#">TikTok</a></div></div></div></footer>
+</body></html>
