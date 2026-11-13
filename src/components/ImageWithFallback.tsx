@@ -1,26 +1,43 @@
-import React, { useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { STITCH_IMAGES } from '../data/initialSeedData';
 
 interface ImageWithFallbackProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src?: string;
   alt: string;
   fallbackSrc?: string;
+  priority?: boolean;
 }
 
-export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
+export const ImageWithFallback: React.FC<ImageWithFallbackProps> = memo(({
   src,
   alt,
   fallbackSrc = STITCH_IMAGES.sigiriyaHero,
+  priority = false,
   className = '',
+  loading,
+  decoding,
+  fetchPriority,
+  onLoad,
+  onError,
   ...rest
 }) => {
   const [imgSrc, setImgSrc] = useState(src || fallbackSrc);
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(priority);
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
-  React.useEffect(() => {
-    setImgSrc(src || fallbackSrc);
+  useEffect(() => {
+    const nextSrc = src || fallbackSrc;
+    setImgSrc(nextSrc);
     setFailed(false);
-  }, [src, fallbackSrc]);
+    setLoaded(priority);
+  }, [src, fallbackSrc, priority]);
+
+  useEffect(() => {
+    if (!priority && imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, [imgSrc, priority]);
 
   if (failed) {
     return (
@@ -39,18 +56,31 @@ export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
 
   return (
     <img
+      ref={imgRef}
       src={imgSrc}
       alt={alt}
       referrerPolicy="no-referrer"
-      onError={() => {
+      loading={loading ?? (priority ? 'eager' : 'lazy')}
+      decoding={decoding ?? (priority ? 'sync' : 'async')}
+      fetchPriority={fetchPriority ?? (priority ? 'high' : 'auto')}
+      onLoad={(e) => {
+        setLoaded(true);
+        onLoad?.(e);
+      }}
+      onError={(e) => {
         if (imgSrc !== fallbackSrc) {
           setImgSrc(fallbackSrc);
         } else {
           setFailed(true);
         }
+        onError?.(e);
       }}
-      className={className}
+      className={`${className} ${
+        priority ? '' : `transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`
+      }`}
       {...rest}
     />
   );
-};
+});
+
+ImageWithFallback.displayName = 'ImageWithFallback';

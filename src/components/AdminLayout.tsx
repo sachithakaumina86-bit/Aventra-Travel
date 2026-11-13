@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AnimatePresence, motion } from 'motion/react';
 import {
   Bell,
   BookOpen,
@@ -23,6 +24,7 @@ import {
 import { STITCH_IMAGES } from '../data/initialSeedData';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
+import { LUXURY_EASE } from './MotionPrimitives';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -44,6 +46,18 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [newMenuOpen, setNewMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!sidebarOpen && !newMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSidebarOpen(false);
+        setNewMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [sidebarOpen, newMenuOpen]);
 
   const pendingInquiriesCount = inquiries.filter((i) => i.status === 'pending' || i.status === 'reviewing').length;
   const unreadMessagesCount = contactMessages.filter((m) => m.status === 'unread').length;
@@ -88,6 +102,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
           <img
             src={STITCH_IMAGES.logo}
             alt="AVENTRA"
+            width={36}
+            height={36}
             className="h-9 w-9 object-contain bg-white border border-[#064E3B]/10 p-0.5"
           />
           <div>
@@ -222,15 +238,29 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       </aside>
 
       {/* Mobile Sidebar */}
-      {sidebarOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden flex">
-          <div className="w-64 h-full shadow-2xl">{renderSidebarContent()}</div>
-          <div
-            className="flex-1 bg-black/40"
-            onClick={() => setSidebarOpen(false)}
-          />
-        </div>
-      )}
+      <AnimatePresence>
+        {sidebarOpen && (
+          <div className="fixed inset-0 z-50 lg:hidden flex">
+            <motion.div
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ duration: 0.24, ease: LUXURY_EASE }}
+              className="w-64 h-full shadow-2xl relative z-10"
+            >
+              {renderSidebarContent()}
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="flex-1 bg-black/40"
+              onClick={() => setSidebarOpen(false)}
+            />
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* Main Content */}
       <div className="flex-1 min-w-0 flex flex-col">
@@ -291,53 +321,67 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
               <button
                 type="button"
                 onClick={() => setNewMenuOpen((prev) => !prev)}
-                className="inline-flex items-center gap-1.5 bg-[#064E3B] hover:bg-[#022C22] text-white px-3.5 py-2 text-[11px] uppercase tracking-[0.14em] font-semibold cursor-pointer"
+                aria-expanded={newMenuOpen}
+                aria-haspopup="menu"
+                className="inline-flex items-center gap-1.5 bg-[#064E3B] hover:bg-[#022C22] active:scale-[0.98] text-white px-3.5 py-2 min-h-[40px] text-[11px] uppercase tracking-[0.14em] font-semibold cursor-pointer transition-all"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>New</span>
               </button>
-              {newMenuOpen && (
-                <div
-                  className="absolute right-0 mt-2 w-52 bg-white border border-[#064E3B]/15 shadow-xl py-1.5 z-50 text-xs"
-                  onMouseLeave={() => setNewMenuOpen(false)}
-                >
-                  <Link
-                    to="/admin/destinations"
-                    onClick={() => setNewMenuOpen(false)}
-                    className="block px-4 py-2 hover:bg-[#FAF9F5] text-[#18231F]"
+              <AnimatePresence>
+                {newMenuOpen && (
+                  <motion.div
+                    role="menu"
+                    initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                    transition={{ duration: 0.16, ease: LUXURY_EASE }}
+                    className="absolute right-0 mt-2 w-52 bg-white border border-[#064E3B]/15 shadow-xl py-1.5 z-50 text-xs origin-top-right"
+                    onMouseLeave={() => setNewMenuOpen(false)}
                   >
-                    + New Destination
-                  </Link>
-                  <Link
-                    to="/admin/packages"
-                    onClick={() => setNewMenuOpen(false)}
-                    className="block px-4 py-2 hover:bg-[#FAF9F5] text-[#18231F]"
-                  >
-                    + New Tour Package
-                  </Link>
-                  <Link
-                    to="/admin/experiences"
-                    onClick={() => setNewMenuOpen(false)}
-                    className="block px-4 py-2 hover:bg-[#FAF9F5] text-[#18231F]"
-                  >
-                    + New Experience
-                  </Link>
-                  <Link
-                    to="/admin/bookings"
-                    onClick={() => setNewMenuOpen(false)}
-                    className="block px-4 py-2 hover:bg-[#FAF9F5] text-[#18231F]"
-                  >
-                    + New Booking Record
-                  </Link>
-                  <Link
-                    to="/admin/blog"
-                    onClick={() => setNewMenuOpen(false)}
-                    className="block px-4 py-2 hover:bg-[#FAF9F5] text-[#18231F]"
-                  >
-                    + New Journal Dispatch
-                  </Link>
-                </div>
-              )}
+                    <Link
+                      to="/admin/destinations"
+                      role="menuitem"
+                      onClick={() => setNewMenuOpen(false)}
+                      className="block px-4 py-2.5 hover:bg-[#FAF9F5] text-[#18231F] transition-colors"
+                    >
+                      + New Destination
+                    </Link>
+                    <Link
+                      to="/admin/packages"
+                      role="menuitem"
+                      onClick={() => setNewMenuOpen(false)}
+                      className="block px-4 py-2.5 hover:bg-[#FAF9F5] text-[#18231F] transition-colors"
+                    >
+                      + New Tour Package
+                    </Link>
+                    <Link
+                      to="/admin/experiences"
+                      role="menuitem"
+                      onClick={() => setNewMenuOpen(false)}
+                      className="block px-4 py-2.5 hover:bg-[#FAF9F5] text-[#18231F] transition-colors"
+                    >
+                      + New Experience
+                    </Link>
+                    <Link
+                      to="/admin/bookings"
+                      role="menuitem"
+                      onClick={() => setNewMenuOpen(false)}
+                      className="block px-4 py-2.5 hover:bg-[#FAF9F5] text-[#18231F] transition-colors"
+                    >
+                      + New Booking Record
+                    </Link>
+                    <Link
+                      to="/admin/blog"
+                      role="menuitem"
+                      onClick={() => setNewMenuOpen(false)}
+                      className="block px-4 py-2.5 hover:bg-[#FAF9F5] text-[#18231F] transition-colors"
+                    >
+                      + New Journal Dispatch
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             <Link

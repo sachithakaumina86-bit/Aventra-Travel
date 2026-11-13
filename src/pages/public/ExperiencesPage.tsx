@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronDown, Leaf, ShieldCheck, Sparkles, TreePine } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { AccordionContent, RevealItem, RevealSection, RevealStagger } from '../../components/MotionPrimitives';
+import {
+  ExperienceGridSkeleton,
+  ExperienceSpotlightSkeleton,
+} from '../../components/CardSkeletons';
 
 const EXPERIENCE_FAQS = [
   {
@@ -24,7 +29,7 @@ const EXPERIENCE_FAQS = [
 ];
 
 export const ExperiencesPage: React.FC = () => {
-  const { experiences } = useData();
+  const { loadingPublic, experiences } = useData();
   const [selectedCategory, setSelectedCategory] = useState('All Encounters');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -76,13 +81,14 @@ export const ExperiencesPage: React.FC = () => {
 
         {/* Category Tabs & Precision Chips */}
         <div className="mt-10 space-y-4">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by experiential realm">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
+                aria-pressed={selectedCategory === cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 text-[11px] uppercase tracking-[0.14em] font-semibold transition-colors cursor-pointer ${
+                className={`px-4 py-2 min-h-[40px] sm:min-h-[36px] text-[11px] uppercase tracking-[0.14em] font-semibold transition-all active:scale-[0.98] cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-[#064E3B] text-[#FAF9F5]'
                     : 'bg-white border border-[#064E3B]/15 text-[#404944] hover:border-[#064E3B]'
@@ -100,8 +106,9 @@ export const ExperiencesPage: React.FC = () => {
               <button
                 key={tag}
                 type="button"
+                aria-pressed={selectedTag === tag}
                 onClick={() => setSelectedTag((prev) => (prev === tag ? null : tag))}
-                className={`px-3 py-1 text-[10px] uppercase tracking-[0.14em] transition-colors cursor-pointer ${
+                className={`px-3 py-1.5 min-h-[36px] text-[10px] uppercase tracking-[0.14em] transition-colors cursor-pointer ${
                   selectedTag === tag
                     ? 'bg-[#745B1C] text-white'
                     : 'bg-[#F4F4F0] text-[#404944] hover:bg-[#E9E8E4]'
@@ -115,13 +122,19 @@ export const ExperiencesPage: React.FC = () => {
       </section>
 
       {/* Spotlight Card */}
-      {spotlight && (
+      {loadingPublic ? (
         <section className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ExperienceSpotlightSkeleton />
+        </section>
+      ) : (
+        spotlight && (
+        <RevealSection className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white border border-[#064E3B]/12 grid grid-cols-1 lg:grid-cols-12 overflow-hidden shadow-sm">
             <div className="lg:col-span-6 relative min-h-[340px]">
               <ImageWithFallback
                 src={spotlight.heroImage}
                 alt={spotlight.title}
+                priority
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-4 left-4 bg-[#D6B56D] text-[#18231F] px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-bold">
@@ -171,7 +184,8 @@ export const ExperiencesPage: React.FC = () => {
               </div>
             </div>
           </div>
-        </section>
+        </RevealSection>
+        )
       )}
 
       {/* Eight Experiential Realms Grid + Bespoke Commission Card */}
@@ -185,15 +199,21 @@ export const ExperiencesPage: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {filtered.map((exp) => (
-            <Link
-              key={exp.id}
-              to={`/experiences/${exp.slug}`}
-              className="group bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all"
-            >
-              <div>
-                <div className="relative aspect-[16/10] overflow-hidden">
+        {loadingPublic ? (
+          <ExperienceGridSkeleton count={6} />
+        ) : (
+          <RevealStagger
+            key={`${selectedCategory}-${selectedTag ?? 'all'}`}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
+          >
+            {filtered.map((exp) => (
+              <RevealItem key={exp.id} className="flex">
+                <Link
+                  to={`/experiences/${exp.slug}`}
+                  className="group w-full bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col justify-between hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+                >
+                <div>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#E9E8E4]">
                   <ImageWithFallback
                     src={exp.heroImage}
                     alt={exp.title}
@@ -220,14 +240,15 @@ export const ExperiencesPage: React.FC = () => {
               <div className="px-6 py-4 border-t border-[#064E3B]/10 flex items-center justify-between text-xs">
                 <span className="text-[#7B847F] truncate pr-3">{exp.equipmentOrSetting}</span>
                 <span className="text-[#064E3B] uppercase tracking-[0.16em] font-semibold shrink-0 inline-flex items-center gap-1">
-                  Explore <ArrowRight className="w-3.5 h-3.5" />
+                  Explore <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </div>
-            </Link>
+              </Link>
+            </RevealItem>
           ))}
 
           {/* Bespoke Commission Dark Card */}
-          <div className="bg-[#022C22] text-[#FAF9F5] p-8 flex flex-col justify-between border border-[#D6B56D]/30">
+          <RevealItem className="bg-[#022C22] text-[#FAF9F5] p-8 flex flex-col justify-between border border-[#D6B56D]/30">
             <div className="space-y-4">
               <Sparkles className="w-7 h-7 text-[#D6B56D]" />
               <span className="text-[10px] uppercase tracking-[0.22em] text-[#D6B56D] font-semibold block">
@@ -242,12 +263,13 @@ export const ExperiencesPage: React.FC = () => {
             </div>
             <Link
               to="/plan-your-journey"
-              className="mt-8 bg-[#D6B56D] hover:bg-[#e4c279] text-[#18231F] py-3.5 px-5 text-xs uppercase tracking-[0.18em] font-semibold text-center"
+              className="mt-8 bg-[#D6B56D] hover:bg-[#e4c279] active:scale-[0.98] text-[#18231F] py-3.5 px-5 min-h-[44px] text-xs uppercase tracking-[0.18em] font-semibold text-center inline-flex items-center justify-center transition-all"
             >
               Commission Bespoke Encounter
             </Link>
-          </div>
-        </div>
+          </RevealItem>
+          </RevealStagger>
+        )}
       </section>
 
       {/* Ethical Stewardship */}
@@ -313,25 +335,28 @@ export const ExperiencesPage: React.FC = () => {
         <div className="lg:col-span-7 space-y-3">
           {EXPERIENCE_FAQS.map((item, idx) => {
             const isOpen = openFaq === idx;
+            const panelId = `exp-faq-panel-${idx}`;
             return (
               <div key={idx} className="bg-white border border-[#064E3B]/12">
                 <button
                   type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
                   onClick={() => setOpenFaq(isOpen ? null : idx)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 cursor-pointer"
+                  className="w-full px-6 py-4 min-h-[52px] text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-[#FAF9F5]/60 transition-colors"
                 >
                   <span className="font-serif text-lg text-[#064E3B]">{item.q}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#064E3B] transition-transform shrink-0 ${
+                    className={`w-4 h-4 text-[#064E3B] transition-transform duration-200 shrink-0 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
-                {isOpen && (
+                <AccordionContent isOpen={isOpen} id={panelId}>
                   <div className="px-6 pb-5 text-sm text-[#404944] leading-relaxed border-t border-[#064E3B]/10 pt-3">
                     {item.a}
                   </div>
-                )}
+                </AccordionContent>
               </div>
             );
           })}

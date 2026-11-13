@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Loader2, LogOut, Mail, RefreshCw, ShieldAlert } from 'lucide-react';
 import { PRIMARY_ADMIN_EMAIL, useAuth } from '../context/AuthContext';
+import { AdminShellSkeleton } from './CardSkeletons';
 
 export const AdminGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const {
@@ -18,14 +19,7 @@ export const AdminGuard: React.FC<{ children: React.ReactNode }> = ({ children }
   const [sendingVerify, setSendingVerify] = useState(false);
 
   if (!authReady) {
-    return (
-      <div className="min-h-screen bg-[#FAF9F5] flex flex-col items-center justify-center p-6 text-center">
-        <Loader2 className="w-7 h-7 animate-spin text-[#064E3B] mb-3" />
-        <p className="text-xs uppercase tracking-[0.2em] text-[#7B847F]">
-          Verifying AVENTRA Atelier Credentials...
-        </p>
-      </div>
-    );
+    return <AdminShellSkeleton />;
   }
 
   if (!user) {

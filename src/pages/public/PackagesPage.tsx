@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Clock, Search } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { RevealItem, RevealStagger } from '../../components/MotionPrimitives';
+import { PackageGridSkeleton } from '../../components/CardSkeletons';
 
 export const PackagesPage: React.FC = () => {
-  const { tourPackages } = useData();
+  const { loadingPublic, tourPackages } = useData();
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('All');
 
@@ -38,13 +40,14 @@ export const PackagesPage: React.FC = () => {
         </p>
 
         <div className="mt-8 flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter tour packages by category">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
+                aria-pressed={category === cat}
                 onClick={() => setCategory(cat)}
-                className={`px-4 py-2 text-[11px] uppercase tracking-[0.15em] font-semibold cursor-pointer transition-colors ${
+                className={`px-4 py-2 min-h-[40px] sm:min-h-[36px] text-[11px] uppercase tracking-[0.15em] font-semibold cursor-pointer transition-all active:scale-[0.98] ${
                   category === cat
                     ? 'bg-[#064E3B] text-[#FAF9F5]'
                     : 'bg-white border border-[#064E3B]/15 text-[#404944] hover:border-[#064E3B]'
@@ -68,17 +71,28 @@ export const PackagesPage: React.FC = () => {
       </section>
 
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filtered.map((pkg) => (
-            <div
+        {loadingPublic ? (
+          <PackageGridSkeleton count={4} />
+        ) : filtered.length === 0 ? (
+          <div className="bg-white border border-[#064E3B]/15 p-12 text-center space-y-2">
+            <h2 className="font-serif text-2xl text-[#064E3B]">No Matching Expeditions Found</h2>
+            <p className="text-sm text-[#404944]">
+              Try clearing your filter or searching for a different sanctuary or circuit.
+            </p>
+          </div>
+        ) : (
+          <RevealStagger key={`${category}-${search}`} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {filtered.map((pkg, idx) => (
+            <RevealItem
               key={pkg.id}
-              className="bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all"
+              className="bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col justify-between hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
             >
               <div>
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#E9E8E4]">
                   <ImageWithFallback
                     src={pkg.heroImage}
                     alt={pkg.title}
+                    priority={idx === 0}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4 bg-[#022C22]/90 text-[#D6B56D] px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-semibold">
@@ -97,8 +111,8 @@ export const PackagesPage: React.FC = () => {
                   <h2 className="font-serif text-3xl text-[#064E3B]">{pkg.title}</h2>
                   <p className="text-sm text-[#404944] leading-relaxed">{pkg.summary}</p>
                   <ul className="space-y-1.5 pt-2">
-                    {(pkg.highlights || []).slice(0, 3).map((hl, idx) => (
-                      <li key={idx} className="text-xs text-[#18231F] flex items-center gap-2">
+                    {(pkg.highlights || []).slice(0, 3).map((hl, hIdx) => (
+                      <li key={hIdx} className="text-xs text-[#18231F] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#D6B56D]" />
                         <span>{hl}</span>
                       </li>
@@ -120,16 +134,17 @@ export const PackagesPage: React.FC = () => {
                 <div className="flex gap-2.5">
                   <Link
                     to={`/packages/${pkg.slug}`}
-                    className="bg-[#064E3B] hover:bg-[#022C22] text-white px-5 py-2.5 text-[11px] uppercase tracking-[0.16em] font-semibold inline-flex items-center gap-1.5"
+                    className="bg-[#064E3B] hover:bg-[#022C22] active:scale-[0.98] text-white px-5 py-2.5 min-h-[40px] text-[11px] uppercase tracking-[0.16em] font-semibold inline-flex items-center gap-1.5 transition-all"
                   >
                     <span>Explore Dossier</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+          </RevealStagger>
+        )}
       </section>
     </div>
   );

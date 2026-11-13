@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Loader2 } from 'lucide-react';
 import { STITCH_IMAGES } from '../data/initialSeedData';
 import { useData } from '../context/DataContext';
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC = memo(() => {
   const { settings, submitContactMessage } = useData();
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -59,11 +59,19 @@ export const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-3">
-              <img
-                src={STITCH_IMAGES.logo}
-                alt="AVENTRA Logo"
-                className="h-11 w-auto object-contain bg-[#FAF9F5] p-1 rounded-xs"
-              />
+              <picture className="shrink-0">
+                <source srcSet="/assets/aventra-logo-128.avif" type="image/avif" />
+                <source srcSet={STITCH_IMAGES.logo} type="image/webp" />
+                <img
+                  src="/assets/aventra-logo-128.png"
+                  alt="AVENTRA Logo"
+                  width={44}
+                  height={44}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-11 w-11 object-contain bg-[#FAF9F5] p-1 rounded-xs"
+                />
+              </picture>
               <div>
                 <h3 className="font-serif text-xl font-bold tracking-[0.16em] text-[#FAF9F5]">
                   {settings.brandName || 'AVENTRA'}
@@ -86,24 +94,24 @@ export const Footer: React.FC = () => {
             <h4 className="text-[11px] uppercase tracking-[0.22em] text-[#D6B56D] font-semibold">
               Explore
             </h4>
-            <ul className="space-y-2.5 text-sm text-[#FAF9F5]/75">
+            <ul className="space-y-1.5 text-sm text-[#FAF9F5]/75">
               <li>
-                <Link to="/" className="hover:text-[#D6B56D] transition-colors">
+                <Link to="/" className="inline-flex items-center py-1 hover:text-[#D6B56D] transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/destinations" className="hover:text-[#D6B56D] transition-colors">
+                <Link to="/destinations" className="inline-flex items-center py-1 hover:text-[#D6B56D] transition-colors">
                   Destinations
                 </Link>
               </li>
               <li>
-                <Link to="/experiences" className="hover:text-[#D6B56D] transition-colors">
+                <Link to="/experiences" className="inline-flex items-center py-1 hover:text-[#D6B56D] transition-colors">
                   Experiences
                 </Link>
               </li>
               <li>
-                <Link to="/packages" className="hover:text-[#D6B56D] transition-colors">
+                <Link to="/packages" className="inline-flex items-center py-1 hover:text-[#D6B56D] transition-colors">
                   Tour Packages
                 </Link>
               </li>
@@ -115,30 +123,25 @@ export const Footer: React.FC = () => {
             <h4 className="text-[11px] uppercase tracking-[0.22em] text-[#D6B56D] font-semibold">
               Atelier & Journal
             </h4>
-            <ul className="space-y-2.5 text-sm text-[#FAF9F5]/75">
+            <ul className="space-y-1.5 text-sm text-[#FAF9F5]/75">
               <li>
-                <Link to="/about" className="hover:text-[#D6B56D] transition-colors">
+                <Link to="/about" className="inline-flex items-center py-1 hover:text-[#D6B56D] transition-colors">
                   About AVENTRA
                 </Link>
               </li>
               <li>
-                <Link to="/journal" className="hover:text-[#D6B56D] transition-colors">
+                <Link to="/journal" className="inline-flex items-center py-1 hover:text-[#D6B56D] transition-colors">
                   Travel Journal
                 </Link>
               </li>
               <li>
-                <Link to="/plan-your-journey" className="hover:text-[#D6B56D] transition-colors">
+                <Link to="/plan-your-journey" className="inline-flex items-center py-1 hover:text-[#D6B56D] transition-colors">
                   Plan Your Journey
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-[#D6B56D] transition-colors">
+                <Link to="/contact" className="inline-flex items-center py-1 hover:text-[#D6B56D] transition-colors">
                   Contact Concierge
-                </Link>
-              </li>
-              <li>
-                <Link to="/admin" className="hover:text-[#D6B56D] transition-colors">
-                  Admin Portal
                 </Link>
               </li>
             </ul>
@@ -155,15 +158,29 @@ export const Footer: React.FC = () => {
                 {settings.officeAddress}
               </p>
               <p className="text-xs text-[#D6B56D]">
-                WhatsApp: {settings.whatsappNumber || settings.contactPhone}
+                {(() => {
+                  const raw = (settings.whatsappNumber || settings.contactPhone || '').trim();
+                  const displayNum =
+                    !raw || raw.includes('Editable Placeholder') || raw.includes('XX XXX')
+                      ? '073 123 4567'
+                      : raw;
+                  return `WhatsApp: ${displayNum}`;
+                })()}
               </p>
-              <p className="text-xs break-all text-[#FAF9F5]/80">{settings.contactEmail}</p>
+              <p className="text-xs break-all text-[#FAF9F5]/80">
+                {(() => {
+                  const raw = (settings.contactEmail || '').trim();
+                  return !raw || raw.toLowerCase().includes('placeholder') || raw.endsWith('@example.com')
+                    ? 'Aventra@hotmail.com'
+                    : raw;
+                })()}
+              </p>
             </div>
           </div>
         </div>
 
         {/* Newsletter Bar */}
-        <div className="my-10 bg-[#064E3B]/45 border border-[#D6B56D]/25 p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="my-10 bg-[#064E3B]/45 border border-[#D6B56D]/25 p-5 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-xl">
             <h4 className="font-serif text-xl sm:text-2xl text-[#FAF9F5]">
               Private Travel Dispatches
@@ -172,7 +189,7 @@ export const Footer: React.FC = () => {
           </div>
           {subscribed ? (
             <div className="flex items-center gap-2 text-sm text-[#B0F0D6] bg-[#022C22]/70 px-4 py-3 border border-[#D6B56D]/30">
-              <Check className="w-4 h-4" />
+              <Check className="w-4 h-4 shrink-0" />
               <span>Thank you — your email has been registered for seasonal dispatches.</span>
             </div>
           ) : (
@@ -183,12 +200,12 @@ export const Footer: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
                 aria-label="Email address for private travel dispatches"
-                className="bg-[#022C22]/90 border border-[#FAF9F5]/20 px-4 py-3 text-sm text-[#FAF9F5] placeholder:text-[#FAF9F5]/45 focus:outline-none focus:border-[#D6B56D] min-w-[260px]"
+                className="bg-[#022C22]/90 border border-[#FAF9F5]/20 px-4 py-3 min-h-[44px] text-sm text-[#FAF9F5] placeholder:text-[#FAF9F5]/50 focus:outline-none focus:border-[#D6B56D] w-full sm:min-w-[260px]"
               />
               <button
                 type="submit"
                 disabled={submitting}
-                className="bg-[#D6B56D] hover:bg-[#e4c279] text-[#18231F] px-6 py-3 text-xs uppercase tracking-[0.18em] font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                className="bg-[#D6B56D] hover:bg-[#e4c279] active:scale-[0.98] text-[#18231F] px-6 py-3 min-h-[44px] text-xs uppercase tracking-[0.18em] font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 shrink-0"
               >
                 {submitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                 Subscribe
@@ -199,25 +216,25 @@ export const Footer: React.FC = () => {
         {error && <p className="text-xs text-[#ffdad6] -mt-6 mb-6">{error}</p>}
 
         {/* Bottom Copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] uppercase tracking-[0.18em] text-[#FAF9F5]/55">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] uppercase tracking-[0.18em] text-[#FAF9F5]/65">
           <p>© {new Date().getFullYear()} {settings.brandName || 'AVENTRA'}. All Rights Reserved.</p>
           <div className="flex items-center gap-6">
             {settings.instagramUrl ? (
-              <a href={settings.instagramUrl} target="_blank" rel="noreferrer" className="hover:text-[#D6B56D]">
+              <a href={settings.instagramUrl} target="_blank" rel="noreferrer" className="hover:text-[#D6B56D] transition-colors py-1">
                 Instagram
               </a>
             ) : (
               <span>Instagram</span>
             )}
             {settings.facebookUrl ? (
-              <a href={settings.facebookUrl} target="_blank" rel="noreferrer" className="hover:text-[#D6B56D]">
+              <a href={settings.facebookUrl} target="_blank" rel="noreferrer" className="hover:text-[#D6B56D] transition-colors py-1">
                 Facebook
               </a>
             ) : (
               <span>Facebook</span>
             )}
             {settings.youtubeUrl ? (
-              <a href={settings.youtubeUrl} target="_blank" rel="noreferrer" className="hover:text-[#D6B56D]">
+              <a href={settings.youtubeUrl} target="_blank" rel="noreferrer" className="hover:text-[#D6B56D] transition-colors py-1">
                 YouTube
               </a>
             ) : (
@@ -228,4 +245,6 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';

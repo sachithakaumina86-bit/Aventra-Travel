@@ -5,6 +5,7 @@ import { useData } from '../../context/DataContext';
 import { Destination } from '../../types/aventra';
 import { STITCH_IMAGES } from '../../data/initialSeedData';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { AdminCardGridSkeleton } from '../../components/CardSkeletons';
 
 const EMPTY_DEST: Partial<Destination> = {
   name: '',
@@ -25,7 +26,7 @@ const EMPTY_DEST: Partial<Destination> = {
 };
 
 export const AdminDestinationsPage: React.FC = () => {
-  const { destinations, saveDestination, deleteDestination } = useData();
+  const { loadingAdmin, destinations, saveDestination, deleteDestination } = useData();
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all');
   const [regionFilter, setRegionFilter] = useState('All');
@@ -216,6 +217,9 @@ export const AdminDestinationsPage: React.FC = () => {
         </div>
 
         {/* Sanctuary Grid */}
+        {loadingAdmin ? (
+          <AdminCardGridSkeleton columns={4} aspectClass="aspect-[16/10]" count={8} />
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {filtered.map((dest) => (
             <div
@@ -288,6 +292,7 @@ export const AdminDestinationsPage: React.FC = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {/* Slide-Over Dossier Drawer */}

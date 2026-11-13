@@ -5,9 +5,10 @@ import { useData } from '../../context/DataContext';
 import { BlogPost } from '../../types/aventra';
 import { STITCH_IMAGES } from '../../data/initialSeedData';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { AdminCardGridSkeleton } from '../../components/CardSkeletons';
 
 export const AdminBlogPage: React.FC = () => {
-  const { blogPosts, saveBlogPost, deleteBlogPost } = useData();
+  const { loadingAdmin, blogPosts, saveBlogPost, deleteBlogPost } = useData();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editing, setEditing] = useState<Partial<BlogPost>>({
     title: '',
@@ -70,6 +71,9 @@ export const AdminBlogPage: React.FC = () => {
           </button>
         </div>
 
+        {loadingAdmin ? (
+          <AdminCardGridSkeleton columns={3} aspectClass="aspect-[16/10]" count={6} />
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogPosts.map((post) => (
             <div key={post.id} className="bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col justify-between">
@@ -121,6 +125,7 @@ export const AdminBlogPage: React.FC = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {drawerOpen && (

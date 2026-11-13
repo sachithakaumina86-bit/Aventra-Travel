@@ -5,6 +5,7 @@ import { useData } from '../../context/DataContext';
 import { Experience } from '../../types/aventra';
 import { STITCH_IMAGES } from '../../data/initialSeedData';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { AdminCardGridSkeleton } from '../../components/CardSkeletons';
 
 const EMPTY_EXP: Partial<Experience> = {
   title: '',
@@ -24,7 +25,7 @@ const EMPTY_EXP: Partial<Experience> = {
 };
 
 export const AdminExperiencesPage: React.FC = () => {
-  const { experiences, saveExperience, deleteExperience } = useData();
+  const { loadingAdmin, experiences, saveExperience, deleteExperience } = useData();
   const [search, setSearch] = useState('');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editing, setEditing] = useState<Partial<Experience>>(EMPTY_EXP);
@@ -104,6 +105,9 @@ export const AdminExperiencesPage: React.FC = () => {
           </button>
         </div>
 
+        {loadingAdmin ? (
+          <AdminCardGridSkeleton columns={3} aspectClass="aspect-[16/10]" count={6} />
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((exp) => (
             <div key={exp.id} className="bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col justify-between">
@@ -147,6 +151,7 @@ export const AdminExperiencesPage: React.FC = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {drawerOpen && (

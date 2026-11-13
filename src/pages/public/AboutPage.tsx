@@ -4,6 +4,7 @@ import { ArrowRight, Compass, Eye, Feather, Leaf, ShieldCheck, Sparkles } from '
 import { useData } from '../../context/DataContext';
 import { STITCH_IMAGES } from '../../data/initialSeedData';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { RevealItem, RevealSection, RevealStagger } from '../../components/MotionPrimitives';
 
 export const AboutPage: React.FC = () => {
   const { settings } = useData();
@@ -38,6 +39,7 @@ export const AboutPage: React.FC = () => {
             <ImageWithFallback
               src={STITCH_IMAGES.bogawantalawa}
               alt="Bogawantalawa highlands misty valley"
+              priority
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#022C22]/75 via-transparent to-transparent" />
@@ -147,7 +149,7 @@ export const AboutPage: React.FC = () => {
 
       {/* Four Pillars */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <RevealSection className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#745B1C] font-semibold">
               The AVENTRA Standard
@@ -159,9 +161,9 @@ export const AboutPage: React.FC = () => {
           <p className="text-sm text-[#404944] max-w-md">
             Thoughtful curation built on pacing, architectural intimacy, ecological care, and regional expertise.
           </p>
-        </div>
+        </RevealSection>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <RevealStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               num: '01',
@@ -194,9 +196,9 @@ export const AboutPage: React.FC = () => {
           ].map((pillar) => {
             const Icon = pillar.icon;
             return (
-              <div
+              <RevealItem
                 key={pillar.num}
-                className="bg-white border border-[#064E3B]/12 p-7 flex flex-col justify-between space-y-6"
+                className="bg-white border border-[#064E3B]/12 p-7 flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-[#745B1C]">
@@ -209,10 +211,10 @@ export const AboutPage: React.FC = () => {
                 <span className="text-[10px] uppercase tracking-[0.2em] text-[#064E3B] font-semibold border-t border-[#064E3B]/10 pt-3 block">
                   {pillar.footer}
                 </span>
-              </div>
+              </RevealItem>
             );
           })}
-        </div>
+        </RevealStagger>
       </section>
 
       {/* Responsible Stewardship Pledge */}

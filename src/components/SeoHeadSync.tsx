@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useData } from '../context/DataContext';
 
@@ -42,7 +42,7 @@ function upsertJsonLd(data: Record<string, unknown>) {
   script.textContent = JSON.stringify(data);
 }
 
-export const SeoHeadSync: React.FC = () => {
+export const SeoHeadSync: React.FC = memo(() => {
   const { settings } = useData();
   const { pathname } = useLocation();
 
@@ -101,4 +101,6 @@ export const SeoHeadSync: React.FC = () => {
   }, [settings, pathname]);
 
   return null;
-};
+});
+
+SeoHeadSync.displayName = 'SeoHeadSync';

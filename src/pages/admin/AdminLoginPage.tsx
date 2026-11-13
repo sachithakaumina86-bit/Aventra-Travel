@@ -80,6 +80,7 @@ export const AdminLoginPage: React.FC = () => {
           <ImageWithFallback
             src={STITCH_IMAGES.hattonVeranda}
             alt="AVENTRA Ceylon Sanctuary"
+            priority
             className="w-full h-full object-cover opacity-55"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#022C22] via-[#022C22]/55 to-[#022C22]/40" />
@@ -89,6 +90,8 @@ export const AdminLoginPage: React.FC = () => {
           <img
             src={STITCH_IMAGES.logo}
             alt="AVENTRA"
+            width={44}
+            height={44}
             className="h-11 w-11 object-contain bg-[#FAF9F5] p-1 rounded-xs"
           />
           <div>

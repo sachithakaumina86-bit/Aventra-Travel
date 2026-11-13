@@ -3,9 +3,10 @@ import { Edit3, Loader2, Plus, Star, Trash2, X } from 'lucide-react';
 import { AdminLayout } from '../../components/AdminLayout';
 import { useData } from '../../context/DataContext';
 import { Testimonial } from '../../types/aventra';
+import { AdminCardGridSkeleton } from '../../components/CardSkeletons';
 
 export const AdminTestimonialsPage: React.FC = () => {
-  const { testimonials, saveTestimonial, deleteTestimonial } = useData();
+  const { loadingAdmin, testimonials, saveTestimonial, deleteTestimonial } = useData();
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Partial<Testimonial>>({
     guestName: '',
@@ -55,6 +56,9 @@ export const AdminTestimonialsPage: React.FC = () => {
           </button>
         </div>
 
+        {loadingAdmin ? (
+          <AdminCardGridSkeleton columns={3} textOnly count={6} />
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t) => (
             <div key={t.id} className="bg-white border border-[#064E3B]/12 p-6 flex flex-col justify-between space-y-4">
@@ -105,6 +109,7 @@ export const AdminTestimonialsPage: React.FC = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {modalOpen && (

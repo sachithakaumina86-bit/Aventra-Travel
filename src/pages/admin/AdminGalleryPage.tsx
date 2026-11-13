@@ -5,9 +5,10 @@ import { useData } from '../../context/DataContext';
 import { GalleryItem } from '../../types/aventra';
 import { STITCH_IMAGES } from '../../data/initialSeedData';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { AdminCardGridSkeleton } from '../../components/CardSkeletons';
 
 export const AdminGalleryPage: React.FC = () => {
-  const { gallery, saveGalleryItem, deleteGalleryItem } = useData();
+  const { loadingAdmin, gallery, saveGalleryItem, deleteGalleryItem } = useData();
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Partial<GalleryItem>>({
     title: '',
@@ -60,6 +61,9 @@ export const AdminGalleryPage: React.FC = () => {
           </button>
         </div>
 
+        {loadingAdmin ? (
+          <AdminCardGridSkeleton columns={4} aspectClass="aspect-[4/3]" count={8} />
+        ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {gallery.map((item) => (
             <div key={item.id} className="bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col justify-between">
@@ -96,6 +100,7 @@ export const AdminGalleryPage: React.FC = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {modalOpen && (

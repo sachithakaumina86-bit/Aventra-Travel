@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Compass, MapPin, Search, Sun } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { RevealItem, RevealSection, RevealStagger } from '../../components/MotionPrimitives';
+import { DestinationDirectorySkeleton } from '../../components/CardSkeletons';
 
 export const DestinationsPage: React.FC = () => {
-  const { destinations } = useData();
+  const { loadingPublic, destinations } = useData();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('All Regions');
   const [selectedSeason, setSelectedSeason] = useState('All Seasons');
@@ -94,8 +96,9 @@ export const DestinationsPage: React.FC = () => {
               <button
                 key={tag}
                 type="button"
+                aria-pressed={activeTag === tag}
                 onClick={() => setActiveTag((prev) => (prev === tag ? null : tag))}
-                className={`px-3 py-1 text-[10px] uppercase tracking-[0.14em] transition-colors cursor-pointer ${
+                className={`px-3 py-1.5 min-h-[36px] text-[10px] uppercase tracking-[0.14em] transition-colors cursor-pointer ${
                   activeTag === tag
                     ? 'bg-[#064E3B] text-[#FAF9F5]'
                     : 'bg-[#F4F4F0] text-[#404944] hover:bg-[#E9E8E4]'
@@ -113,7 +116,7 @@ export const DestinationsPage: React.FC = () => {
                   setSelectedSeason('All Seasons');
                   setActiveTag(null);
                 }}
-                className="ml-auto text-[11px] uppercase tracking-[0.14em] text-[#BA1A1A] font-semibold cursor-pointer"
+                className="ml-auto text-[11px] uppercase tracking-[0.14em] text-[#BA1A1A] font-semibold cursor-pointer py-1.5"
               >
                 Reset Filters
               </button>
@@ -227,7 +230,7 @@ export const DestinationsPage: React.FC = () => {
 
       {/* Premier Sanctuary Directory */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <RevealSection className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
             <span className="text-[10px] uppercase tracking-[0.24em] text-[#745B1C] font-semibold">
               Hand-Selected Portfolios
@@ -237,11 +240,15 @@ export const DestinationsPage: React.FC = () => {
             </h2>
           </div>
           <p className="text-xs text-[#7B847F]">
-            Showing {filtered.length} of {published.length} curated sanctuaries
+            {loadingPublic
+              ? 'Loading curated sanctuaries...'
+              : `Showing ${filtered.length} of ${published.length} curated sanctuaries`}
           </p>
-        </div>
+        </RevealSection>
 
-        {filtered.length === 0 ? (
+        {loadingPublic ? (
+          <DestinationDirectorySkeleton count={6} />
+        ) : filtered.length === 0 ? (
           <div className="bg-white border border-[#064E3B]/15 p-12 text-center space-y-3">
             <Compass className="w-8 h-8 text-[#064E3B]/50 mx-auto" />
             <h3 className="font-serif text-2xl text-[#064E3B]">No Matching Sanctuaries Found</h3>
@@ -250,58 +257,64 @@ export const DestinationsPage: React.FC = () => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <RevealStagger
+            key={`${selectedRegion}-${selectedSeason}-${activeTag ?? 'all'}-${searchTerm}`}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
+          >
             {filtered.map((dest) => (
-              <Link
-                key={dest.id}
-                to={`/destinations/${dest.slug}`}
-                className="group bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col hover:shadow-xl transition-all"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <ImageWithFallback
-                    src={dest.heroImage}
-                    alt={dest.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#022C22]/90 text-[#FAF9F5] px-2.5 py-1 text-[10px] uppercase tracking-[0.16em]">
-                    {dest.region}
+              <RevealItem key={dest.id} className="flex">
+                <Link
+                  to={`/destinations/${dest.slug}`}
+                  className="group w-full bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#E9E8E4]">
+                    <ImageWithFallback
+                      src={dest.heroImage}
+                      alt={dest.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#022C22]/90 text-[#FAF9F5] px-2.5 py-1 text-[10px] uppercase tracking-[0.16em]">
+                      {dest.region}
+                    </div>
+                    <div className="absolute bottom-3 right-3 bg-[#FAF9F5]/95 text-[#064E3B] px-2.5 py-1 text-[10px] uppercase tracking-[0.14em] font-semibold">
+                      {dest.elevation}
+                    </div>
                   </div>
-                  <div className="absolute bottom-3 right-3 bg-[#FAF9F5]/95 text-[#064E3B] px-2.5 py-1 text-[10px] uppercase tracking-[0.14em] font-semibold">
-                    {dest.elevation}
-                  </div>
-                </div>
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#745B1C] font-semibold">
-                      Best Window: {dest.bestSeason}
-                    </p>
-                    <h3 className="font-serif text-2xl text-[#064E3B] mt-1">{dest.name}</h3>
-                    <p className="text-xs italic text-[#7B847F] mt-0.5">{dest.tagline}</p>
-                    <p className="text-sm text-[#404944] mt-3 line-clamp-3 leading-relaxed">
-                      {dest.summary}
-                    </p>
-                  </div>
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-[#745B1C] font-semibold">
+                        Best Window: {dest.bestSeason}
+                      </p>
+                      <h3 className="font-serif text-2xl text-[#064E3B] mt-1 group-hover:text-[#0F766E] transition-colors">
+                        {dest.name}
+                      </h3>
+                      <p className="text-xs italic text-[#7B847F] mt-0.5">{dest.tagline}</p>
+                      <p className="text-sm text-[#404944] mt-3 line-clamp-3 leading-relaxed">
+                        {dest.summary}
+                      </p>
+                    </div>
 
-                  <div className="space-y-3 pt-3 border-t border-[#064E3B]/10">
-                    <div className="flex flex-wrap gap-1.5">
-                      {(dest.tags || []).slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="bg-[#F4F4F0] text-[#404944] px-2 py-0.5 text-[10px] uppercase tracking-wider"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center justify-between text-xs uppercase tracking-[0.16em] font-semibold text-[#064E3B]">
-                      <span>Explore {dest.name.split('&')[0].trim()}</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <div className="space-y-3 pt-3 border-t border-[#064E3B]/10">
+                      <div className="flex flex-wrap gap-1.5">
+                        {(dest.tags || []).slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="bg-[#F4F4F0] text-[#404944] px-2 py-0.5 text-[10px] uppercase tracking-wider"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex items-center justify-between text-xs uppercase tracking-[0.16em] font-semibold text-[#064E3B]">
+                        <span>Explore {dest.name.split('&')[0].trim()}</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
         )}
       </section>
 

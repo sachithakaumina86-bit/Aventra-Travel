@@ -9,7 +9,7 @@ import {
 } from '../types/aventra';
 
 export const STITCH_IMAGES = {
-  logo: '/assets/aistudio/screen_e36d6da3.png',
+  logo: '/assets/aventra-logo-128.webp',
   homeHero:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuBssEeEWFfbarE-HE9zHRjFtXb_9sceONXz_DpDU79npR5BkUiJqnwNwb_MjGQAsklUO6iKGqopsaTqtnNgsdZssQd8iVYvRTSRVjp00oPKu_ojyXjSkAMDTudQMyLNx1YWCfdQCVkIIEe85exoNqea9C53R2dWDeJvW0edlmaEQ_aKcAbb9TfTEPMXu3kxvzlqbV-6KkLNtSg6Sn7ekU44Zvdx7mr6j0jQwV0_N0k',
   hattonVeranda:
@@ -85,9 +85,9 @@ export const INITIAL_SETTINGS: WebsiteSettings = {
   heroSubheadline:
     'Bespoke private expeditions across Sri Lanka—curating secluded tea sanctuaries, ancient cultural citadels, leopard-rich coastal wilderness, and unhurried ocean horizons.',
   heroImageUrl: STITCH_IMAGES.homeHero,
-  contactEmail: 'concierge-placeholder@example.com',
+  contactEmail: 'Aventra@hotmail.com',
   contactPhone: '+94 XX XXX XXXX (Editable Placeholder)',
-  whatsappNumber: '+94 XX XXX XXXX (Editable Placeholder)',
+  whatsappNumber: '073 123 4567',
   officeAddress: 'Colombo Concierge Atelier — Sample Address (Edit in Admin Settings)',
   instagramUrl: '',
   facebookUrl: '',

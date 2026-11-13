@@ -39,6 +39,7 @@ export const DestinationDetailPage: React.FC = () => {
           <ImageWithFallback
             src={destination.heroImage}
             alt={destination.name}
+            priority
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#022C22]/90 via-[#022C22]/40 to-transparent" />

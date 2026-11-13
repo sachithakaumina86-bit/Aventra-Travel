@@ -225,7 +225,7 @@ export const ContactPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={submitting}
-                className="bg-[#064E3B] hover:bg-[#022C22] text-[#FAF9F5] px-7 py-3.5 text-xs uppercase tracking-[0.18em] font-semibold inline-flex items-center gap-2 cursor-pointer disabled:opacity-60"
+                className="bg-[#064E3B] hover:bg-[#022C22] active:scale-[0.98] text-[#FAF9F5] px-7 py-3.5 min-h-[44px] text-xs uppercase tracking-[0.18em] font-semibold inline-flex items-center gap-2 transition-all cursor-pointer disabled:opacity-60"
               >
                 {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4 text-[#D6B56D]" />}
                 <span>Send Message</span>

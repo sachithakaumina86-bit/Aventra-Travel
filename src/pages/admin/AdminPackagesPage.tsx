@@ -5,6 +5,7 @@ import { useData } from '../../context/DataContext';
 import { ItineraryDay, TourPackage } from '../../types/aventra';
 import { STITCH_IMAGES } from '../../data/initialSeedData';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { AdminCardGridSkeleton } from '../../components/CardSkeletons';
 
 const EMPTY_PKG: Partial<TourPackage> = {
   title: '',
@@ -29,7 +30,7 @@ const EMPTY_PKG: Partial<TourPackage> = {
 };
 
 export const AdminPackagesPage: React.FC = () => {
-  const { tourPackages, saveTourPackage, deleteTourPackage } = useData();
+  const { loadingAdmin, tourPackages, saveTourPackage, deleteTourPackage } = useData();
   const [search, setSearch] = useState('');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editing, setEditing] = useState<Partial<TourPackage>>(EMPTY_PKG);
@@ -138,6 +139,9 @@ export const AdminPackagesPage: React.FC = () => {
           </button>
         </div>
 
+        {loadingAdmin ? (
+          <AdminCardGridSkeleton columns={3} aspectClass="aspect-[16/10]" count={6} />
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((pkg) => (
             <div key={pkg.id} className="bg-white border border-[#064E3B]/12 overflow-hidden flex flex-col justify-between">
@@ -190,6 +194,7 @@ export const AdminPackagesPage: React.FC = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {drawerOpen && (

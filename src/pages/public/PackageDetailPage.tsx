@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { AccordionContent } from '../../components/MotionPrimitives';
 
 export const PackageDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -65,15 +66,15 @@ export const PackageDetailPage: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 pt-2">
-          <div className="md:col-span-7 aspect-[16/10] overflow-hidden">
-            <ImageWithFallback src={mosaic[0]} alt={pkg.title} className="w-full h-full object-cover" />
+          <div className="md:col-span-7 aspect-[16/10] overflow-hidden bg-[#E9E8E4]">
+            <ImageWithFallback src={mosaic[0]} alt={pkg.title} priority className="w-full h-full object-cover" />
           </div>
           <div className="md:col-span-5 grid grid-rows-2 gap-4">
-            <div className="overflow-hidden aspect-[16/9] md:aspect-auto">
-              <ImageWithFallback src={mosaic[1]} alt={`${pkg.title} preview 2`} className="w-full h-full object-cover" />
+            <div className="overflow-hidden aspect-[16/9] md:aspect-auto bg-[#E9E8E4]">
+              <ImageWithFallback src={mosaic[1]} alt={`${pkg.title} preview 2`} priority className="w-full h-full object-cover" />
             </div>
-            <div className="overflow-hidden aspect-[16/9] md:aspect-auto">
-              <ImageWithFallback src={mosaic[2]} alt={`${pkg.title} preview 3`} className="w-full h-full object-cover" />
+            <div className="overflow-hidden aspect-[16/9] md:aspect-auto bg-[#E9E8E4]">
+              <ImageWithFallback src={mosaic[2]} alt={`${pkg.title} preview 3`} priority className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -179,32 +180,35 @@ export const PackageDetailPage: React.FC = () => {
             <div className="space-y-3">
               {(pkg.itineraryDays || []).map((day) => {
                 const isOpen = expandedDay === day.dayNumber;
+                const dayPanelId = `itinerary-day-${day.dayNumber}`;
                 return (
                   <div key={day.dayNumber} className="bg-white border border-[#064E3B]/12">
                     <button
                       type="button"
+                      aria-expanded={isOpen}
+                      aria-controls={dayPanelId}
                       onClick={() => setExpandedDay(isOpen ? null : day.dayNumber)}
-                      className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left cursor-pointer"
+                      className="w-full px-5 sm:px-6 py-5 flex items-center justify-between gap-4 text-left cursor-pointer hover:bg-[#FAF9F5]/60 transition-colors"
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                         <span className="bg-[#064E3B] text-[#D6B56D] font-serif text-sm px-3 py-1 font-semibold shrink-0">
                           Day {String(day.dayNumber).padStart(2, '0')}
                         </span>
-                        <div>
-                          <h3 className="font-serif text-xl text-[#064E3B]">{day.title}</h3>
+                        <div className="min-w-0">
+                          <h3 className="font-serif text-lg sm:text-xl text-[#064E3B]">{day.title}</h3>
                           <p className="text-xs text-[#7B847F]">
                             {day.location} {day.sanctuary ? `• ${day.sanctuary}` : ''}
                           </p>
                         </div>
                       </div>
                       <ChevronDown
-                        className={`w-4 h-4 text-[#064E3B] transition-transform shrink-0 ${
+                        className={`w-4 h-4 text-[#064E3B] transition-transform duration-200 shrink-0 ${
                           isOpen ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
-                    {isOpen && (
-                      <div className="px-6 pb-6 pt-3 border-t border-[#064E3B]/10 space-y-4">
+                    <AccordionContent isOpen={isOpen} id={dayPanelId}>
+                      <div className="px-5 sm:px-6 pb-6 pt-3 border-t border-[#064E3B]/10 space-y-4">
                         <p className="text-sm text-[#404944] leading-relaxed">{day.description}</p>
                         {(day.highlights || []).length > 0 && (
                           <div className="flex flex-wrap gap-2">
@@ -219,7 +223,7 @@ export const PackageDetailPage: React.FC = () => {
                           </div>
                         )}
                       </div>
-                    )}
+                    </AccordionContent>
                   </div>
                 );
               })}
@@ -294,27 +298,33 @@ export const PackageDetailPage: React.FC = () => {
             <section id="dossier" className="space-y-5 scroll-mt-36">
               <h2 className="font-serif text-3xl text-[#064E3B]">Travel Dossier & FAQs</h2>
               <div className="space-y-3">
-                {pkg.faqs.map((faq, idx) => (
-                  <div key={idx} className="bg-white border border-[#064E3B]/12">
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                      className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 cursor-pointer"
-                    >
-                      <span className="font-serif text-lg text-[#064E3B]">{faq.question}</span>
-                      <ChevronDown
-                        className={`w-4 h-4 text-[#064E3B] transition-transform shrink-0 ${
-                          openFaq === idx ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
-                    {openFaq === idx && (
-                      <div className="px-6 pb-5 pt-2 text-sm text-[#404944] border-t border-[#064E3B]/10">
-                        {faq.answer}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                {pkg.faqs.map((faq, idx) => {
+                  const isOpen = openFaq === idx;
+                  const faqPanelId = `pkg-faq-${idx}`;
+                  return (
+                    <div key={idx} className="bg-white border border-[#064E3B]/12">
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls={faqPanelId}
+                        onClick={() => setOpenFaq(isOpen ? null : idx)}
+                        className="w-full px-6 py-4 min-h-[52px] text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-[#FAF9F5]/60 transition-colors"
+                      >
+                        <span className="font-serif text-lg text-[#064E3B]">{faq.question}</span>
+                        <ChevronDown
+                          className={`w-4 h-4 text-[#064E3B] transition-transform duration-200 shrink-0 ${
+                            isOpen ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+                      <AccordionContent isOpen={isOpen} id={faqPanelId}>
+                        <div className="px-6 pb-5 pt-2 text-sm text-[#404944] border-t border-[#064E3B]/10">
+                          {faq.answer}
+                        </div>
+                      </AccordionContent>
+                    </div>
+                  );
+                })}
               </div>
             </section>
           )}

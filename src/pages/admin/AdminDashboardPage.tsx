@@ -14,11 +14,13 @@ import {
 import { AdminLayout } from '../../components/AdminLayout';
 import { useData } from '../../context/DataContext';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
+import { AdminCardGridSkeleton } from '../../components/CardSkeletons';
 
 const LKR_RATE = 300; // Indicative conversion display toggle only
 
 export const AdminDashboardPage: React.FC = () => {
   const {
+    loadingAdmin,
     destinations,
     tourPackages,
     bookings,
@@ -427,37 +429,41 @@ export const AdminDashboardPage: React.FC = () => {
               Manage All ({destinations.length}) →
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {previewSanctuaries.map((dest) => (
-              <div key={dest.id} className="bg-white border border-[#064E3B]/10 overflow-hidden">
-                <div className="aspect-[16/9] overflow-hidden relative">
-                  <ImageWithFallback
-                    src={dest.heroImage}
-                    alt={dest.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <span className="absolute top-3 left-3 bg-[#022C22]/90 text-[#D6B56D] px-2.5 py-1 text-[10px] uppercase tracking-wider font-semibold">
-                    {dest.region}
-                  </span>
-                </div>
-                <div className="p-4 flex items-center justify-between">
-                  <div>
-                    <h3 className="font-serif text-lg text-[#064E3B]">{dest.name}</h3>
-                    <p className="text-xs text-[#7B847F]">
-                      {dest.elevation} • {dest.bestSeason}
-                    </p>
+          {loadingAdmin ? (
+            <AdminCardGridSkeleton columns={3} aspectClass="aspect-[16/9]" count={3} />
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {previewSanctuaries.map((dest) => (
+                <div key={dest.id} className="bg-white border border-[#064E3B]/10 overflow-hidden">
+                  <div className="aspect-[16/9] overflow-hidden relative bg-[#E9E8E4]">
+                    <ImageWithFallback
+                      src={dest.heroImage}
+                      alt={dest.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <span className="absolute top-3 left-3 bg-[#022C22]/90 text-[#D6B56D] px-2.5 py-1 text-[10px] uppercase tracking-wider font-semibold">
+                      {dest.region}
+                    </span>
                   </div>
-                  <span
-                    className={`text-[10px] uppercase px-2 py-0.5 font-semibold ${
-                      dest.isPublished ? 'bg-[#B0F0D6] text-[#022C22]' : 'bg-[#E9E8E4] text-[#404944]'
-                    }`}
-                  >
-                    {dest.isPublished ? 'Published' : 'Draft'}
-                  </span>
+                  <div className="p-4 flex items-center justify-between">
+                    <div>
+                      <h3 className="font-serif text-lg text-[#064E3B]">{dest.name}</h3>
+                      <p className="text-xs text-[#7B847F]">
+                        {dest.elevation} • {dest.bestSeason}
+                      </p>
+                    </div>
+                    <span
+                      className={`text-[10px] uppercase px-2 py-0.5 font-semibold ${
+                        dest.isPublished ? 'bg-[#B0F0D6] text-[#022C22]' : 'bg-[#E9E8E4] text-[#404944]'
+                      }`}
+                    >
+                      {dest.isPublished ? 'Published' : 'Draft'}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </AdminLayout>

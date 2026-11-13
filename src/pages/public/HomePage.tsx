@@ -18,10 +18,22 @@ import {
 import { useData } from '../../context/DataContext';
 import { STITCH_IMAGES } from '../../data/initialSeedData';
 import { ImageWithFallback } from '../../components/ImageWithFallback';
-import hattonEstateVerandaImg from '../../assets/images/hatton_estate_veranda_1794540588504.jpg';
+import { LUXURY_EASE, RevealItem, RevealSection, RevealStagger } from '../../components/MotionPrimitives';
+import {
+  HomeDestinationsSkeleton,
+  HomeExperiencesSkeleton,
+  HomePackagesSkeleton,
+  HomeTestimonialsSkeleton,
+  JournalGridSkeleton,
+} from '../../components/CardSkeletons';
+import hattonVerandaAvif896 from '../../assets/images/hatton_estate_veranda_896.avif';
+import hattonVerandaAvif480 from '../../assets/images/hatton_estate_veranda_480.avif';
+import hattonVerandaWebp896 from '../../assets/images/hatton_estate_veranda_896.webp';
+import hattonVerandaWebp480 from '../../assets/images/hatton_estate_veranda_480.webp';
+import hattonVerandaOptJpg from '../../assets/images/hatton_estate_veranda_opt.jpg';
 
 export const HomePage: React.FC = () => {
-  const { destinations, experiences, tourPackages, testimonials, blogPosts, settings } = useData();
+  const { loadingPublic, destinations, experiences, tourPackages, testimonials, blogPosts, settings } = useData();
   const navigate = useNavigate();
 
   const [dockRegion, setDockRegion] = useState('All Regions');
@@ -74,25 +86,31 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FAF9F5] text-[#18231F] overflow-x-hidden">
+    <div className="bg-[#FAF9F5] text-[#18231F] overflow-x-clip">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[92vh] pt-20 flex items-center">
-        <div className="absolute inset-0">
+      <section className="relative min-h-[88vh] sm:min-h-[92vh] pt-20 flex items-center overflow-hidden">
+        <motion.div
+          initial={{ scale: 1.04 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.05, ease: LUXURY_EASE }}
+          className="absolute inset-0 will-change-transform"
+        >
           <ImageWithFallback
             src={settings.heroImageUrl || STITCH_IMAGES.homeHero}
             alt="Sri Lanka luxury highland and coastal sanctuary landscape"
+            priority
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#022C22]/85 via-[#022C22]/55 to-[#022C22]/25" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#022C22]/80 via-transparent to-transparent" />
-        </div>
+        </motion.div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 w-full">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0.01, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75 }}
-            className="max-w-3xl space-y-6"
+            transition={{ duration: 0.55, ease: LUXURY_EASE }}
+            className="max-w-3xl space-y-5 sm:space-y-6"
           >
             <div className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-[#D6B56D] font-semibold">
               <span className="w-8 h-[1px] bg-[#D6B56D]" />
@@ -104,17 +122,17 @@ export const HomePage: React.FC = () => {
             <p className="text-base sm:text-lg text-[#FAF9F5]/85 leading-relaxed max-w-2xl font-light">
               {settings.heroSubheadline}
             </p>
-            <div className="flex flex-wrap items-center gap-4 pt-3">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3">
               <Link
                 to="/plan-your-journey"
-                className="bg-[#D6B56D] hover:bg-[#e4c279] text-[#18231F] px-7 py-4 text-xs uppercase tracking-[0.18em] font-semibold transition-all inline-flex items-center gap-2.5 shadow-lg"
+                className="bg-[#D6B56D] hover:bg-[#e4c279] active:scale-[0.98] text-[#18231F] px-6 sm:px-7 py-3.5 sm:py-4 min-h-[44px] text-xs uppercase tracking-[0.18em] font-semibold transition-all inline-flex items-center gap-2.5 shadow-lg"
               >
                 <span>Plan Your Bespoke Journey</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/packages/the-ceylon-discovery"
-                className="border border-[#FAF9F5]/45 hover:border-[#D6B56D] bg-[#022C22]/40 backdrop-blur-sm text-[#FAF9F5] px-7 py-4 text-xs uppercase tracking-[0.18em] font-medium transition-all"
+                className="border border-[#FAF9F5]/45 hover:border-[#D6B56D] active:scale-[0.98] bg-[#022C22]/45 backdrop-blur-xs text-[#FAF9F5] px-6 sm:px-7 py-3.5 sm:py-4 min-h-[44px] text-xs uppercase tracking-[0.18em] font-medium transition-all inline-flex items-center"
               >
                 Explore The Ceylon Discovery
               </Link>
@@ -122,18 +140,25 @@ export const HomePage: React.FC = () => {
           </motion.div>
 
           {/* Concierge Search Dock */}
-          <form
+          <motion.form
+            initial={{ opacity: 0.01, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.14, ease: LUXURY_EASE }}
             onSubmit={handleConciergeSearch}
-            className="mt-14 bg-[#FAF9F5]/95 backdrop-blur-md border border-[#D6B56D]/30 p-4 sm:p-5 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end"
+            className="mt-10 sm:mt-14 bg-[#FAF9F5]/95 backdrop-blur-md border border-[#D6B56D]/30 p-4 sm:p-5 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end"
           >
             <div>
-              <label className="block text-[10px] uppercase tracking-[0.2em] text-[#7B847F] font-semibold mb-1.5">
+              <label
+                htmlFor="dock-region"
+                className="block text-[10px] uppercase tracking-[0.2em] text-[#7B847F] font-semibold mb-1.5"
+              >
                 Preferred Territory
               </label>
               <select
+                id="dock-region"
                 value={dockRegion}
                 onChange={(e) => setDockRegion(e.target.value)}
-                className="w-full bg-white border border-[#064E3B]/15 px-3 py-2.5 text-sm text-[#18231F] focus:outline-none focus:border-[#064E3B]"
+                className="w-full bg-white border border-[#064E3B]/15 px-3 py-2.5 min-h-[44px] text-sm text-[#18231F] focus:outline-none focus:border-[#064E3B]"
               >
                 <option>All Regions</option>
                 <option>Cultural Triangle</option>
@@ -144,13 +169,17 @@ export const HomePage: React.FC = () => {
               </select>
             </div>
             <div>
-              <label className="block text-[10px] uppercase tracking-[0.2em] text-[#7B847F] font-semibold mb-1.5">
+              <label
+                htmlFor="dock-style"
+                className="block text-[10px] uppercase tracking-[0.2em] text-[#7B847F] font-semibold mb-1.5"
+              >
                 Journey Style
               </label>
               <select
+                id="dock-style"
                 value={dockStyle}
                 onChange={(e) => setDockStyle(e.target.value)}
-                className="w-full bg-white border border-[#064E3B]/15 px-3 py-2.5 text-sm text-[#18231F] focus:outline-none focus:border-[#064E3B]"
+                className="w-full bg-white border border-[#064E3B]/15 px-3 py-2.5 min-h-[44px] text-sm text-[#18231F] focus:outline-none focus:border-[#064E3B]"
               >
                 <option>Signature Circuit</option>
                 <option>Honeymoon & Slow Luxury</option>
@@ -160,13 +189,17 @@ export const HomePage: React.FC = () => {
               </select>
             </div>
             <div>
-              <label className="block text-[10px] uppercase tracking-[0.2em] text-[#7B847F] font-semibold mb-1.5">
+              <label
+                htmlFor="dock-season"
+                className="block text-[10px] uppercase tracking-[0.2em] text-[#7B847F] font-semibold mb-1.5"
+              >
                 Travel Window
               </label>
               <select
+                id="dock-season"
                 value={dockMonth}
                 onChange={(e) => setDockMonth(e.target.value)}
-                className="w-full bg-white border border-[#064E3B]/15 px-3 py-2.5 text-sm text-[#18231F] focus:outline-none focus:border-[#064E3B]"
+                className="w-full bg-white border border-[#064E3B]/15 px-3 py-2.5 min-h-[44px] text-sm text-[#18231F] focus:outline-none focus:border-[#064E3B]"
               >
                 <option>Dec – Apr (South & West Sun)</option>
                 <option>May – Oct (East Coast & Cultural)</option>
@@ -175,25 +208,39 @@ export const HomePage: React.FC = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[#064E3B] hover:bg-[#022C22] text-[#FAF9F5] py-3 px-5 text-xs uppercase tracking-[0.18em] font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              className="w-full bg-[#064E3B] hover:bg-[#022C22] active:scale-[0.98] text-[#FAF9F5] py-3 px-5 min-h-[44px] text-xs uppercase tracking-[0.18em] font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Search className="w-4 h-4 text-[#D6B56D]" />
               <span>Compose Route</span>
             </button>
-          </form>
+          </motion.form>
         </div>
       </section>
 
       {/* 2. INTRODUCTION TO AVENTRA */}
       <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <RevealSection className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 relative">
-            <div className="aspect-[4/5] overflow-hidden shadow-xl">
-              <ImageWithFallback
-                src={hattonEstateVerandaImg}
-                alt="Hatton tea estate colonial veranda overlooking misty valleys"
-                className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
-              />
+            <div className="aspect-[4/5] overflow-hidden shadow-xl bg-[#E9E8E4]">
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet={`${hattonVerandaAvif480} 480w, ${hattonVerandaAvif896} 896w`}
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                />
+                <source
+                  type="image/webp"
+                  srcSet={`${hattonVerandaWebp480} 480w, ${hattonVerandaWebp896} 896w`}
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                />
+                <ImageWithFallback
+                  src={hattonVerandaOptJpg}
+                  alt="Hatton tea estate colonial veranda overlooking misty valleys"
+                  width={896}
+                  height={1200}
+                  className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
+                />
+              </picture>
             </div>
             <div className="hidden sm:block absolute -bottom-6 -right-6 bg-[#022C22] text-[#FAF9F5] p-6 max-w-xs border-l-2 border-[#D6B56D] shadow-xl">
               <p className="text-[10px] uppercase tracking-[0.22em] text-[#D6B56D] font-semibold">
@@ -238,7 +285,7 @@ export const HomePage: React.FC = () => {
               ].map((card) => (
                 <div
                   key={card.title}
-                  className="bg-[#F4F4F0] p-5 border border-[#064E3B]/10 space-y-1.5"
+                  className="bg-[#F4F4F0] p-5 border border-[#064E3B]/10 space-y-1.5 hover:border-[#D6B56D]/60 transition-colors"
                 >
                   <h3 className="font-serif text-lg text-[#064E3B]">{card.title}</h3>
                   <p className="text-xs text-[#404944] leading-relaxed">{card.desc}</p>
@@ -255,13 +302,13 @@ export const HomePage: React.FC = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </RevealSection>
       </section>
 
       {/* 3. FEATURED DESTINATIONS */}
       <section className="py-20 bg-[#F4F4F0] border-y border-[#064E3B]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <RevealSection className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div>
               <span className="text-[11px] uppercase tracking-[0.25em] text-[#745B1C] font-semibold">
                 Curated Geography
@@ -272,21 +319,22 @@ export const HomePage: React.FC = () => {
             </div>
             <Link
               to="/destinations"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-[#064E3B] hover:text-[#745B1C]"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-[#064E3B] hover:text-[#745B1C] transition-colors"
             >
               <span>View Full Directory ({publishedDestinations.length})</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
+          </RevealSection>
 
           {/* Region Filter Tabs */}
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter sanctuaries by region">
             {regions.map((region) => (
               <button
                 key={region}
                 type="button"
+                aria-pressed={activeRegionFilter === region}
                 onClick={() => setActiveRegionFilter(region)}
-                className={`px-4 py-2 text-[11px] uppercase tracking-[0.16em] font-medium transition-colors cursor-pointer ${
+                className={`px-4 py-2 min-h-[40px] sm:min-h-[36px] text-[11px] uppercase tracking-[0.16em] font-medium transition-all active:scale-[0.98] cursor-pointer ${
                   activeRegionFilter === region
                     ? 'bg-[#064E3B] text-[#FAF9F5]'
                     : 'bg-white text-[#404944] border border-[#064E3B]/15 hover:border-[#064E3B]'
@@ -298,52 +346,57 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {loadingPublic ? (
+            <HomeDestinationsSkeleton count={8} />
+          ) : (
+            <RevealStagger key={activeRegionFilter} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredDestinations.map((dest) => (
-              <Link
-                key={dest.id}
-                to={`/destinations/${dest.slug}`}
-                className="group bg-white border border-[#064E3B]/10 overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <ImageWithFallback
-                    src={dest.heroImage}
-                    alt={dest.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#022C22]/85 text-[#D6B56D] px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] font-semibold">
-                    {dest.bestSeason}
+              <RevealItem key={dest.id} className="flex">
+                <Link
+                  to={`/destinations/${dest.slug}`}
+                  className="group w-full bg-white border border-[#064E3B]/10 overflow-hidden flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[#E9E8E4]">
+                    <ImageWithFallback
+                      src={dest.heroImage}
+                      alt={dest.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#022C22]/85 text-[#D6B56D] px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] font-semibold">
+                      {dest.bestSeason}
+                    </div>
+                    <div className="absolute bottom-3 right-3 bg-[#FAF9F5]/90 text-[#18231F] px-2.5 py-1 text-[10px] uppercase tracking-[0.14em]">
+                      {dest.elevation}
+                    </div>
                   </div>
-                  <div className="absolute bottom-3 right-3 bg-[#FAF9F5]/90 text-[#18231F] px-2.5 py-1 text-[10px] uppercase tracking-[0.14em]">
-                    {dest.elevation}
+                  <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-[#745B1C] font-semibold">
+                        {dest.region}
+                      </p>
+                      <h3 className="font-serif text-xl text-[#064E3B] mt-1 group-hover:text-[#0F766E] transition-colors">
+                        {dest.name}
+                      </h3>
+                      <p className="text-xs text-[#404944] mt-2 line-clamp-3 leading-relaxed">
+                        {dest.summary}
+                      </p>
+                    </div>
+                    <div className="pt-3 border-t border-[#064E3B]/10 flex items-center justify-between text-[11px] uppercase tracking-[0.15em] text-[#064E3B] font-semibold">
+                      <span>Explore Sanctuary</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
-                </div>
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#745B1C] font-semibold">
-                      {dest.region}
-                    </p>
-                    <h3 className="font-serif text-xl text-[#064E3B] mt-1 group-hover:text-[#0F766E] transition-colors">
-                      {dest.name}
-                    </h3>
-                    <p className="text-xs text-[#404944] mt-2 line-clamp-3 leading-relaxed">
-                      {dest.summary}
-                    </p>
-                  </div>
-                  <div className="pt-3 border-t border-[#064E3B]/10 flex items-center justify-between text-[11px] uppercase tracking-[0.15em] text-[#064E3B] font-semibold">
-                    <span>Explore Sanctuary</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
+          )}
         </div>
       </section>
 
       {/* 4. SIGNATURE EXPERIENCES */}
       <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <RevealSection className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#745B1C] font-semibold">
               Experiential Realms
@@ -354,47 +407,52 @@ export const HomePage: React.FC = () => {
           </div>
           <Link
             to="/experiences"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-[#064E3B] hover:text-[#745B1C]"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-[#064E3B] hover:text-[#745B1C] transition-colors"
           >
             <span>Explore All Experiences</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </RevealSection>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {publishedExperiences.map((exp) => (
-            <Link
-              key={exp.id}
-              to={`/experiences/${exp.slug}`}
-              className="group relative aspect-[3/4] overflow-hidden bg-[#022C22]"
-            >
-              <ImageWithFallback
-                src={exp.heroImage}
-                alt={exp.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#022C22] via-[#022C22]/30 to-transparent" />
-              <div className="absolute top-4 left-4 bg-[#FAF9F5]/90 text-[#064E3B] px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] font-semibold">
-                {exp.duration}
-              </div>
-              <div className="absolute inset-x-0 bottom-0 p-5 space-y-2">
-                <span className="text-[10px] uppercase tracking-[0.2em] text-[#D6B56D] font-semibold block">
-                  {exp.realmCategory}
-                </span>
-                <h3 className="font-serif text-xl text-[#FAF9F5] leading-snug">
-                  {exp.title}
-                </h3>
-                <p className="text-xs text-[#FAF9F5]/75 line-clamp-2">{exp.summary}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+        {loadingPublic ? (
+          <HomeExperiencesSkeleton count={8} />
+        ) : (
+          <RevealStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {publishedExperiences.map((exp) => (
+              <RevealItem key={exp.id}>
+                <Link
+                  to={`/experiences/${exp.slug}`}
+                  className="group relative aspect-[3/4] overflow-hidden bg-[#022C22] block hover:-translate-y-0.5 transition-transform duration-300"
+                >
+                  <ImageWithFallback
+                    src={exp.heroImage}
+                    alt={exp.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#022C22] via-[#022C22]/30 to-transparent" />
+                  <div className="absolute top-4 left-4 bg-[#FAF9F5]/90 text-[#064E3B] px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] font-semibold">
+                    {exp.duration}
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-5 space-y-2">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#D6B56D] font-semibold block">
+                      {exp.realmCategory}
+                    </span>
+                    <h3 className="font-serif text-xl text-[#FAF9F5] leading-snug">
+                      {exp.title}
+                    </h3>
+                    <p className="text-xs text-[#FAF9F5]/75 line-clamp-2">{exp.summary}</p>
+                  </div>
+                </Link>
+              </RevealItem>
+            ))}
+          </RevealStagger>
+        )}
       </section>
 
       {/* 5. FEATURED TOUR PACKAGES */}
       <section className="py-20 bg-[#F0E9DC]/60 border-y border-[#064E3B]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <RevealSection className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
               <span className="text-[11px] uppercase tracking-[0.25em] text-[#745B1C] font-semibold">
                 Curated Multi-Day Routes
@@ -405,26 +463,29 @@ export const HomePage: React.FC = () => {
             </div>
             <Link
               to="/packages"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-[#064E3B]"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-[#064E3B] hover:text-[#745B1C] transition-colors"
             >
               <span>Compare All Circuits</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
+          </RevealSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-7">
+          {loadingPublic ? (
+            <HomePackagesSkeleton count={5} />
+          ) : (
+            <RevealStagger className="grid grid-cols-1 lg:grid-cols-3 gap-7">
             {publishedPackages.map((pkg, idx) => (
-              <div
+              <RevealItem
                 key={pkg.id}
-                className={`bg-white border border-[#064E3B]/12 flex flex-col justify-between overflow-hidden hover:shadow-xl transition-all ${
+                className={`bg-white border border-[#064E3B]/12 flex flex-col justify-between overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 ${
                   idx === 0 ? 'lg:col-span-2 lg:grid lg:grid-cols-2' : ''
                 }`}
               >
-                <div className={`relative overflow-hidden ${idx === 0 ? 'h-full min-h-[280px]' : 'aspect-[16/10]'}`}>
+                <div className={`relative overflow-hidden bg-[#E9E8E4] ${idx === 0 ? 'h-full min-h-[260px] sm:min-h-[280px]' : 'aspect-[16/10]'}`}>
                   <ImageWithFallback
                     src={pkg.heroImage}
                     alt={pkg.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4 bg-[#022C22]/90 text-[#D6B56D] px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-semibold">
                     {pkg.durationLabel}
@@ -442,7 +503,7 @@ export const HomePage: React.FC = () => {
                     <p className="text-sm text-[#404944] leading-relaxed">{pkg.summary}</p>
                   </div>
                   <div className="pt-4 border-t border-[#064E3B]/10 space-y-4">
-                    <div className="flex items-baseline justify-between">
+                    <div className="flex flex-wrap items-baseline justify-between gap-3">
                       <div>
                         <span className="text-[10px] uppercase tracking-[0.16em] text-[#7B847F] block">
                           Sample Indicative Tariff
@@ -454,7 +515,7 @@ export const HomePage: React.FC = () => {
                       </div>
                       <Link
                         to={`/packages/${pkg.slug}`}
-                        className="inline-flex items-center gap-2 bg-[#064E3B] hover:bg-[#022C22] text-[#FAF9F5] px-4 py-2.5 text-[11px] uppercase tracking-[0.16em] font-semibold transition-colors"
+                        className="inline-flex items-center gap-2 bg-[#064E3B] hover:bg-[#022C22] active:scale-[0.98] text-[#FAF9F5] px-4 py-2.5 min-h-[40px] text-[11px] uppercase tracking-[0.16em] font-semibold transition-all"
                       >
                         <span>View Dossier</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -462,16 +523,17 @@ export const HomePage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
+          )}
         </div>
       </section>
 
       {/* 6. WHY CHOOSE AVENTRA */}
       <section className="py-20 sm:py-24 bg-[#022C22] text-[#FAF9F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-14">
+          <RevealSection className="max-w-2xl mb-14">
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#D6B56D] font-semibold">
               The AVENTRA Standard
             </span>
@@ -481,9 +543,9 @@ export const HomePage: React.FC = () => {
             <p className="text-sm sm:text-base text-[#FAF9F5]/75 mt-3 leading-relaxed">
               Designed around private access, local geographical mastery, and calm personal service at every island crossing.
             </p>
-          </div>
+          </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <RevealStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 icon: Compass,
@@ -518,17 +580,17 @@ export const HomePage: React.FC = () => {
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <div
+                <RevealItem
                   key={item.title}
-                  className="bg-[#064E3B]/35 border border-[#D6B56D]/20 p-7 space-y-3"
+                  className="bg-[#064E3B]/35 border border-[#D6B56D]/20 p-7 space-y-3 hover:border-[#D6B56D]/45 transition-colors"
                 >
                   <Icon className="w-6 h-6 text-[#D6B56D]" />
                   <h3 className="font-serif text-xl text-[#FAF9F5]">{item.title}</h3>
                   <p className="text-sm text-[#FAF9F5]/75 leading-relaxed">{item.body}</p>
-                </div>
+                </RevealItem>
               );
             })}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -542,7 +604,7 @@ export const HomePage: React.FC = () => {
           />
           <div className="absolute inset-0 bg-[#022C22]/70" />
         </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-[#FAF9F5] space-y-6">
+        <RevealSection className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-[#FAF9F5] space-y-6">
           <span className="text-[11px] uppercase tracking-[0.28em] text-[#D6B56D] font-semibold">
             Five Microclimates • One Island
           </span>
@@ -555,23 +617,23 @@ export const HomePage: React.FC = () => {
           <div className="pt-4 flex flex-wrap justify-center gap-4">
             <Link
               to="/destinations"
-              className="bg-[#D6B56D] hover:bg-[#e4c279] text-[#18231F] px-7 py-3.5 text-xs uppercase tracking-[0.18em] font-semibold"
+              className="bg-[#D6B56D] hover:bg-[#e4c279] active:scale-[0.98] text-[#18231F] px-7 py-3.5 min-h-[44px] text-xs uppercase tracking-[0.18em] font-semibold inline-flex items-center transition-all"
             >
               Explore Regional Microclimates
             </Link>
             <Link
               to="/experiences"
-              className="border border-[#FAF9F5]/45 hover:border-[#D6B56D] text-[#FAF9F5] px-7 py-3.5 text-xs uppercase tracking-[0.18em]"
+              className="border border-[#FAF9F5]/45 hover:border-[#D6B56D] active:scale-[0.98] text-[#FAF9F5] px-7 py-3.5 min-h-[44px] text-xs uppercase tracking-[0.18em] inline-flex items-center transition-all"
             >
               Discover 8 Experiential Realms
             </Link>
           </div>
-        </div>
+        </RevealSection>
       </section>
 
       {/* 8. TRAVEL JOURNAL PREVIEW */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <RevealSection className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#745B1C] font-semibold">
               Editorial Dispatches
@@ -582,70 +644,78 @@ export const HomePage: React.FC = () => {
           </div>
           <Link
             to="/journal"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-[#064E3B]"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-[#064E3B] hover:text-[#745B1C] transition-colors"
           >
             <span>Read All Stories</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </RevealSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+        {loadingPublic ? (
+          <JournalGridSkeleton count={3} />
+        ) : (
+          <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-7">
           {publishedPosts.map((post) => (
-            <Link
-              key={post.id}
-              to={`/journal/${post.slug}`}
-              className="group bg-white border border-[#064E3B]/10 overflow-hidden flex flex-col hover:shadow-lg transition-all"
-            >
-              <div className="aspect-[16/10] overflow-hidden">
-                <ImageWithFallback
-                  src={post.coverImage}
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-[#745B1C] font-semibold">
-                    <span>{post.category}</span>
-                    <span>{post.readTimeMinutes} Min Read</span>
-                  </div>
-                  <h3 className="font-serif text-xl text-[#064E3B] leading-snug group-hover:text-[#0F766E]">
-                    {post.title}
-                  </h3>
-                  <p className="text-xs text-[#404944] line-clamp-3 leading-relaxed">
-                    {post.excerpt}
-                  </p>
+            <RevealItem key={post.id} className="flex">
+              <Link
+                to={`/journal/${post.slug}`}
+                className="group w-full bg-white border border-[#064E3B]/10 overflow-hidden flex flex-col hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <div className="aspect-[16/10] overflow-hidden bg-[#E9E8E4]">
+                  <ImageWithFallback
+                    src={post.coverImage}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
-                <span className="text-[11px] uppercase tracking-[0.16em] font-semibold text-[#064E3B] inline-flex items-center gap-1.5 pt-2">
-                  <span>Read Dispatch</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </Link>
+                <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-[#745B1C] font-semibold">
+                      <span>{post.category}</span>
+                      <span>{post.readTimeMinutes} Min Read</span>
+                    </div>
+                    <h3 className="font-serif text-xl text-[#064E3B] leading-snug group-hover:text-[#0F766E] transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-xs text-[#404944] line-clamp-3 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                  <span className="text-[11px] uppercase tracking-[0.16em] font-semibold text-[#064E3B] inline-flex items-center gap-1.5 pt-2">
+                    <span>Read Dispatch</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            </RevealItem>
           ))}
-        </div>
+        </RevealStagger>
+        )}
       </section>
 
       {/* 9. TESTIMONIALS */}
       <section className="py-20 bg-[#F4F4F0] border-t border-[#064E3B]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <RevealSection className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#745B1C] font-semibold">
               Traveler Reflections (Editable Sample Stories)
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl text-[#064E3B] mt-2">
               Notes From Past Voyages
             </h2>
-          </div>
+          </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {loadingPublic ? (
+            <HomeTestimonialsSkeleton count={3} />
+          ) : (
+            <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {publishedTestimonials.map((item) => (
-              <div
+              <RevealItem
                 key={item.id}
-                className="bg-white border border-[#064E3B]/10 p-7 flex flex-col justify-between space-y-5"
+                className="bg-white border border-[#064E3B]/10 p-7 flex flex-col justify-between space-y-5 hover:shadow-md transition-shadow"
               >
                 <div className="space-y-4">
-                  <div className="flex gap-1 text-[#D6B56D]">
+                  <div className="flex gap-1 text-[#D6B56D]" aria-label={`${item.rating || 5} out of 5 stars`}>
                     {Array.from({ length: item.rating || 5 }).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-[#D6B56D]" />
                     ))}
@@ -660,9 +730,10 @@ export const HomePage: React.FC = () => {
                     {item.guestOrigin} • {item.journeyTitle}
                   </p>
                 </div>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
+          )}
         </div>
       </section>
 
@@ -676,7 +747,7 @@ export const HomePage: React.FC = () => {
           />
           <div className="absolute inset-0 bg-[#022C22]/75" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center text-[#FAF9F5] space-y-6">
+        <RevealSection className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center text-[#FAF9F5] space-y-6">
           <Sparkles className="w-6 h-6 text-[#D6B56D] mx-auto" />
           <h2 className="font-serif text-4xl sm:text-6xl leading-tight">
             Ready to Compose Your Sri Lankan Passage?
@@ -687,20 +758,20 @@ export const HomePage: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 pt-3">
             <Link
               to="/plan-your-journey"
-              className="bg-[#D6B56D] hover:bg-[#e4c279] text-[#18231F] px-8 py-4 text-xs uppercase tracking-[0.18em] font-semibold inline-flex items-center gap-2"
+              className="bg-[#D6B56D] hover:bg-[#e4c279] active:scale-[0.98] text-[#18231F] px-8 py-4 min-h-[44px] text-xs uppercase tracking-[0.18em] font-semibold inline-flex items-center gap-2 transition-all"
             >
               <Calendar className="w-4 h-4" />
               <span>Start Journey Formulation</span>
             </Link>
             <Link
               to="/contact"
-              className="border border-[#FAF9F5]/40 hover:border-[#D6B56D] text-[#FAF9F5] px-8 py-4 text-xs uppercase tracking-[0.18em] inline-flex items-center gap-2"
+              className="border border-[#FAF9F5]/40 hover:border-[#D6B56D] active:scale-[0.98] text-[#FAF9F5] px-8 py-4 min-h-[44px] text-xs uppercase tracking-[0.18em] inline-flex items-center gap-2 transition-all"
             >
               <MapPin className="w-4 h-4" />
               <span>Speak With Concierge</span>
             </Link>
           </div>
-        </div>
+        </RevealSection>
       </section>
     </div>
   );

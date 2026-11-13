@@ -54,8 +54,8 @@ export const JournalDetailPage: React.FC = () => {
           <p className="text-xs text-[#7B847F]">By {post.authorName}</p>
         </header>
 
-        <div className="aspect-[16/9] overflow-hidden border border-[#064E3B]/10">
-          <ImageWithFallback src={post.coverImage} alt={post.title} className="w-full h-full object-cover" />
+        <div className="aspect-[16/9] overflow-hidden border border-[#064E3B]/10 bg-[#E9E8E4]">
+          <ImageWithFallback src={post.coverImage} alt={post.title} priority className="w-full h-full object-cover" />
         </div>
 
         <div className="text-base sm:text-lg text-[#18231F] leading-relaxed space-y-5 whitespace-pre-line font-normal">

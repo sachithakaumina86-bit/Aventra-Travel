@@ -298,8 +298,9 @@ export const PlanJourneyPage: React.FC = () => {
                     <button
                       key={dest.id}
                       type="button"
+                      aria-pressed={selected}
                       onClick={() => toggleItem(selectedDestinations, setSelectedDestinations, dest.name)}
-                      className={`p-3.5 text-left border transition-all cursor-pointer flex items-center justify-between ${
+                      className={`p-3.5 min-h-[52px] text-left border transition-all active:scale-[0.99] cursor-pointer flex items-center justify-between ${
                         selected
                           ? 'bg-[#064E3B] text-[#FAF9F5] border-[#064E3B]'
                           : 'bg-[#FAF9F5] text-[#18231F] border-[#064E3B]/15 hover:border-[#064E3B]'
@@ -528,7 +529,7 @@ export const PlanJourneyPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-[#064E3B] hover:bg-[#022C22] text-[#FAF9F5] py-4 px-6 text-xs uppercase tracking-[0.2em] font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer disabled:opacity-60"
+                className="w-full bg-[#064E3B] hover:bg-[#022C22] active:scale-[0.99] text-[#FAF9F5] py-4 px-6 min-h-[48px] text-xs uppercase tracking-[0.2em] font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-60"
               >
                 {submitting ? (
                   <>

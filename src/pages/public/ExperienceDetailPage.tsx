@@ -28,7 +28,7 @@ export const ExperienceDetailPage: React.FC = () => {
     <div className="pt-20 bg-[#FAF9F5] text-[#18231F]">
       <section className="relative h-[58vh] min-h-[400px] flex items-end">
         <div className="absolute inset-0">
-          <ImageWithFallback src={exp.heroImage} alt={exp.title} className="w-full h-full object-cover" />
+          <ImageWithFallback src={exp.heroImage} alt={exp.title} priority className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#022C22]/90 via-[#022C22]/40 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full text-[#FAF9F5] space-y-3">
