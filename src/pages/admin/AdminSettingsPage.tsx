@@ -173,7 +173,7 @@ export const AdminSettingsPage: React.FC = () => {
 
               <div className="bg-white border border-[#064E3B]/12 p-6 sm:p-8 space-y-4 text-xs">
                 <h2 className="font-serif text-2xl text-[#064E3B] border-b border-[#064E3B]/10 pb-2">
-                  Contact &amp; Social Desk (Replace Placeholders With Verified Details)
+                  Contact &amp; Social Desk
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>

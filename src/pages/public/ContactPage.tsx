@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useData } from '../../context/DataContext';
+import { validateContactWithServerFallback } from '../../utils/formValidation';
 
 export const ContactPage: React.FC = () => {
   const { settings, submitContactMessage } = useData();
@@ -21,20 +22,15 @@ export const ContactPage: React.FC = () => {
     setSubmitting(true);
 
     try {
-      const validateRes = await fetch('/api/contact/validate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'contact',
-          fullName,
-          email,
-          phone,
-          subject,
-          message,
-        }),
+      const validationData = await validateContactWithServerFallback({
+        type: 'contact',
+        fullName,
+        email,
+        phone,
+        subject,
+        message,
       });
-      const validationData = await validateRes.json();
-      if (!validateRes.ok || !validationData.valid) {
+      if (!validationData.valid || !validationData.normalized) {
         setErrors(validationData.errors || {});
         setSubmitError('Please review the highlighted fields before sending.');
         setSubmitting(false);
@@ -56,8 +52,16 @@ export const ContactPage: React.FC = () => {
       setPhone('');
       setSubject('');
       setMessage('');
-    } catch {
-      setSubmitError('Could not deliver your message right now. Please try again shortly.');
+    } catch (err) {
+      console.error('Contact Us submission failed:', err);
+      const messageText = err instanceof Error ? err.message : String(err);
+      if (messageText.toLowerCase().includes('quota exceeded')) {
+        setSubmitError(
+          'Our inquiry inbox has reached its daily capacity. Please reach us directly at Aventra@hotmail.com or 073 123 4567.'
+        );
+      } else {
+        setSubmitError('Could not deliver your message right now. Please try again shortly.');
+      }
     } finally {
       setSubmitting(false);
     }
@@ -82,7 +86,7 @@ export const ContactPage: React.FC = () => {
           <div className="bg-[#022C22] text-[#FAF9F5] p-8 space-y-6 border border-[#D6B56D]/25">
             <div>
               <span className="text-[10px] uppercase tracking-[0.22em] text-[#D6B56D] font-semibold">
-                Desk Coordinates (Editable in Admin Settings)
+                Desk Coordinates
               </span>
               <h2 className="font-serif text-3xl mt-1">AVENTRA Concierge</h2>
             </div>
@@ -185,7 +189,7 @@ export const ContactPage: React.FC = () => {
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+1 555 010 9999"
+                    placeholder="073 123 4567"
                     className="w-full bg-[#FAF9F5] border border-[#064E3B]/15 px-3.5 py-2.5 text-sm"
                   />
                 </div>

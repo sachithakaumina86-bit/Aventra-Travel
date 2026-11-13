@@ -113,14 +113,14 @@ export const AboutPage: React.FC = () => {
                 “{settings.founderQuote}”
               </p>
               <footer className="text-[11px] uppercase tracking-[0.18em] text-[#7B847F]">
-                Editable Editorial Profile • Admin Website Settings
+                AVENTRA Editorial Profile
               </footer>
             </blockquote>
           </div>
 
           <div className="lg:col-span-7 space-y-6">
             <span className="text-[11px] uppercase tracking-[0.25em] text-[#745B1C] font-semibold">
-              The Genesis • Editable Editorial Dispatch
+              The Genesis • Editorial Dispatch
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl text-[#064E3B]">
               {settings.founderLetterTitle}
@@ -132,13 +132,13 @@ export const AboutPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-[#064E3B]/15 text-xs">
               <div>
                 <span className="text-[10px] uppercase tracking-[0.18em] text-[#7B847F] block">
-                  Concierge Desk (Editable)
+                  Concierge Desk
                 </span>
                 <span className="font-semibold text-[#064E3B]">{settings.contactEmail}</span>
               </div>
               <div>
                 <span className="text-[10px] uppercase tracking-[0.18em] text-[#7B847F] block">
-                  Field Station (Editable)
+                  Field Station
                 </span>
                 <span className="font-semibold text-[#064E3B]">{settings.officeAddress}</span>
               </div>

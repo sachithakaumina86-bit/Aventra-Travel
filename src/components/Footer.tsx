@@ -2,6 +2,7 @@ import React, { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Loader2 } from 'lucide-react';
 import { useData } from '../context/DataContext';
+import { validateContactWithServerFallback } from '../utils/formValidation';
 
 export const Footer: React.FC = memo(() => {
   const { settings, submitContactMessage } = useData();
@@ -21,30 +22,27 @@ export const Footer: React.FC = memo(() => {
 
     setSubmitting(true);
     try {
-      const validateRes = await fetch('/api/contact/validate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'newsletter',
-          fullName: 'Dispatch Subscriber',
-          email: trimmed,
-        }),
+      const validationData = await validateContactWithServerFallback({
+        type: 'newsletter',
+        fullName: 'Dispatch Subscriber',
+        email: trimmed,
       });
-      if (!validateRes.ok) {
+      if (!validationData.valid || !validationData.normalized) {
         setError('Please verify your email format and try again.');
         setSubmitting(false);
         return;
       }
       await submitContactMessage({
         type: 'newsletter',
-        fullName: 'Dispatch Subscriber',
-        email: trimmed,
-        subject: 'Private Travel Dispatches Subscription',
+        fullName: validationData.normalized.fullName,
+        email: validationData.normalized.email,
+        subject: validationData.normalized.subject,
         message: 'Subscribed via footer newsletter dispatch form.',
       });
       setSubscribed(true);
       setEmail('');
-    } catch {
+    } catch (err) {
+      console.error('Newsletter subscription failed:', err);
       setError('Subscription could not be saved right now. Please try again.');
     } finally {
       setSubmitting(false);

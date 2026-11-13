@@ -66,6 +66,77 @@ function trimStr(val: unknown, max: number): string {
   return typeof val === 'string' ? val.trim().slice(0, max) : '';
 }
 
+function stripEditablePlaceholder(val: string): string {
+  return val
+    .replace(/\s*[\[(]\s*Editable Placeholder\s*[\])]/gi, '')
+    .replace(/\s*—\s*Sample Address\s*\(Edit in Admin Settings\)/gi, '')
+    .replace(/\s*\(Edit in Admin Settings\)/gi, '')
+    .trim();
+}
+
+function normalizeWebsiteSettings(raw: Partial<WebsiteSettings>): WebsiteSettings {
+  const merged: WebsiteSettings = { ...INITIAL_SETTINGS, ...raw };
+
+  const rawEmail = trimStr(merged.contactEmail, 200);
+  const contactEmail =
+    !rawEmail ||
+    rawEmail.toLowerCase().includes('placeholder') ||
+    rawEmail.toLowerCase().endsWith('@example.com')
+      ? INITIAL_SETTINGS.contactEmail
+      : rawEmail;
+
+  const cleanedPhone = stripEditablePlaceholder(trimStr(merged.contactPhone, 60));
+  const contactPhone =
+    !cleanedPhone ||
+    /editable placeholder/i.test(cleanedPhone) ||
+    cleanedPhone.includes('XX XXX')
+      ? INITIAL_SETTINGS.contactPhone
+      : cleanedPhone;
+
+  const cleanedWhatsapp = stripEditablePlaceholder(trimStr(merged.whatsappNumber, 60));
+  const whatsappNumber =
+    !cleanedWhatsapp ||
+    /editable placeholder/i.test(cleanedWhatsapp) ||
+    cleanedWhatsapp.includes('XX XXX')
+      ? INITIAL_SETTINGS.whatsappNumber
+      : cleanedWhatsapp;
+
+  const rawAddress = trimStr(merged.officeAddress, 300);
+  const officeAddress =
+    !rawAddress ||
+    /sample address/i.test(rawAddress) ||
+    /edit in admin settings/i.test(rawAddress) ||
+    /editable placeholder/i.test(rawAddress)
+      ? INITIAL_SETTINGS.officeAddress
+      : stripEditablePlaceholder(rawAddress);
+
+  const cleanedFounder = stripEditablePlaceholder(trimStr(merged.founderName, 120));
+  const founderName = cleanedFounder || INITIAL_SETTINGS.founderName;
+
+  const rawHeritage = trimStr(merged.heritageEstablishedNote, 200);
+  const heritageEstablishedNote =
+    !rawHeritage || /sample editorial profile|edit provenance/i.test(rawHeritage)
+      ? INITIAL_SETTINGS.heritageEstablishedNote
+      : stripEditablePlaceholder(rawHeritage);
+
+  const rawAccreditations = trimStr(merged.accreditationsNote, 400);
+  const accreditationsNote =
+    !rawAccreditations || /sample accreditations placeholder|add verified memberships/i.test(rawAccreditations)
+      ? INITIAL_SETTINGS.accreditationsNote
+      : stripEditablePlaceholder(rawAccreditations);
+
+  return {
+    ...merged,
+    contactEmail,
+    contactPhone,
+    whatsappNumber,
+    officeAddress,
+    founderName,
+    heritageEstablishedNote,
+    accreditationsNote,
+  };
+}
+
 interface DataContextValue {
   loadingPublic: boolean;
   loadingAdmin: boolean;
@@ -194,7 +265,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
           setGallery(galSnap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<GalleryItem, 'id'>) })));
         }
         if (settingsSnap.exists()) {
-          setSettings({ ...INITIAL_SETTINGS, ...(settingsSnap.data() as Partial<WebsiteSettings>) });
+          setSettings(normalizeWebsiteSettings(settingsSnap.data() as Partial<WebsiteSettings>));
         }
       } catch (err) {
         console.warn('Public Firestore fetch fell back cleanly:', err);
@@ -301,7 +372,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         doc(db, 'websiteSettings', 'public'),
         (snap) => {
           if (snap.exists()) {
-            setSettings({ ...INITIAL_SETTINGS, ...(snap.data() as Partial<WebsiteSettings>) });
+            setSettings(normalizeWebsiteSettings(snap.data() as Partial<WebsiteSettings>));
           }
         },
         (error) => handleFirestoreError(error, OperationType.GET, 'websiteSettings/public')
@@ -975,7 +1046,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const saveWebsiteSettings = async (updates: Partial<WebsiteSettings>) => {
-    const cleanPayload: WebsiteSettings = {
+    const cleanPayload: WebsiteSettings = normalizeWebsiteSettings({
       brandName: trimStr(updates.brandName ?? settings.brandName, 80),
       tagline: trimStr(updates.tagline ?? settings.tagline, 160),
       heroHeadline: trimStr(updates.heroHeadline ?? settings.heroHeadline, 200),
@@ -1008,7 +1079,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       ogSiteName: trimStr(updates.ogSiteName ?? settings.ogSiteName ?? 'AVENTRA', 80),
       ogType: trimStr(updates.ogType ?? settings.ogType ?? 'website', 40) || 'website',
       twitterCard: trimStr(updates.twitterCard ?? settings.twitterCard ?? 'summary_large_image', 40) || 'summary_large_image',
-    };
+    });
     try {
       await setDoc(doc(db, 'websiteSettings', 'public'), {
         ...cleanPayload,

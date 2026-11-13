@@ -43,7 +43,7 @@ async function startServer() {
 
     const errors: Record<string, string> = {};
     if (fullName.length < 2) errors.fullName = 'Please enter your full name (at least 2 characters).';
-    if (!EMAIL_REGEX.test(email)) errors.email = 'Please enter a valid email address.';
+    if (email.length < 5 || !EMAIL_REGEX.test(email)) errors.email = 'Please enter a valid email address.';
     if (phone.length < 5) errors.phone = 'Please provide a valid phone or WhatsApp number.';
     if (country.length < 2) errors.country = 'Please specify your country of residence.';
     if (!Number.isInteger(adults) || adults < 1 || adults > 50) {
@@ -97,7 +97,7 @@ async function startServer() {
 
     const errors: Record<string, string> = {};
     if (fullName.length < 1) errors.fullName = 'Please enter your name.';
-    if (!EMAIL_REGEX.test(email)) errors.email = 'Please enter a valid email address.';
+    if (email.length < 5 || !EMAIL_REGEX.test(email)) errors.email = 'Please enter a valid email address.';
     if (type === 'contact' && message.length < 5) {
       errors.message = 'Please share a brief message (at least 5 characters).';
     }

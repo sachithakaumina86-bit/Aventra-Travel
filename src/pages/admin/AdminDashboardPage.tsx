@@ -155,7 +155,7 @@ export const AdminDashboardPage: React.FC = () => {
               <div>
                 <h2 className="font-serif text-xl">Initialize Sample Catalog in Firestore</h2>
                 <p className="text-xs text-[#FAF9F5]/80 mt-1 max-w-2xl">
-                  Your live Firestore database has not yet been seeded with initial destinations, experiences, tour packages, sample journal stories, and editable placeholder settings. Seed them once so you can customize or delete any entry.
+                  Your live Firestore database has not yet been seeded with initial destinations, experiences, tour packages, sample journal stories, and default concierge settings. Seed them once so you can customize or delete any entry.
                 </p>
               </div>
             </div>

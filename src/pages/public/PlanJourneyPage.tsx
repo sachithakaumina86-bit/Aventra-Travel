@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { CalendarCheck, CheckCircle2, Loader2, ShieldCheck, Sparkles } from 'lucide-react';
 import { useData } from '../../context/DataContext';
+import { validateInquiryWithServerFallback } from '../../utils/formValidation';
 
 const EXPERIENCE_OPTIONS = [
   'Dawn Citadel & Ancient Kingdoms',
@@ -99,13 +100,8 @@ export const PlanJourneyPage: React.FC = () => {
 
     setSubmitting(true);
     try {
-      const validateRes = await fetch('/api/inquiries/validate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const validationData = await validateRes.json();
-      if (!validateRes.ok || !validationData.valid) {
+      const validationData = await validateInquiryWithServerFallback(payload);
+      if (!validationData.valid || !validationData.normalized) {
         setFieldErrors(validationData.errors || {});
         setSubmitError('Please review the highlighted traveler details before submitting.');
         setSubmitting(false);
@@ -115,7 +111,8 @@ export const PlanJourneyPage: React.FC = () => {
       const result = await submitInquiry(validationData.normalized);
       setConfirmedRef(result.referenceCode);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch {
+    } catch (err) {
+      console.error('Inquiry submission failed:', err);
       setSubmitError('We could not save your bespoke inquiry right now. Please check your connection and try again.');
     } finally {
       setSubmitting(false);
