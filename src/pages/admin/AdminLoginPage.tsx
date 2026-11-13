@@ -4,11 +4,8 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
-  ChevronDown,
-  ChevronUp,
   Eye,
   EyeOff,
-  KeyRound,
   Loader2,
   Lock,
   Mail,
@@ -42,7 +39,6 @@ export const AdminLoginPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberSession, setRememberSession] = useState(true);
-  const [showSetupGuide, setShowSetupGuide] = useState(false);
   const [sendingReset, setSendingReset] = useState(false);
   const [sendingVerify, setSendingVerify] = useState(false);
 
@@ -362,45 +358,6 @@ export const AdminLoginPage: React.FC = () => {
               >
                 <span>Continue With Google (Verified Admin)</span>
               </button>
-
-              <div className="border-t border-[#064E3B]/10 pt-4 text-[11px] text-[#7B847F] leading-relaxed space-y-2">
-                <button
-                  type="button"
-                  onClick={() => setShowSetupGuide((prev) => !prev)}
-                  className="w-full flex items-center justify-between text-left text-[#064E3B] font-semibold uppercase tracking-[0.14em] cursor-pointer"
-                >
-                  <span className="inline-flex items-center gap-1.5">
-                    <KeyRound className="w-3.5 h-3.5 text-[#D6B56D]" />
-                    <span>Firebase Email/Password Setup</span>
-                  </span>
-                  {showSetupGuide ? (
-                    <ChevronUp className="w-3.5 h-3.5" />
-                  ) : (
-                    <ChevronDown className="w-3.5 h-3.5" />
-                  )}
-                </button>
-
-                {showSetupGuide ? (
-                  <ol className="list-decimal pl-4 space-y-1.5 text-[11px] text-[#404944] bg-[#FAF9F5] p-3 border border-[#064E3B]/10">
-                    <li>
-                      Open <strong>Firebase Console</strong> → project <strong>fit-well-618qq</strong> → <strong>Authentication → Sign-in method</strong> and enable <strong>Email/Password</strong>.
-                    </li>
-                    <li>
-                      Open the <strong>Users</strong> tab and click <strong>Add user</strong> to create your admin email (e.g. <span className="font-mono">{PRIMARY_ADMIN_EMAIL}</span>) and password.
-                    </li>
-                    <li>
-                      Sign in above; if your email is unverified, click <strong>Send Verification Email</strong>, open the link, and press <strong>I Verified — Refresh Session</strong>.
-                    </li>
-                    <li>
-                      If using a different email, authorize its UID in <strong>Admin Profile &amp; Access</strong> (or Firestore <code className="bg-white px-1">/admins/{'{uid}'}</code>).
-                    </li>
-                  </ol>
-                ) : (
-                  <p>
-                    <strong>Security Notice:</strong> Public registration is disabled. Admin credentials are managed via Firebase Authentication and Firestore role rules.
-                  </p>
-                )}
-              </div>
             </div>
           )}
         </div>
